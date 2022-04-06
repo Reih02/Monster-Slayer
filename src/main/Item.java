@@ -1,5 +1,5 @@
 package main;
 
-public class Item {
+public class Item implements Purchasable {
 
 }
