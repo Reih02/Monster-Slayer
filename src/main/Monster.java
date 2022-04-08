@@ -103,12 +103,15 @@ public class Monster implements Purchasable {
 	}
 	
 	/**
-	 * Method that returns the Monster's current health.
+	 * Method that updates the Monster's current health.
 	 * @param newHealth The value that currentHealth is going to become.
-	 * @return The Monster's new health value.
+	 * @return Null.
 	 */
-	public int setCurrentHealth(int newHealth) {
-		return newHealth;
+	public void setCurrentHealth(int newHealth) {
+		if (newHealth < 0) {
+			newHealth = 0;
+		}
+		monsterCurrentHealth = newHealth;
 	}
 	
 	/**
