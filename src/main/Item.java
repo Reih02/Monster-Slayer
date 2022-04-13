@@ -1,5 +1,10 @@
 package main;
 
+/*
+ * Manages information for a particular Item object,
+ * of type Purchasable. For use on Monster objects.
+ * @author Orion Lynch and Reilly Haskins.
+ * */
 public class Item implements Purchasable {
 
 	/*

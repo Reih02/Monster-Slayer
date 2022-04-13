@@ -2,6 +2,12 @@ package main;
 
 import java.util.ArrayList;
 
+/*
+ * Inventory class that manages user's items,
+ * allows user to add or remove items to inventory 
+ * as well as get all items stored.
+ * @author Orion Lynch and Reilly Haskins.
+ * */
 public class Inventory {
 
 	private ArrayList<Item> inventoryList;

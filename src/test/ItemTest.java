@@ -14,7 +14,7 @@ import items.*;
 
 /*
  * Test for Item class
- * @author Reilly Haskins and Orion Lynch
+ * @author Orion Lynch and Reilly Haskins.
  * */
 class ItemTest {
 
