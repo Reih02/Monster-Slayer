@@ -32,11 +32,11 @@ class ItemTest {
 	 * */
 	@BeforeEach
 	public void setUp() throws Exception {
-		testApple = new Apple(7, 5, "Apple", 7);
-		testCarrot = new Carrot(5, 3, "Carrot", 5);
-		testSteak = new Steak(10, 7, "Steak", 15);
-		testHealthPotion = new HealthPotion(25, 20, "Health Potion", 25);
-		testStrengthPotion = new StrengthPotion(25, 20, "Strength Potion", 25);
+		testApple = new Apple();
+		testCarrot = new Carrot();
+		testSteak = new Steak();
+		testHealthPotion = new HealthPotion();
+		testStrengthPotion = new StrengthPotion();
 	}
 
 	/*
@@ -85,7 +85,7 @@ class ItemTest {
 		assertEquals(5, testCarrot.getBonusValue());
 		assertEquals(15, testSteak.getBonusValue());
 		assertEquals(25, testHealthPotion.getBonusValue());
-		assertEquals(25, testStrengthPotion.getBonusValue());
+		assertEquals(5, testStrengthPotion.getBonusValue());
 	}
 
 }

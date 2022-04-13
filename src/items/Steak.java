@@ -4,8 +4,14 @@ package items;
  * Steak, calls Food superclass
  * */
 public class Steak extends Food {
-
-	public Steak(int buyPrice, int sellValue, String name, int bonus) {
+	
+	private static int buyPrice = 10;
+	private static int sellValue = 7;
+	private static String name = "Steak";
+	private static int bonus = 15;
+	
+	
+	public Steak() {
 		super(buyPrice, sellValue, name, bonus);
 	}
 

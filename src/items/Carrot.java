@@ -5,7 +5,13 @@ package items;
  * */
 public class Carrot extends Food {
 
-	public Carrot(int buyPrice, int sellValue, String name, int bonus) {
+	private static int buyPrice = 5;
+	private static int sellValue = 3;
+	private static String name = "Carrot";
+	private static int bonus = 5;
+	
+	
+	public Carrot() {
 		super(buyPrice, sellValue, name, bonus);
 	}
 

@@ -4,9 +4,14 @@ package items;
  * Health Potion, calls Potion superclass
  * */
 public class HealthPotion extends Potion {
-
-	public HealthPotion(int buyPrice, int sellValue, String name, int bonus) {
+	
+	private static int buyPrice = 25;
+	private static int sellValue = 20;
+	private static String name = "Health Potion";
+	private static int bonus = 25;
+	
+	
+	public HealthPotion() {
 		super(buyPrice, sellValue, name, bonus);
 	}
-
 }
