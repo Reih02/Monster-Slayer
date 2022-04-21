@@ -127,4 +127,20 @@ public class Monster implements Purchasable {
 		}
 	}
 	
+	/**
+	 * Method that updates the Monster's max health
+	 * @param newMaxHealth The value that the max health is going to become.
+	 */
+	public void setMaxHealth(int newMaxHealth) {
+		monsterMaxHealth = newMaxHealth;
+	}
+	
+	/**
+	 * Method that updates the Monster's damage
+	 * @param newDamage The value that the damage is going to become
+	 */
+	public void setDamage(int newDamage) {
+		monsterDamage = newDamage;
+	}
+	
 }
