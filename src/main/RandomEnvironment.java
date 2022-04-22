@@ -27,7 +27,7 @@ public class RandomEnvironment {
 	 * Constructor that sets currentMonsters to a list of current Monsters.
 	 * @param currentMonsterList An ArrayList of Monsters the player currently has.
 	 */
-	RandomEnvironment(ArrayList<Monster> currentMonsterList){
+	public RandomEnvironment(ArrayList<Monster> currentMonsterList){
 		currentMonsters = currentMonsterList;
 		
 	}
