@@ -55,9 +55,9 @@ public class RandomEnvironment {
 
 	/**
 	 * Method that has a 1/11 chance of a monster leaving your current monster list when it is called.
-	 * @return The current monster list either without the monster that was removed or the same as it was.
+	 * @return True if a Monster leaves otherwise returns False.
 	 */
-	public ArrayList<Monster> monsterLeaves() {
+	public boolean monsterLeaves() {
 		Random randomLeave = new Random();
 		int number = randomLeave.nextInt(11);
 		
@@ -66,20 +66,20 @@ public class RandomEnvironment {
 			Random monsterIndex = new Random();
 			int index = monsterIndex.nextInt(size);
 			currentMonsters.remove(index);
-			return currentMonsters;
+			return true;
  
 
 		}
 		else {
-			return currentMonsters;
+			return false;
 		}
 	}
 	
 	/**
 	 * Method that has a 1/7 chance of adding a new monster to your party when called.
-	 * @return The current Monster list either with a new Monster or the same as it was previously.
+	 * @return True if the monster arrives otherwise returns False.
 	 */
-	public ArrayList<Monster> monsterArrives() {
+	public boolean monsterArrives() {
 		ArrayList<Monster> potentialMonsters = new ArrayList<Monster>();
 		potentialMonsters.add(new MasterYi());
 		potentialMonsters.add(new Garen());
@@ -98,10 +98,10 @@ public class RandomEnvironment {
 			Random monsterIndex = new Random();
 			int index = monsterIndex.nextInt(size);
 			currentMonsters.add(potentialMonsters.get(index));
-			return currentMonsters;
+			return true;
 		}
 		else {
-			return currentMonsters;
+			return false;
 		}
 		
 	}
