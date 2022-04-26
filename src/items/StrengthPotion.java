@@ -11,7 +11,7 @@ public class StrengthPotion extends Potion {
 	private static int bonus = 5;
 	
 	
-	public StrengthPotion() {
-		super(buyPrice, sellValue, name, bonus);
+	public StrengthPotion(String difficulty) {
+		super(buyPrice, sellValue, name, bonus, difficulty);
 	}
 }
