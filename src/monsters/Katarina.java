@@ -10,9 +10,10 @@ public class Katarina extends Monster {
 	
 	/**
 	 * Katarina constructor that calls the super constructor with default values.
+	 * @param difficulty the Difficulty setting that changes some of the monsters values.
 	 */
-	public Katarina() {
-		super(80, "Katarina", 30, 15);
+	public Katarina(String difficulty) {
+		super(80, "Katarina", 30, 15, difficulty);
 	}
 
 }
