@@ -17,13 +17,13 @@ public class Shop {
 	 * */
 	private ArrayList<Purchasable> purchasableList;
 	
-	public Shop() {
+	public Shop(String difficulty) {
 		purchasableList = new ArrayList<Purchasable>();
-		Apple apple = new Apple();
-		Carrot carrot = new Carrot();
-		Steak steak = new Steak();
-		HealthPotion healthPotion = new HealthPotion();
-		StrengthPotion strengthPotion = new StrengthPotion();
+		Apple apple = new Apple(difficulty);
+		Carrot carrot = new Carrot(difficulty);
+		Steak steak = new Steak(difficulty);
+		HealthPotion healthPotion = new HealthPotion(difficulty);
+		StrengthPotion strengthPotion = new StrengthPotion(difficulty);
 		purchasableList.add(apple);
 		purchasableList.add(carrot);
 		purchasableList.add(steak);
