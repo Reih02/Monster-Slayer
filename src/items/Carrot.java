@@ -11,8 +11,8 @@ public class Carrot extends Food {
 	private static int bonus = 5;
 	
 	
-	public Carrot() {
-		super(buyPrice, sellValue, name, bonus);
+	public Carrot(String difficulty) {
+		super(buyPrice, sellValue, name, bonus, difficulty);
 	}
 
 }
