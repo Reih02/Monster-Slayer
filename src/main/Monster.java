@@ -32,19 +32,29 @@ public class Monster implements Purchasable {
 	 */
 	private int monsterCurrentHealth;
 	
+	
+	
 	/**
 	 * Constructor for Monster class that sets the initial values for each monster created.
 	 * @param health The monsters max health.
 	 * @param name The monsters name.
 	 * @param damage The monsters attack damage.
 	 * @param healAmount The amount of health the monster restores each day.
+	 * @param dificulty The difficulty setting of the monster.
 	 */
-	public Monster(int health, String name, int damage, int healAmount) {
-		monsterMaxHealth = health;
-	    monsterName = name;
-	    monsterDamage = damage;
-	    monsterHealAmount = healAmount;
-	    monsterCurrentHealth = health;
+	public Monster(int health, String name, int damage, int healAmount, String difficulty) {
+		if(difficulty == "hard") {
+			monsterMaxHealth = health - 15;
+			monsterDamage = damage - 5;
+			monsterHealAmount = healAmount - 5;
+		}
+		else {
+			monsterMaxHealth = health;
+			monsterDamage = damage;
+			monsterHealAmount = healAmount;
+		}		
+	    monsterName = name;	       
+	    monsterCurrentHealth = health;	   
 	}
 	
 	/**
