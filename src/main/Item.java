@@ -21,9 +21,15 @@ public class Item implements Purchasable {
 	/*
 	 * Constructor for Item class, takes 4 values to set attributes to
 	 * */
-	public Item(int buyPrice, int sellValue, String name, int bonus) {
-		purchasePrice = buyPrice;
-		sellPrice = sellValue;
+	public Item(int buyPrice, int sellValue, String name, int bonus, String difficulty) {
+		if(difficulty == "hard") {
+			purchasePrice = buyPrice + 5;
+			sellPrice = sellValue - 5;
+		}
+		else {
+			purchasePrice = buyPrice;
+			sellPrice = sellValue;
+		}		
 		itemName = name;
 		bonusValue = bonus;
 	}
