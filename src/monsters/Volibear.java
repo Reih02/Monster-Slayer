@@ -10,9 +10,10 @@ public class Volibear extends Monster {
 	
 	/**
 	 * Volibear constructor that calls the super constructor with default values.
+	 * @param difficulty the Difficulty setting that changes some of the monsters values.
 	 */
-	public Volibear() {
-		super(150, "Volibear", 10, 20);
+	public Volibear(String difficulty) {
+		super(150, "Volibear", 10, 20, difficulty);
 	}
 
 }
