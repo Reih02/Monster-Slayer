@@ -10,9 +10,10 @@ public class MasterYi extends Monster {
 	
 	/**
 	 * MasterYi constructor that calls the super constructor with default values.
+	 * @param difficulty the Difficulty setting that changes some of the monsters values.
 	 */
-	public MasterYi() {
-		super(100, "MasterYi", 20, 20);
+	public MasterYi(String difficulty) {
+		super(100, "MasterYi", 20, 20, difficulty);
 	}
 
 }
