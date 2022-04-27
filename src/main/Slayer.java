@@ -1,7 +1,7 @@
 package main;
 
 /**
- * Slayer class where the user's game information is stored and altered
+ * Slayer class where the users game information is stored and altered
  * @author Orion Lynch and Reilly Haskins
  */
 public class Slayer {
@@ -17,13 +17,19 @@ public class Slayer {
 	private int daysSpent;
 	
 	/**
+	 * The user's gold
+	 */
+	private int goldBalance;
+	
+	/**
 	 * Constructor for new Slayer object
 	 * @param slayerName
 	 * @param slayerDaysSpent
 	 */
-	public Slayer(String slayerName, int slayerDaysSpent) {
+	public Slayer(String slayerName, int slayerDaysSpent, int gold) {
 		name = slayerName;
 		daysSpent = slayerDaysSpent;
+		goldBalance = gold;
 	}
 	
 	/**
@@ -39,6 +45,14 @@ public class Slayer {
 	 */
 	public String getName() {
 		return name;
+	}
+	
+	/**
+	 * Method to return user's current gold
+	 * @return
+	 */
+	public int getGold() {
+		return goldBalance;
 	}
 	
 	/**
