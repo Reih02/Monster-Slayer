@@ -11,7 +11,7 @@ public class Apple extends Food {
 	private static int bonus = 7;
 	
 	
-	public Apple(String difficulty) {
+	public Apple(boolean difficulty) {
 		super(buyPrice, sellValue, name, bonus, difficulty);
 	}
 

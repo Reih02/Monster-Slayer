@@ -42,8 +42,8 @@ public class Monster implements Purchasable {
 	 * @param healAmount The amount of health the monster restores each day.
 	 * @param dificulty The difficulty setting of the monster.
 	 */
-	public Monster(int health, String name, int damage, int healAmount, String difficulty) {
-		if(difficulty == "hard") {
+	public Monster(int health, String name, int damage, int healAmount, boolean difficulty) {
+		if(difficulty == true) {
 			monsterMaxHealth = health - 15;
 			monsterDamage = damage - 5;
 			monsterHealAmount = healAmount - 5;

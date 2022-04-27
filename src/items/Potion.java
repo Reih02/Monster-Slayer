@@ -10,7 +10,7 @@ public class Potion extends Item {
 	/*
 	 * Potion constructor, passes values into superclass (Item)
 	 * */
-	public Potion(int buyPrice, int sellValue, String name, int bonus, String difficulty) {
+	public Potion(int buyPrice, int sellValue, String name, int bonus, boolean difficulty) {
 		super(buyPrice, sellValue, name, bonus, difficulty);
 	}
 }

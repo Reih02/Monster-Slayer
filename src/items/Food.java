@@ -10,7 +10,7 @@ public class Food extends Item {
 	/*
 	 * Food constructor, passes values into superclass (Item)
 	 * */
-	public Food(int buyPrice, int sellValue, String name, int bonus, String difficulty) {
+	public Food(int buyPrice, int sellValue, String name, int bonus, boolean difficulty) {
 		super(buyPrice, sellValue, name, bonus, difficulty);
 	}
 

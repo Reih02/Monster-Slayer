@@ -11,7 +11,7 @@ public class HealthPotion extends Potion {
 	private static int bonus = 25;
 	
 	
-	public HealthPotion(String difficulty) {
+	public HealthPotion(boolean difficulty) {
 		super(buyPrice, sellValue, name, bonus, difficulty);
 	}
 }
