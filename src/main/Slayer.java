@@ -22,14 +22,20 @@ public class Slayer {
 	private int goldBalance;
 	
 	/**
+	 * The user's points
+	 */
+	private int pointsScored;
+	
+	/**
 	 * Constructor for new Slayer object
 	 * @param slayerName
 	 * @param slayerDaysSpent
 	 */
-	public Slayer(String slayerName, int slayerDaysSpent, int gold) {
+	public Slayer(String slayerName, int slayerDaysSpent, int gold, int points) {
 		name = slayerName;
 		daysSpent = slayerDaysSpent;
 		goldBalance = gold;
+		pointsScored = points;
 	}
 	
 	/**
@@ -53,6 +59,14 @@ public class Slayer {
 	 */
 	public int getGold() {
 		return goldBalance;
+	}
+	
+	/**
+	 * Method to return user's total points earned
+	 * @return
+	 */
+	public int getPoints() {
+		return pointsScored;
 	}
 	
 	/**

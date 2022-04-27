@@ -1,5 +1,7 @@
 package main;
 
+import java.util.ArrayList;
+
 import monsters.*;
 
 /**
@@ -8,7 +10,7 @@ import monsters.*;
  *
  */
 public class GameEnvironment {
-
+	
 	/**
 	 * Inventory class initialised
 	 */
@@ -29,6 +31,9 @@ public class GameEnvironment {
 	 */
 	private Monster startingMonster;
 	
+	
+	private ArrayList<Monster> monsters;
+	
 	/**
 	 * The amount of days the game will last for
 	 */
@@ -43,12 +48,13 @@ public class GameEnvironment {
 	 */
 	public void gameSetup(String playerName, int gameLength, String startMonster, boolean difficulty) {
 		
+		monsters = new ArrayList<>();
 		days = gameLength;
 		
 		if (playerName.length() < 3 || playerName.length() > 15 || !lettersOnly(playerName)) {
 			System.out.println("Please change your name so that it contains no letters and is between 3 and 15 characters");
 		} else {
-			slayer = new Slayer(playerName, 1, 50); // Creates Slayer object on first day and with 50 gold (?) 
+			slayer = new Slayer(playerName, 1, 150, 0); // Creates Slayer object on first day and with 150 gold (?) and with 0 points
 			inventory = new Inventory();
 			shop = new Shop(difficulty);
 			switch(startMonster) {
@@ -104,12 +110,13 @@ public class GameEnvironment {
 	}
 	
 	/**
-	 * Method that checks if the game should finish depending on the 
-	 * amount of days that have passed
+	 * Method that checks if the game should finish depending on:
+	 * - if amount of days that have passed exceeds game length
+	 * - or if user has no monsters and not enough gold to buy any more monsters
 	 * @return
 	 */
 	public boolean shouldGameFinish() {
-		if (slayer.getDaysPassed() > days) {
+		if (slayer.getDaysPassed() > days || (monsters.size() <= 0 && slayer.getGold() < 100)){
 			return true;
 		} else {
 			return false;
@@ -122,6 +129,61 @@ public class GameEnvironment {
 	 */
 	public String getStats() {
 		return String.format("Your current gold: %o\nThe current day: %o\nYour days left: %o", slayer.getGold(), slayer.getDaysPassed(), (days - slayer.getDaysPassed()));
+	}
+	
+	public String getTeamProperties() {
+		// name of each monster
+		// properties of each monster
+		// order of monsters
+		return "Unfinished";
+	}
+	
+	public String getPlayerInventory() {
+		// Get all items in user's inventory
+		// Show effects of each item
+		// Allow user to use item on a monster
+		return "Unfinished";
+	}
+	
+	public String viewBattles() {
+		// Show 3 optional battles (random gen, current day)
+		// Show gold and points gained for winning each battle (scale with difficulty)
+		return "Unfinished";
+	}
+	
+	public String chooseBattle() {
+		// Only one time per battle
+		// Can't battle if all monsters fainted
+		// Lose battle if all monsters faint during battle
+		// Reward user with gold and points if battle won
+		return "Unfinished";
+	}
+	
+	// Add functionality for battling process
+	
+	public String visitShop() {
+		// Display current gold
+		// Allow selling of monsters and items back to shop
+		// View 3 monsters on sale  
+		// Allow purchase of monster only if user has less than 4 monsters already
+		// Implement monster rarity system?
+		// View 3 items for sale
+		// Add item to inventory when bought
+		return "Unfinished";
+	}
+	
+	public String sleep() {
+		// Update all items in shop
+		// Update all battles
+		// heal monsters
+		// Add random events 10%? chance of each (monster levels up, monster leaves, Random monster joins)
+		changeDay();
+		if (shouldGameFinish()) {
+			// add gold gained stat
+			return String.format("---GAME ENDED---\nName: %s\n%o\n%o", slayer.getName(), days, slayer.getPoints());
+		} else {
+			return "Sleeping... zz";
+		}
 	}
 	
 	public static void main(String[] args) {
