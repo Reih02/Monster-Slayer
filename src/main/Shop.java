@@ -17,7 +17,7 @@ public class Shop {
 	 * */
 	private ArrayList<Purchasable> purchasableList;
 	
-	public Shop(String difficulty) {
+	public Shop(boolean difficulty) {
 		purchasableList = new ArrayList<Purchasable>();
 		Apple apple = new Apple(difficulty);
 		Carrot carrot = new Carrot(difficulty);
