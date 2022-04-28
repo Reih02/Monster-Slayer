@@ -2,6 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
+import items.*;
 import monsters.*;
 
 /**
@@ -58,6 +59,10 @@ public class GameEnvironment {
 		} else {
 			slayer = new Slayer(playerName, 1, 150, 0); // Creates Slayer object on first day and with 150 gold (?) and with 0 points
 			inventory = new Inventory();
+			Apple apple = new Apple(difficulty);
+			inventory.addItem(apple);
+			Steak steak = new Steak(difficulty);
+			inventory.addItem(steak);
 			shop = new Shop(difficulty);
 			switch(startMonster) {
 				case "BloodMuncha":
@@ -141,23 +146,24 @@ public class GameEnvironment {
 		// name of each monster
 		// properties of each monster
 		// order of monsters
-		String statsString = "-------------\n";
+		String statsString = "-------------";
 		for (int i=0; i < monsters.size(); i++) {
 			Monster currMonster = monsters.get(i);
-			statsString += String.format("Monster %s:\n", i+1);
-			statsString += String.format("NAME: '%s'", currMonster.getName());
-			statsString += "\n";
+			statsString += String.format("\nMonster %s:\n", i+1);
+			statsString += String.format("NAME: '%s'", currMonster.getName()) + "\n";
 			statsString += String.format("HP: %o/%o, DMG: %o, HEAL: %o", currMonster.getCurrentHealth(), currMonster.getMaxHealth(), currMonster.getDamage(), currMonster.getHealAmount());
-			statsString += "\n-------------\n";
+			statsString += "\n-------------";
 		}
 		return statsString;
 	}
 	
+	/**
+	 * Returns a string containing the name of all items in player's inventory, alongside with their bonus value
+	 * @return
+	 */
 	public String getPlayerInventory() {
-		// Get all items in user's inventory
-		// Show effects of each item
-		// Allow user to use item on a monster
-		return "Unfinished";
+		// TODO: Allow user to use item on a monster
+		return inventory.getInventoryList();
 	}
 	
 	public String viewBattles() {
@@ -206,6 +212,7 @@ public class GameEnvironment {
 		game.gameSetup("Steve", 5, "Garen", false);
 		System.out.println(game.getStats());
 		System.out.println(game.getTeamProperties());
+		System.out.println(game.getPlayerInventory());
 	}
 	
 	
