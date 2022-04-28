@@ -1,5 +1,7 @@
 package main;
 
+import java.util.ArrayList;
+
 /**
  * Slayer class where the users game information is stored and altered
  * @author Orion Lynch and Reilly Haskins
@@ -10,6 +12,11 @@ public class Slayer {
 	 * Initialises user's name
 	 */
 	private String name;
+	
+	/**
+	 * Keeps track of user's monsters in an ArrayList
+	 */
+	private ArrayList<Monster> currentMonsters = new ArrayList<>();
 	
 	/**
 	 * Initialises user's days spent in game
@@ -81,6 +88,18 @@ public class Slayer {
 	 */
 	public String getName() {
 		return name;
+	}
+	
+	/**
+	 * Returns user's monsters
+	 * @return
+	 */
+	public ArrayList<Monster> getCurrMonsters(){
+		return currentMonsters;
+	}
+	
+	public void addMonster(Monster monster) {
+		currentMonsters.add(monster);
 	}
 	
 	/**

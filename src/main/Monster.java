@@ -120,8 +120,11 @@ public class Monster implements Purchasable {
 	public void setCurrentHealth(int newHealth) {
 		if (newHealth < 0) {
 			newHealth = 0;
+		} else if ((monsterCurrentHealth + newHealth) > monsterMaxHealth) {
+			monsterCurrentHealth = monsterMaxHealth;
+		} else {
+			monsterCurrentHealth = newHealth;
 		}
-		monsterCurrentHealth = newHealth;
 	}
 	
 	/**

@@ -33,11 +33,6 @@ public class GameEnvironment {
 	private Monster startingMonster;
 	
 	/**
-	 * ArrayList storing all monsters
-	 */
-	private ArrayList<Monster> monsters;
-	
-	/**
 	 * The amount of days the game will last for
 	 */
 	private int days;
@@ -51,7 +46,6 @@ public class GameEnvironment {
 	 */
 	public void gameSetup(String playerName, int gameLength, String startMonster, boolean difficulty) {
 		
-		monsters = new ArrayList<>();
 		days = gameLength;
 		
 		if (playerName.length() < 3 || playerName.length() > 15 || !lettersOnly(playerName)) {
@@ -80,7 +74,7 @@ public class GameEnvironment {
 					startingMonster = new Volibear(difficulty);
 					break;
 			}
-			monsters.add(startingMonster);
+			slayer.addMonster(startingMonster);
 		}
 		
 	}
@@ -119,7 +113,7 @@ public class GameEnvironment {
 	 * @return
 	 */
 	public boolean shouldGameFinish() {
-		if (slayer.getDaysPassed() > days || (monsters.size() <= 0 && slayer.getGold() < 100)){
+		if (slayer.getDaysPassed() > days || (slayer.getCurrMonsters().size() <= 0 && slayer.getGold() < 100)){
 			return true;
 		} else {
 			return false;
@@ -146,8 +140,8 @@ public class GameEnvironment {
 		// properties of each monster
 		// order of monsters
 		String statsString = "-------------";
-		for (int i=0; i < monsters.size(); i++) {
-			Monster currMonster = monsters.get(i);
+		for (int i=0; i < slayer.getCurrMonsters().size(); i++) {
+			Monster currMonster = slayer.getCurrMonsters().get(i);
 			statsString += String.format("\nMonster %s:\n", i+1);
 			statsString += String.format("NAME: '%s'", currMonster.getName()) + "\n";
 			statsString += String.format("HP: %o/%o, DMG: %o, HEAL: %o", currMonster.getCurrentHealth(), currMonster.getMaxHealth(), currMonster.getDamage(), currMonster.getHealAmount());
@@ -190,19 +184,21 @@ public class GameEnvironment {
 		// Add item to inventory when bought
 		String shopVisitString = "-------------";
 		shopVisitString += "\nYour current gold: " + slayer.getGold();
+		return "Unfinished";
 		
 	}
 	
 	public String sleep() {
 		// Update all items in shop
 		// Update all battles
-		// heal monsters
 		// Add random events 10%? chance of each (monster levels up, monster leaves, Random monster joins)
 		changeDay();
 		if (shouldGameFinish()) {
-			// add gold gained stat
-			return String.format("---GAME ENDED---\nName: %s\n%o\n%o", slayer.getName(), days, slayer.getPoints());
+			return String.format("---GAME ENDED---\nName: %s\nDays lasted: %o/%o\nPoints earned: %o\nGold earned: %o", slayer.getName(), slayer.getDaysPassed(), days, slayer.getPoints(), slayer.getGoldTotal());
 		} else {
+			for (int i=0; i < slayer.getCurrMonsters().size(); i++) {
+				slayer.getCurrMonsters().get(i).setCurrentHealth(slayer.getCurrMonsters().get(i).getHealAmount()); // Heals monsters (Too complicated?)
+			}
 			return "Sleeping... zz";
 		}
 	}
