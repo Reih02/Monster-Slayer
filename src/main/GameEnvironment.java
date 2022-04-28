@@ -31,7 +31,9 @@ public class GameEnvironment {
 	 */
 	private Monster startingMonster;
 	
-	
+	/**
+	 * ArrayList storing all monsters
+	 */
 	private ArrayList<Monster> monsters;
 	
 	/**
@@ -77,7 +79,7 @@ public class GameEnvironment {
 					startingMonster = new Volibear(difficulty);
 					break;
 			}
-			
+			monsters.add(startingMonster);
 		}
 		
 	}
@@ -131,11 +133,24 @@ public class GameEnvironment {
 		return String.format("Your current gold: %o\nThe current day: %o\nYour days left: %o", slayer.getGold(), slayer.getDaysPassed(), (days - slayer.getDaysPassed()));
 	}
 	
+	/**
+	 * Returns a string containing properties of each current monster on the user's team
+	 * @return
+	 */
 	public String getTeamProperties() {
 		// name of each monster
 		// properties of each monster
 		// order of monsters
-		return "Unfinished";
+		String statsString = "-------------\n";
+		for (int i=0; i < monsters.size(); i++) {
+			Monster currMonster = monsters.get(i);
+			statsString += String.format("Monster %s:\n", i+1);
+			statsString += String.format("NAME: '%s'", currMonster.getName());
+			statsString += "\n";
+			statsString += String.format("HP: %o/%o, DMG: %o, HEAL: %o", currMonster.getCurrentHealth(), currMonster.getMaxHealth(), currMonster.getDamage(), currMonster.getHealAmount());
+			statsString += "\n-------------\n";
+		}
+		return statsString;
 	}
 	
 	public String getPlayerInventory() {
@@ -187,7 +202,10 @@ public class GameEnvironment {
 	}
 	
 	public static void main(String[] args) {
-		
+		GameEnvironment game = new GameEnvironment();
+		game.gameSetup("Steve", 5, "Garen", false);
+		System.out.println(game.getStats());
+		System.out.println(game.getTeamProperties());
 	}
 	
 	
