@@ -24,11 +24,18 @@ public class RandomEnvironment {
 	private ArrayList<Monster> currentMonsters;
 	
 	/**
-	 * Constructor that sets currentMonsters to a list of current Monsters.
-	 * @param currentMonsterList An ArrayList of Monsters the player currently has.
+	 * Attribute that records the difficulty of the game.
 	 */
-	public RandomEnvironment(ArrayList<Monster> currentMonsterList){
+	private boolean difficulty;
+	
+	/**
+	 * Constructor that sets currentMonsters to a list of current Monsters.
+	 * @param currentMonsterList An ArrayList of Monsters the player currently has.\
+	 * @param difficulty The difficulty that the game is set to, used when creating Monster objects.
+	 */
+	public RandomEnvironment(ArrayList<Monster> currentMonsterList, boolean gameDifficulty){
 		currentMonsters = currentMonsterList;
+		difficulty = gameDifficulty;
 		
 	}
 	
@@ -38,8 +45,15 @@ public class RandomEnvironment {
 	 */
 	public boolean monsterLevelUp() {
 		Random randomLevelUp = new Random();
-		int number = randomLevelUp.nextInt(2);
 		
+		int number = 1;
+		
+		if(difficulty) {
+			number = randomLevelUp.nextInt(4);
+		}
+		else {
+		    number = randomLevelUp.nextInt(2);
+		}
 		if (number == 1) {
 			int size = currentMonsters.size();
 			Random monsterIndex = new Random();
@@ -59,9 +73,14 @@ public class RandomEnvironment {
 	 */
 	public boolean monsterLeaves() {
 		Random randomLeave = new Random();
-		int number = randomLeave.nextInt(11);
-		
-		if (number == 10) {
+		int number = 1;
+		if(difficulty) {
+			number = randomLeave.nextInt(7); 
+		}
+		else {
+		    number = randomLeave.nextInt(11);
+		}
+		if (number == 1) {
 			int size = currentMonsters.size();
 			Random monsterIndex = new Random();
 			int index = monsterIndex.nextInt(size);
@@ -81,20 +100,24 @@ public class RandomEnvironment {
 	 */
 	public boolean monsterArrives() {
 		ArrayList<Monster> potentialMonsters = new ArrayList<Monster>();
-		potentialMonsters.add(new MasterYi());
-		potentialMonsters.add(new Garen());
-		potentialMonsters.add(new Katarina());
-		potentialMonsters.add(new BloodMuncha());
-		potentialMonsters.add(new Malphite());
-		potentialMonsters.add(new Volibear());
+		potentialMonsters.add(new MasterYi(difficulty));
+		potentialMonsters.add(new Garen(difficulty));
+		potentialMonsters.add(new Katarina(difficulty));
+		potentialMonsters.add(new BloodMuncha(difficulty));
+		potentialMonsters.add(new Malphite(difficulty));
+		potentialMonsters.add(new Volibear(difficulty));
 		
 		Random randomArrives = new Random();
-		
+	    int number = 1;
 		int size = potentialMonsters.size();
+		if (difficulty) {
+		    number = randomArrives.nextInt(7);
+		}
+		else {
+			number = randomArrives.nextInt(4);
+		}
 		
-		int number = randomArrives.nextInt(7);
-		
-		if (number == 6) {
+		if (number == 1) {
 			Random monsterIndex = new Random();
 			int index = monsterIndex.nextInt(size);
 			currentMonsters.add(potentialMonsters.get(index));
