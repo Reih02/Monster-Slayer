@@ -11,11 +11,11 @@ import main.Shop;
 class ShopTest {
 
 	private Shop testShop;
-	private Apple apple = new Apple();
+	private Apple apple = new Apple(false);
 	
 	@BeforeEach
 	public void setUp() throws Exception {
-		testShop = new Shop();
+		testShop = new Shop(false);
 	}
 
 	@Test

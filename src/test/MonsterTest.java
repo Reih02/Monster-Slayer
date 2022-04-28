@@ -25,7 +25,7 @@ class MonsterTest {
 	 */
 	@BeforeEach
 	public void testSetUp() {
-		testMonster = new MasterYi();
+		testMonster = new MasterYi(false);
 	}
     
 	/**

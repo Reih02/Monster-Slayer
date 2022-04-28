@@ -53,9 +53,9 @@ class BattleTest {
 	 */
 	@BeforeEach
 	public void testSetUp() {
-		masterYi1 = new MasterYi();
-		masterYi2 = new MasterYi();
-		masterYi3 = new MasterYi();
+		masterYi1 = new MasterYi(false);
+		masterYi2 = new MasterYi(false);
+		masterYi3 = new MasterYi(false);
 		enemyMonsters.add(masterYi1);
 		alliedMonsters.add(masterYi2);		
 	}

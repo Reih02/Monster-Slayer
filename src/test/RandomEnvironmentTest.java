@@ -35,10 +35,10 @@ class RandomEnvironmentTest {
 	 */
 	@BeforeEach
 	public void setUpTests() {
-		MasterYi masterYi = new MasterYi();
+		MasterYi masterYi = new MasterYi(false);
 		testList = new ArrayList<Monster>();
 		testList.add(masterYi);
-		randomTest = new RandomEnvironment(testList);
+		randomTest = new RandomEnvironment(testList,false);
 	}
 
 	/**
