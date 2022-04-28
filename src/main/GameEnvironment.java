@@ -59,10 +59,6 @@ public class GameEnvironment {
 		} else {
 			slayer = new Slayer(playerName, 1, 150, 0); // Creates Slayer object on first day and with 150 gold (?) and with 0 points
 			inventory = new Inventory();
-			Apple apple = new Apple(difficulty);
-			inventory.addItem(apple);
-			Steak steak = new Steak(difficulty);
-			inventory.addItem(steak);
 			shop = new Shop(difficulty);
 			switch(startMonster) {
 				case "BloodMuncha":
@@ -186,14 +182,15 @@ public class GameEnvironment {
 	// Add functionality for battling process
 	
 	public String visitShop() {
-		// Display current gold
 		// Allow selling of monsters and items back to shop
 		// View 3 monsters on sale  
 		// Allow purchase of monster only if user has less than 4 monsters already
 		// Implement monster rarity system?
 		// View 3 items for sale
 		// Add item to inventory when bought
-		return "Unfinished";
+		String shopVisitString = "-------------";
+		shopVisitString += "\nYour current gold: " + slayer.getGold();
+		
 	}
 	
 	public String sleep() {

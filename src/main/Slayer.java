@@ -22,6 +22,11 @@ public class Slayer {
 	private int goldBalance;
 	
 	/**
+	 * Keeps track of all gold the user has gained; not just the current balance
+	 */
+	private int goldTotalGained;
+	
+	/**
 	 * The user's points
 	 */
 	private int pointsScored;
@@ -46,6 +51,31 @@ public class Slayer {
 	}
 	
 	/**
+	 * Increases both user's gold balance and total gold gained by some value
+	 * @param value
+	 */
+	public void increaseGold(int value) {
+		goldBalance += value;
+		goldTotalGained += value;
+	}
+	
+	/**
+	 * Decrease user's gold balance by some value
+	 * @param value
+	 */
+	public void decreaseGold(int value) {
+		goldBalance -= value;
+	}
+	
+	/**
+	 * Increases user's points by some value
+	 * @param value
+	 */
+	public void increasePoints(int value) {
+		pointsScored += value;
+	}
+	
+	/**
 	 * Returns the name of the Slayer object
 	 * @return
 	 */
@@ -59,6 +89,14 @@ public class Slayer {
 	 */
 	public int getGold() {
 		return goldBalance;
+	}
+	
+	/**
+	 * Returns user's total gold gained value
+	 * @return
+	 */
+	public int getGoldTotal() {
+		return goldTotalGained;
 	}
 	
 	/**
