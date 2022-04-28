@@ -135,7 +135,10 @@ public class GameEnvironment {
 	 * @return
 	 */
 	public String getStats() {
-		return String.format("Your current gold: %o\nThe current day: %o\nYour days left: %o", slayer.getGold(), slayer.getDaysPassed(), (days - slayer.getDaysPassed()));
+		System.out.println(slayer.getGold());
+		String string = "Your current gold: " + slayer.getGold() + "\nThe current day: " + slayer.getDaysPassed() + "\nYour days left: " + (days - slayer.getDaysPassed());
+		return string;
+		
 	}
 	
 	/**
