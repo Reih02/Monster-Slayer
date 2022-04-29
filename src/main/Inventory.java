@@ -41,14 +41,7 @@ public class Inventory {
 	/*
 	 * Returns all items currently in inventoryList
 	 * */
-	public String getInventoryList() {
-		String inventoryString = "-------------";
-		for (int i=0; i < inventoryList.size(); i++) {
-			Item currItem = inventoryList.get(i); 
-			inventoryString += String.format("\nItem: %s", currItem.getName()) + "\n";
-			inventoryString += String.format("EFFECT: %o", currItem.getBonusValue()) + "\n";
-			inventoryString += "-------------";
-		}
-		return inventoryString;
+	public ArrayList<Item> getInventoryList() {
+		return inventoryList;
 	}
 }

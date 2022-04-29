@@ -53,6 +53,14 @@ public class GameEnvironment {
 		} else {
 			slayer = new Slayer(playerName, 1, 150, 0); // Creates Slayer object on first day and with 150 gold (?) and with 0 points
 			inventory = new Inventory();
+			// TESTING
+			HealthPotion healthPot = new HealthPotion(difficulty);
+			inventory.addItem(healthPot);
+			StrengthPotion strengthPot = new StrengthPotion(difficulty);
+			inventory.addItem(strengthPot);
+			Carrot carrot = new Carrot(difficulty);
+			inventory.addItem(carrot);
+			// TESTING
 			shop = new Shop(difficulty);
 			switch(startMonster) {
 				case "BloodMuncha":
@@ -75,6 +83,7 @@ public class GameEnvironment {
 					break;
 			}
 			slayer.addMonster(startingMonster);
+			slayer.getCurrMonsters().get(0).setCurrentHealth(50);
 		}
 		
 	}
@@ -156,7 +165,29 @@ public class GameEnvironment {
 	 */
 	public String getPlayerInventory() {
 		// TODO: Allow user to use item on a monster
-		return inventory.getInventoryList();
+		String inventoryString = "-------------";
+		for (int i=0; i < inventory.getInventoryList().size(); i++) {
+			Item currItem = inventory.getInventoryList().get(i); 
+			inventoryString += String.format("\nITEM: %s", currItem.getName()) + "\n";
+			inventoryString += String.format("EFFECT: %o", currItem.getBonusValue()) + "\n";
+			inventoryString += "-------------";
+		}
+		return inventoryString;
+	}
+	
+	public void useItem(int itemIndex, int monsterIndex) {
+		Item item = inventory.getInventoryList().get(itemIndex);
+		Monster monster = slayer.getCurrMonsters().get(monsterIndex);
+		if (item.getClass().getName() == "items.HealthPotion") {
+			monster.setCurrentHealth(monster.getCurrentHealth() + item.getBonusValue()); // Increases health of monster (potion)
+			inventory.removeItem(item);
+		} else if (item.getClass().getName() == "items.StrengthPotion") {
+			monster.setDamage(monster.getDamage() + item.getBonusValue()); // Increases strength of monster
+			inventory.removeItem(item);
+		} else {
+			monster.setCurrentHealth(monster.getCurrentHealth() + item.getBonusValue()); // Increases health of monster (food)
+			inventory.removeItem(item);
+		}
 	}
 	
 	public String viewBattles() {
@@ -203,12 +234,10 @@ public class GameEnvironment {
 		}
 	}
 	
+	// Testing purposes
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
 		game.gameSetup("Steve", 5, "Garen", false);
-		System.out.println(game.getStats());
-		System.out.println(game.getTeamProperties());
-		System.out.println(game.getPlayerInventory());
 	}
 	
 	
