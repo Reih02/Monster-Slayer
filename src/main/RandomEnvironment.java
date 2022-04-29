@@ -128,4 +128,66 @@ public class RandomEnvironment {
 		}
 		
 	}
+	/**
+	 * Method that randomly generates the amount of monsters in the shop and then randomly generates which monsters are in the shop.
+	 * @return An ArrayList of monsters in the shop.
+	 */
+	public ArrayList<Monster> monstersInShop(){
+		
+		ArrayList<Monster> shop = new ArrayList<Monster>();
+		ArrayList<Monster> potentialMonsters = new ArrayList<Monster>();
+		potentialMonsters.add(new MasterYi(difficulty));
+		potentialMonsters.add(new Garen(difficulty));
+		potentialMonsters.add(new Katarina(difficulty));
+		potentialMonsters.add(new BloodMuncha(difficulty));
+		potentialMonsters.add(new Malphite(difficulty));
+		potentialMonsters.add(new Volibear(difficulty));
+		
+		Random amount = new Random();
+		int number = amount.nextInt(3);
+		 		
+		for(number = number + 3; number != 0; number --) {
+			int index = amount.nextInt(6);
+			shop.add(potentialMonsters.get(index));						
+		}
+		return shop;
+	}
+	
+	/**
+	 * Method that randomly generates the amount of potential battles there are and randomly generates the amount of Monsters and what type of monsters.
+	 * @param dayNumber The day that it is currently.
+	 * @return An ArrayList of ArrayLists that are made up of monsters.
+	 */
+	public ArrayList<ArrayList<Monster>> generateBattles(int dayNumber){
+		ArrayList<ArrayList<Monster>> battles = new ArrayList<ArrayList<Monster>>();
+		
+		ArrayList<Monster> potentialMonsters = new ArrayList<Monster>();
+		potentialMonsters.add(new MasterYi(difficulty));
+		potentialMonsters.add(new Garen(difficulty));
+		potentialMonsters.add(new Katarina(difficulty));
+		potentialMonsters.add(new BloodMuncha(difficulty));
+		potentialMonsters.add(new Malphite(difficulty));
+		potentialMonsters.add(new Volibear(difficulty));
+		Random randomBattle = new Random();
+		int number = randomBattle.nextInt(3);
+		
+		for(number = number + 3; number != 0; number --) {
+			ArrayList<Monster> battle = new ArrayList<Monster>();
+			if(difficulty) {
+			    for(int battleSize = randomBattle.nextInt(dayNumber) + 2; battleSize != 0; battleSize --) {
+			    	int index = randomBattle.nextInt(6);
+			    	battle.add(potentialMonsters.get(index));
+			    }
+			    battles.add(battle);
+		}
+			else {
+				for(int battleSize = randomBattle.nextInt(dayNumber) + 1; battleSize != 0; battleSize --) {
+			    	int index = randomBattle.nextInt(6);
+			    	battle.add(potentialMonsters.get(index));
+			}
+				battles.add(battle);
+			}
+	     }
+		return battles;
+	}
 }

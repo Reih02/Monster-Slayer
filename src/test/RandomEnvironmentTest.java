@@ -91,5 +91,13 @@ class RandomEnvironmentTest {
 		}
 		
 	}
+	
+	/**
+	 * Tests that there are monsters in the shop.
+	 */
+	@Test
+	public void testMonstersInShop() {
+		assertNotNull(randomTest.monstersInShop());
+	}
 
 }
