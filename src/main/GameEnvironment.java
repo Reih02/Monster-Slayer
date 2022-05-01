@@ -13,6 +13,11 @@ import monsters.*;
 public class GameEnvironment {
 	
 	/**
+	 * Random Environment class initialised
+	 */
+	private RandomEnvironment randomEnv;
+	
+	/**
 	 * Inventory class initialised
 	 */
 	private Inventory inventory;
@@ -27,6 +32,23 @@ public class GameEnvironment {
 	 */
 	private Slayer slayer;
 	
+	private boolean difficultySetting;
+	
+	/**
+	 * ArrayList of ArrayLists of monsters representing the monsters to fight in a battle
+	 */
+	private ArrayList<ArrayList<Monster>> battle1;
+	
+	/**
+	 * second battle
+	 */
+	private ArrayList<ArrayList<Monster>> battle2;
+	
+	/**
+	 * third battle
+	 */
+	private ArrayList<ArrayList<Monster>> battle3;
+	
 	/**
 	 * The user's starting monster
 	 */
@@ -38,6 +60,16 @@ public class GameEnvironment {
 	private int days;
 	
 	/**
+	 * The amount of gold awarded for winning a battle
+	 */
+	private int goldGained;
+	
+	/**
+	 * The amount of points gained for winning a battle
+	 */
+	private int pointsGained;
+	
+	/**
 	 * Sets up game by getting the user's chosen variables
 	 * @param playerName
 	 * @param gameLength
@@ -47,6 +79,7 @@ public class GameEnvironment {
 	public void gameSetup(String playerName, int gameLength, String startMonster, boolean difficulty) {
 		
 		days = gameLength;
+		difficultySetting = difficulty;
 		
 		if (playerName.length() < 3 || playerName.length() > 15 || !lettersOnly(playerName)) {
 			System.out.println("Please change your name so that it contains no letters and is between 3 and 15 characters");
@@ -84,6 +117,15 @@ public class GameEnvironment {
 			}
 			slayer.addMonster(startingMonster);
 			slayer.getCurrMonsters().get(0).setCurrentHealth(50);
+			randomEnv = new RandomEnvironment(slayer.getCurrMonsters(), difficulty);
+			// Sets the gold and points gained from winning battles depending on difficulty
+			if (difficultySetting == true) {
+				goldGained = 80;
+				pointsGained = 1000;
+			} else {
+				goldGained = 100;
+				pointsGained = 500;
+			}
 		}
 		
 	}
@@ -191,9 +233,24 @@ public class GameEnvironment {
 	}
 	
 	public String viewBattles() {
-		// Show 3 optional battles (random gen, current day)
 		// Show gold and points gained for winning each battle (scale with difficulty)
-		return "Unfinished";
+		ArrayList<ArrayList<ArrayList<Monster>>> battles = new ArrayList<ArrayList<ArrayList<Monster>>>();
+		battle1 = randomEnv.generateBattles(slayer.getDaysPassed());
+		battle2 = randomEnv.generateBattles(slayer.getDaysPassed());
+		battle3 = randomEnv.generateBattles(slayer.getDaysPassed());
+		battles.add(battle1);
+		battles.add(battle2);
+		battles.add(battle3);
+		String returnString = "-------------";
+		// Inefficient? Fixed amount of battles to loop through at least (3)
+		for (int i=0; i < battles.size(); i ++) {
+			returnString += String.format("\nBATTLE %o:\n", i+1) + "(Gold gained: " + goldGained + ")\n" + "(Points gained: " + pointsGained + ")\n";
+			for (int j=0; j < battles.get(i).size(); j++) {
+				returnString += String.format("%s", battles.get(i).get(j).get(0).getName()) + "\n";
+			}
+		}
+		returnString += "-------------";
+		return returnString;
 	}
 	
 	public String chooseBattle() {
@@ -238,6 +295,7 @@ public class GameEnvironment {
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
 		game.gameSetup("Steve", 5, "Garen", false);
+		System.out.println(game.viewBattles());
 	}
 	
 	
