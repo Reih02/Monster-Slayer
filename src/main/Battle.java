@@ -26,7 +26,7 @@ public class Battle {
 	 */
 	public Battle(ArrayList<Monster> enemyMonsterList, ArrayList<Monster> alliedMonsterList) {
 		enemyMonsters = enemyMonsterList;
-		alliedMonsters = alliedMonsterList;		
+		alliedMonsters = alliedMonsterList;
 	}
 	
 	/**
@@ -40,9 +40,7 @@ public class Battle {
 		
 		while (alliedIndex < alliedMonsters.size() && enemyIndex < enemyMonsters.size()) {
 			
-		
-			while(alliedMonsters.get(alliedIndex).isFainted() == true) {
-				
+			while(alliedMonsters.get(alliedIndex).isFainted() != true) {
 				alliedIndex ++;
 				
 				if(alliedIndex == alliedMonsters.size()) {
@@ -50,7 +48,7 @@ public class Battle {
 				}
 			}
 			
-			while(enemyMonsters.get(enemyIndex).isFainted() == true) {
+			while(enemyMonsters.get(enemyIndex).isFainted() != true) {
 				
 				enemyIndex ++;
 				

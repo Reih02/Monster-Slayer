@@ -32,7 +32,15 @@ public class GameEnvironment {
 	 */
 	private Slayer slayer;
 	
+	/**
+	 * The difficulty of the game
+	 */
 	private boolean difficultySetting;
+	
+	/**
+	 * Stores the availabe battles to the user
+	 */
+	private ArrayList<ArrayList<ArrayList<Monster>>> battles;
 	
 	/**
 	 * ArrayList of ArrayLists of monsters representing the monsters to fight in a battle
@@ -234,7 +242,7 @@ public class GameEnvironment {
 	
 	public String viewBattles() {
 		// Show gold and points gained for winning each battle (scale with difficulty)
-		ArrayList<ArrayList<ArrayList<Monster>>> battles = new ArrayList<ArrayList<ArrayList<Monster>>>();
+		battles = new ArrayList<ArrayList<ArrayList<Monster>>>();
 		battle1 = randomEnv.generateBattles(slayer.getDaysPassed());
 		battle2 = randomEnv.generateBattles(slayer.getDaysPassed());
 		battle3 = randomEnv.generateBattles(slayer.getDaysPassed());
@@ -253,12 +261,23 @@ public class GameEnvironment {
 		return returnString;
 	}
 	
-	public String chooseBattle() {
-		// Only one time per battle
-		// Can't battle if all monsters fainted
-		// Lose battle if all monsters faint during battle
-		// Reward user with gold and points if battle won
-		return "Unfinished";
+	public String chooseBattle(int battleNum) {
+		ArrayList<Monster> enemyMonsters = new ArrayList<Monster>();
+		for (int i=0; i < battles.get(battleNum).size(); i++) {
+			enemyMonsters.add(battles.get(battleNum).get(i).get(0));
+		}
+		if (slayer.getCurrMonsters().size() <= 0) {
+			return "You don't have any monsters available!";
+		} else {
+			Battle battleSelected = new Battle(enemyMonsters, slayer.getCurrMonsters());
+			boolean battleOutcome = battleSelected.fight();
+			battles.remove(battleNum);
+			 if (battleOutcome == true) {
+				 return "You have won the battle! You earned " + goldGained + " gold and " + pointsGained + " points";
+			 } else {
+				 return "You lost the battle.. Better luck next time";
+			 }
+		}
 	}
 	
 	// Add functionality for battling process
@@ -296,6 +315,7 @@ public class GameEnvironment {
 		GameEnvironment game = new GameEnvironment();
 		game.gameSetup("Steve", 5, "Garen", false);
 		System.out.println(game.viewBattles());
+		System.out.println(game.chooseBattle(0));
 	}
 	
 	
