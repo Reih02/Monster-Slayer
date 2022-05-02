@@ -22,4 +22,10 @@ public interface Purchasable {
 	 */
 	public int getSellPrice();
 	
+	/**
+	 * This method returns the name of the purchasable where it is implemented.
+	 * @return The name of the purchasable.
+	 */
+	public String getName();
+	
 }

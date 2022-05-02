@@ -39,6 +39,14 @@ public class Shop {
 		return purchasableList;
 	}
 	
+	/**
+	 * Adds Purchasable object to shop list
+	 * @param monster
+	 */
+	public void addPurchasable(Purchasable purchasable) {
+		purchasableList.add(purchasable);
+	}
+	
 	/*
 	 * Following methods return specified object for use
 	 * when buying and selling item in main game environment.

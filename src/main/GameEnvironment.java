@@ -126,6 +126,7 @@ public class GameEnvironment {
 			slayer.addMonster(startingMonster);
 			slayer.getCurrMonsters().get(0).setCurrentHealth(50);
 			randomEnv = new RandomEnvironment(slayer.getCurrMonsters(), difficulty);
+			changePurchasableMonsters();
 			// Sets the gold and points gained from winning battles depending on difficulty
 			if (difficultySetting == true) {
 				goldGained = 80;
@@ -162,6 +163,13 @@ public class GameEnvironment {
 			slayer.increaseDays();
 		} else {
 			System.out.println("Out of days!");
+		}
+	}
+	
+	public void changePurchasableMonsters() {
+		ArrayList<Monster> newMonsters = randomEnv.monstersInShop();
+		for (int i=0; i < newMonsters.size(); i++) {
+			shop.addPurchasable(newMonsters.get(i));
 		}
 	}
 	
@@ -261,6 +269,12 @@ public class GameEnvironment {
 		return returnString;
 	}
 	
+	/**
+	 * Method to construct a Battle object and run Battle.fight() on the 
+	 * user's selected battle
+	 * @param battleNum
+	 * @return
+	 */
 	public String chooseBattle(int battleNum) {
 		ArrayList<Monster> enemyMonsters = new ArrayList<Monster>();
 		for (int i=0; i < battles.get(battleNum).size(); i++) {
@@ -284,15 +298,15 @@ public class GameEnvironment {
 	
 	public String visitShop() {
 		// Allow selling of monsters and items back to shop
-		// View 3 monsters on sale  
 		// Allow purchase of monster only if user has less than 4 monsters already
-		// Implement monster rarity system?
-		// View 3 items for sale
-		// Add item to inventory when bought
-		String shopVisitString = "-------------";
-		shopVisitString += "\nYour current gold: " + slayer.getGold();
-		return "Unfinished";
-		
+		System.out.println(shop.getPurchasableList());
+		String shopVisitString = "-------------\n";
+		shopVisitString += "Your current gold: " + slayer.getGold() + "\n";
+		for (int i=0; i < shop.getPurchasableList().size(); i++) {
+			shopVisitString += "\nITEM: " + shop.getPurchasableList().get(i).getName() + "\nPRICE: " + shop.getPurchasableList().get(i).getBuyPrice() + "\n";
+		}
+		shopVisitString += "-------------";
+		return shopVisitString;
 	}
 	
 	public String sleep() {
@@ -306,6 +320,7 @@ public class GameEnvironment {
 			for (int i=0; i < slayer.getCurrMonsters().size(); i++) {
 				slayer.getCurrMonsters().get(i).setCurrentHealth(slayer.getCurrMonsters().get(i).getHealAmount()); // Heals monsters (Too complicated?)
 			}
+			changePurchasableMonsters();
 			return "Sleeping... zz";
 		}
 	}
@@ -314,8 +329,9 @@ public class GameEnvironment {
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
 		game.gameSetup("Steve", 5, "Garen", false);
-		System.out.println(game.viewBattles());
-		System.out.println(game.chooseBattle(0));
+		//System.out.println(game.viewBattles());
+		//System.out.println(game.chooseBattle(0));
+		System.out.println(game.visitShop());
 	}
 	
 	
