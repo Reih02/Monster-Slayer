@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import items.*;
 import monsters.*;
@@ -94,14 +95,6 @@ public class GameEnvironment {
 		} else {
 			slayer = new Slayer(playerName, 1, 150, 0); // Creates Slayer object on first day and with 150 gold (?) and with 0 points
 			inventory = new Inventory();
-			// TESTING
-			HealthPotion healthPot = new HealthPotion(difficulty);
-			inventory.addItem(healthPot);
-			StrengthPotion strengthPot = new StrengthPotion(difficulty);
-			inventory.addItem(strengthPot);
-			Carrot carrot = new Carrot(difficulty);
-			inventory.addItem(carrot);
-			// TESTING
 			shop = new Shop(difficulty);
 			switch(startMonster) {
 				case "BloodMuncha":
@@ -299,20 +292,59 @@ public class GameEnvironment {
 	public String visitShop() {
 		// Allow selling of monsters and items back to shop
 		// Allow purchase of monster only if user has less than 4 monsters already
-		System.out.println(shop.getPurchasableList());
 		String shopVisitString = "-------------\n";
 		shopVisitString += "Your current gold: " + slayer.getGold() + "\n";
 		for (int i=0; i < shop.getPurchasableList().size(); i++) {
-			shopVisitString += "\nITEM: " + shop.getPurchasableList().get(i).getName() + "\nPRICE: " + shop.getPurchasableList().get(i).getBuyPrice() + "\n";
+			shopVisitString += "\nITEM " + (i + 1) + ": " + shop.getPurchasableList().get(i).getName() + "\nPRICE: " + shop.getPurchasableList().get(i).getBuyPrice() + "\n";
 		}
 		shopVisitString += "-------------";
 		return shopVisitString;
 	}
 	
+	/**
+	 * Prompts and uses input from user to call the buyPurchasable method on a certain item in the shop
+	 * @return
+	 */
+	public String promptBuyPurchasable() {
+		Scanner promptScanner = new Scanner(System.in);
+		System.out.println("Enter the corresponding item number you would like to purchase: ");
+		// exception "InputMismatchException" possible?
+		int itemNumber = promptScanner.nextInt();
+		promptScanner.close();
+		return buyPurchasable(itemNumber);
+	}
+	
+	/**
+	 * Method to buy a Purchasable object from the shop
+	 * @param itemNum
+	 * @return
+	 */
+	public String buyPurchasable(int itemNum) {
+		if ((itemNum - 1) <= shop.getPurchasableList().size()) {
+			String itemBoughtName = shop.getPurchasableList().get(itemNum - 1).getName();
+			int price = shop.getPurchasableList().get(itemNum - 1).getBuyPrice();
+			if (price < slayer.getGold()) {
+				if (shop.getPurchasableList().get(itemNum - 1) instanceof Monster) {
+					slayer.addMonster((Monster) shop.buyPurchasable(itemNum - 1));
+				} else if (shop.getPurchasableList().get(itemNum - 1) instanceof Item) {
+					inventory.addItem((Item) shop.buyPurchasable(itemNum - 1));
+				}
+				slayer.decreaseGold(price);
+				return "" + itemBoughtName + " bought!\nYour remaining gold: " + slayer.getGold();
+			} else {
+				return "Not enough gold!";
+			}
+		} else {
+			return "Item not found in shop";
+		}
+	}
+	
+	/**
+	 * Makes the game progress to the next day, healing monsters, changing monsters in shop, generating new battles,
+	 * and allowing monsters to arrive, leave, and level up depending on small odds.
+	 * @return
+	 */
 	public String sleep() {
-		// Update all items in shop
-		// Update all battles
-		// Add random events 10%? chance of each (monster levels up, monster leaves, Random monster joins)
 		changeDay();
 		if (shouldGameFinish()) {
 			return String.format("---GAME ENDED---\nName: %s\nDays lasted: %o/%o\nPoints earned: %o\nGold earned: %o", slayer.getName(), slayer.getDaysPassed(), days, slayer.getPoints(), slayer.getGoldTotal());
@@ -321,6 +353,10 @@ public class GameEnvironment {
 				slayer.getCurrMonsters().get(i).setCurrentHealth(slayer.getCurrMonsters().get(i).getHealAmount()); // Heals monsters (Too complicated?)
 			}
 			changePurchasableMonsters();
+			randomEnv.generateBattles(days);
+			randomEnv.monsterArrives();
+			randomEnv.monsterLeaves();
+			randomEnv.monsterLevelUp();
 			return "Sleeping... zz";
 		}
 	}
@@ -332,6 +368,11 @@ public class GameEnvironment {
 		//System.out.println(game.viewBattles());
 		//System.out.println(game.chooseBattle(0));
 		System.out.println(game.visitShop());
+		System.out.println(game.getPlayerInventory());
+		System.out.println(game.getTeamProperties());
+		System.out.println(game.promptBuyPurchasable());
+		System.out.println(game.getPlayerInventory());
+		System.out.println(game.getTeamProperties());
 	}
 	
 	

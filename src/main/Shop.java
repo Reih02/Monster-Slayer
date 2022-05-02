@@ -52,10 +52,8 @@ public class Shop {
 	 * when buying and selling item in main game environment.
 	 * */
 	public Purchasable buyPurchasable(int index) {
-		return purchasableList.get(index);
-	}
-	
-	public Purchasable sellPurchasable(int index) {
-		return purchasableList.get(index);
+		Purchasable boughtItem = purchasableList.get(index);
+		purchasableList.remove(index);
+		return boughtItem;
 	}
 }
