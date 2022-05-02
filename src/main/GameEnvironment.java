@@ -85,7 +85,7 @@ public class GameEnvironment {
 	 * @param startMonster
 	 * @param difficulty
 	 */
-	public void gameSetup(String playerName, int gameLength, String startMonster, boolean difficulty) {
+	GameEnvironment(String playerName, int gameLength, String startMonster, boolean difficulty) {
 		
 		days = gameLength;
 		difficultySetting = difficulty;
@@ -148,15 +148,10 @@ public class GameEnvironment {
 	}
 	
 	/**
-	 * Method that calls increaseDays method in slayer object,
-	 * as long as user is not out of days 
+	 * Method that calls increaseDays method in slayer object
 	 */
 	public void changeDay() {
-		if (slayer.getDaysPassed() + 1 <= days) {
-			slayer.increaseDays();
-		} else {
-			System.out.println("Out of days!");
-		}
+		slayer.increaseDays();
 	}
 	
 	public void changePurchasableMonsters() {
@@ -173,11 +168,16 @@ public class GameEnvironment {
 	 * @return
 	 */
 	public boolean shouldGameFinish() {
-		if (slayer.getDaysPassed() > days || (slayer.getCurrMonsters().size() <= 0 && slayer.getGold() < 100)){
+		if (slayer.getDaysPassed() > days){
+			System.out.println("Ran out of days!");
 			return true;
-		} else {
-			return false;
 		}
+		if (slayer.getCurrMonsters().size() <= 0 && slayer.getGold() < 100) {
+			System.out.println("Ran out of monsters!");
+			return true;
+		}
+		
+		return false;
 	}
 	
 	/**
@@ -185,7 +185,6 @@ public class GameEnvironment {
 	 * @return
 	 */
 	public String getStats() {
-		System.out.println(slayer.getGold());
 		String string = "Your current gold: " + slayer.getGold() + "\nThe current day: " + slayer.getDaysPassed() + "\nYour days left: " + (days - slayer.getDaysPassed());
 		return string;
 		
@@ -226,18 +225,43 @@ public class GameEnvironment {
 		return inventoryString;
 	}
 	
-	public void useItem(int itemIndex, int monsterIndex) {
+	/**
+	 * Method to sell an item from user's inventory
+	 * @param itemNum
+	 * @return
+	 */
+	public String sellItem(int itemNum) {
+		if (itemNum < 1 || itemNum > inventory.getInventoryList().size()) {
+			return "Item not found";
+		} else {
+			Item selectedItem = inventory.getInventoryList().get(itemNum - 1);
+			int itemValue = selectedItem.getSellPrice();
+			slayer.increaseGold(itemValue);
+			inventory.removeItem(selectedItem);
+			return "Item sold!\nYour current gold: " + slayer.getGold();
+		}
+	}
+	
+	/**
+	 * Uses item from inventory on monster in team
+	 * @param itemIndex
+	 * @param monsterIndex
+	 */
+	public String useItem(int itemIndex, int monsterIndex) {
 		Item item = inventory.getInventoryList().get(itemIndex);
 		Monster monster = slayer.getCurrMonsters().get(monsterIndex);
 		if (item.getClass().getName() == "items.HealthPotion") {
 			monster.setCurrentHealth(monster.getCurrentHealth() + item.getBonusValue()); // Increases health of monster (potion)
 			inventory.removeItem(item);
+			return "Health Potion used on " + monster;
 		} else if (item.getClass().getName() == "items.StrengthPotion") {
 			monster.setDamage(monster.getDamage() + item.getBonusValue()); // Increases strength of monster
 			inventory.removeItem(item);
+			return "Strength Potion used on " + monster;
 		} else {
 			monster.setCurrentHealth(monster.getCurrentHealth() + item.getBonusValue()); // Increases health of monster (food)
 			inventory.removeItem(item);
+			return String.format("%s used on ", item) + monster;
 		}
 	}
 	
@@ -302,19 +326,6 @@ public class GameEnvironment {
 	}
 	
 	/**
-	 * Prompts and uses input from user to call the buyPurchasable method on a certain item in the shop
-	 * @return
-	 */
-	public String promptBuyPurchasable() {
-		Scanner promptScanner = new Scanner(System.in);
-		System.out.println("Enter the corresponding item number you would like to purchase: ");
-		// exception "InputMismatchException" possible?
-		int itemNumber = promptScanner.nextInt();
-		promptScanner.close();
-		return buyPurchasable(itemNumber);
-	}
-	
-	/**
 	 * Method to buy a Purchasable object from the shop
 	 * @param itemNum
 	 * @return
@@ -330,7 +341,7 @@ public class GameEnvironment {
 					inventory.addItem((Item) shop.buyPurchasable(itemNum - 1));
 				}
 				slayer.decreaseGold(price);
-				return "" + itemBoughtName + " bought!\nYour remaining gold: " + slayer.getGold();
+				return "" + itemBoughtName + " purchased!\nYour remaining gold: " + slayer.getGold();
 			} else {
 				return "Not enough gold!";
 			}
@@ -346,7 +357,8 @@ public class GameEnvironment {
 	 */
 	public String sleep() {
 		changeDay();
-		if (shouldGameFinish()) {
+		boolean gameStatus = shouldGameFinish();
+		if (gameStatus == true) {
 			return String.format("---GAME ENDED---\nName: %s\nDays lasted: %o/%o\nPoints earned: %o\nGold earned: %o", slayer.getName(), slayer.getDaysPassed(), days, slayer.getPoints(), slayer.getGoldTotal());
 		} else {
 			for (int i=0; i < slayer.getCurrMonsters().size(); i++) {
@@ -363,6 +375,7 @@ public class GameEnvironment {
 	
 	// Testing purposes
 	public static void main(String[] args) {
+		/**
 		GameEnvironment game = new GameEnvironment();
 		game.gameSetup("Steve", 5, "Garen", false);
 		//System.out.println(game.viewBattles());
@@ -373,6 +386,7 @@ public class GameEnvironment {
 		System.out.println(game.promptBuyPurchasable());
 		System.out.println(game.getPlayerInventory());
 		System.out.println(game.getTeamProperties());
+		**/
 	}
 	
 	
