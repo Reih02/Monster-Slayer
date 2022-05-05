@@ -39,24 +39,10 @@ public class GameEnvironment {
 	private boolean difficultySetting;
 	
 	/**
-	 * Stores the availabe battles to the user
+	 * Stores the available battles to the user
 	 */
-	private ArrayList<ArrayList<ArrayList<Monster>>> battles;
+	private ArrayList<ArrayList<Monster>> battles;
 	
-	/**
-	 * ArrayList of ArrayLists of monsters representing the monsters to fight in a battle
-	 */
-	private ArrayList<ArrayList<Monster>> battle1;
-	
-	/**
-	 * second battle
-	 */
-	private ArrayList<ArrayList<Monster>> battle2;
-	
-	/**
-	 * third battle
-	 */
-	private ArrayList<ArrayList<Monster>> battle3;
 	
 	/**
 	 * The user's starting monster
@@ -267,19 +253,13 @@ public class GameEnvironment {
 	
 	public String viewBattles() {
 		// Show gold and points gained for winning each battle (scale with difficulty)
-		battles = new ArrayList<ArrayList<ArrayList<Monster>>>();
-		battle1 = randomEnv.generateBattles(slayer.getDaysPassed());
-		battle2 = randomEnv.generateBattles(slayer.getDaysPassed());
-		battle3 = randomEnv.generateBattles(slayer.getDaysPassed());
-		battles.add(battle1);
-		battles.add(battle2);
-		battles.add(battle3);
+		battles = randomEnv.generateBattles(slayer.getDaysPassed());
 		String returnString = "-------------";
 		// Inefficient? Fixed amount of battles to loop through at least (3)
 		for (int i=0; i < battles.size(); i ++) {
 			returnString += String.format("\nBATTLE %o:\n", i+1) + "(Gold gained: " + goldGained + ")\n" + "(Points gained: " + pointsGained + ")\n";
 			for (int j=0; j < battles.get(i).size(); j++) {
-				returnString += String.format("%s", battles.get(i).get(j).get(0).getName()) + "\n";
+				returnString += String.format("%s", battles.get(i).get(j).getName()) + "\n";
 			}
 		}
 		returnString += "-------------";
@@ -295,7 +275,7 @@ public class GameEnvironment {
 	public String chooseBattle(int battleNum) {
 		ArrayList<Monster> enemyMonsters = new ArrayList<Monster>();
 		for (int i=0; i < battles.get(battleNum).size(); i++) {
-			enemyMonsters.add(battles.get(battleNum).get(i).get(0));
+			enemyMonsters.add(battles.get(battleNum).get(i));
 		}
 		if (slayer.getCurrMonsters().size() <= 0) {
 			return "You don't have any monsters available!";
@@ -375,12 +355,11 @@ public class GameEnvironment {
 	
 	// Testing purposes
 	public static void main(String[] args) {
-		/**
-		GameEnvironment game = new GameEnvironment();
-		game.gameSetup("Steve", 5, "Garen", false);
-		//System.out.println(game.viewBattles());
-		//System.out.println(game.chooseBattle(0));
-		System.out.println(game.visitShop());
+		/**GameEnvironment game = new GameEnvironment("Steve", 5, "Garen", false);
+		
+		System.out.println(game.viewBattles());
+		System.out.println(game.chooseBattle(0));
+		/**System.out.println(game.visitShop());
 		System.out.println(game.getPlayerInventory());
 		System.out.println(game.getTeamProperties());
 		System.out.println(game.promptBuyPurchasable());
