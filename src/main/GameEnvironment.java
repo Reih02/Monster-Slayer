@@ -77,7 +77,7 @@ public class GameEnvironment {
 		difficultySetting = difficulty;
 		
 		if (playerName.length() < 3 || playerName.length() > 15 || !lettersOnly(playerName)) {
-			System.out.println("Please change your name so that it contains no letters and is between 3 and 15 characters");
+			System.out.println("Please change your name so that it contains no spaces and is between 3 and 15 characters");
 		} else {
 			slayer = new Slayer(playerName, 1, 150, 0); // Creates Slayer object on first day and with 150 gold (?) and with 0 points
 			inventory = new Inventory();
