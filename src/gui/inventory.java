@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 
 public class inventory {
 
-	private JFrame frame;
+	private JFrame frmYourInventory;
 
 	/**
 	 * Launch the application.
@@ -21,7 +21,7 @@ public class inventory {
 			public void run() {
 				try {
 					inventory window = new inventory();
-					window.frame.setVisible(true);
+					window.frmYourInventory.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -40,31 +40,32 @@ public class inventory {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmYourInventory = new JFrame();
+		frmYourInventory.setTitle("Your Inventory");
+		frmYourInventory.setBounds(100, 100, 450, 300);
+		frmYourInventory.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmYourInventory.getContentPane().setLayout(null);
 		
 		JButton homeBtn = new JButton("Home");
 		homeBtn.setBounds(157, 11, 126, 35);
-		frame.getContentPane().add(homeBtn);
+		frmYourInventory.getContentPane().add(homeBtn);
 		
 		JTextArea txtrYourItems = new JTextArea();
 		txtrYourItems.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		txtrYourItems.setText("Your Items:");
-		txtrYourItems.setBounds(10, 117, 70, 19);
-		frame.getContentPane().add(txtrYourItems);
+		txtrYourItems.setBounds(10, 125, 70, 19);
+		frmYourInventory.getContentPane().add(txtrYourItems);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(90, 71, 334, 133);
-		frame.getContentPane().add(scrollPane);
+		frmYourInventory.getContentPane().add(scrollPane);
 		
 		JButton useItemBtn = new JButton("Use Item");
 		useItemBtn.setBounds(132, 227, 89, 23);
-		frame.getContentPane().add(useItemBtn);
+		frmYourInventory.getContentPane().add(useItemBtn);
 		
 		JButton sellItemBtn = new JButton("Sell Item");
 		sellItemBtn.setBounds(267, 227, 89, 23);
-		frame.getContentPane().add(sellItemBtn);
+		frmYourInventory.getContentPane().add(sellItemBtn);
 	}
 }
