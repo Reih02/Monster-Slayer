@@ -19,6 +19,12 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 
+/**
+* In this class the user selects options depending on their preferences and chooses their starting Monster and can start 
+* the game.
+* Authors Orion Lynch and Reilly Haskins
+*/
+
 public class SetupScreen {
 
 	private JFrame setupScreenFrame;
