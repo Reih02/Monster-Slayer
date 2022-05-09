@@ -55,5 +55,9 @@ public class Item implements Purchasable {
 	public int getBonusValue() {
 		return bonusValue;
 	}
+	public String toString() {
+		return getName() + ", item costs " + getBuyPrice() + " gold, the item's bonus value is " + getBonusValue() + ".";
+		
+	}
 
 }
