@@ -65,6 +65,11 @@ public class GameEnvironment {
 	private int pointsGained;
 	
 	/**
+	 * The monsters that are currently in the shop.
+	 */
+	private ArrayList<Monster> monstersInShop;
+	
+	/**
 	 * Sets up game by getting the user's chosen variables
 	 * @param playerName
 	 * @param gameLength
@@ -115,6 +120,8 @@ public class GameEnvironment {
 				pointsGained = 500;
 			}
 		}
+		monstersInShop = shop.getMonsterList(randomEnv.monstersInShop());
+		randomEnv.generateBattles(days);
 		
 	}
 	
@@ -315,17 +322,40 @@ public class GameEnvironment {
 		String itemBoughtName = shop.getPurchasableList().get(itemNum).getName();
 		int price = shop.getPurchasableList().get(itemNum).getBuyPrice();
 		if (price < slayer.getGold()) {
-			if (shop.getPurchasableList().get(itemNum) instanceof Monster) {
-					slayer.addMonster((Monster) shop.getPurchasableList().get(itemNum));
-			} else if (shop.getPurchasableList().get(itemNum) instanceof Item) {
-					inventory.addItem((Item) shop.getPurchasableList().get(itemNum));
-				}
-				slayer.decreaseGold(price);
-				return "" + itemBoughtName + " purchased!\nYour remaining gold: " + slayer.getGold();
+			inventory.addItem((Item) shop.getPurchasableList().get(itemNum));
+				
+			slayer.decreaseGold(price);
+			return "" + itemBoughtName + " purchased!\nYour remaining gold: " + slayer.getGold();
 			} else {
 				return "Not enough gold!";
 			}
 		
+	}
+	
+	/**
+	 * Method to buy a Monster from the shop.
+	 * @param itemNum the index of the Monster in the list.
+	 * @return A string that displays whether you bought the monster or not.
+	 */
+	public String buyMonster(int itemNum) {
+		String itemBoughtName = monstersInShop.get(itemNum).getName();
+		int price = monstersInShop.get(itemNum).getBuyPrice();
+		if(price < slayer.getGold()) {
+			slayer.addMonster((Monster) monstersInShop.get(itemNum));
+			slayer.decreaseGold(price);
+			return "" + itemBoughtName + " purchased!\nYour remaining gold: " + slayer.getGold();
+			
+		}
+		else {
+			return "Not enough gold!";
+		}
+	}
+	/**
+	 * getter method that returns a list of monsters.
+	 * @return An ArrayList filled with Monsters
+	 */
+	public ArrayList<Monster> getMonsterInShop(){
+		return monstersInShop;
 	}
 	
 	/**
@@ -342,7 +372,7 @@ public class GameEnvironment {
 			for (int i=0; i < slayer.getCurrMonsters().size(); i++) {
 				slayer.getCurrMonsters().get(i).setCurrentHealth(slayer.getCurrMonsters().get(i).getHealAmount()); // Heals monsters (Too complicated?)
 			}
-			changePurchasableMonsters();
+			monstersInShop = shop.getMonsterList(randomEnv.monstersInShop());
 			randomEnv.generateBattles(days);
 			randomEnv.monsterArrives();
 			randomEnv.monsterLeaves();
