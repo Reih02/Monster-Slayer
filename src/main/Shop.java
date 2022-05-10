@@ -47,6 +47,17 @@ public class Shop {
 		purchasableList.add(purchasable);
 	}
 	
+	/**
+	 * A method that gives you a monsterList that is being sold.
+	 * @param monsters ArrayList of class Monster.
+	 * @return an ArrayList that has randomly generated monsters.
+	 */
+	public ArrayList<Monster> getMonsterList(ArrayList<Monster> monsters){
+		monsterList = monsters;
+		return monsterList;
+		
+	}
+	
 	/*
 	 * Following methods return specified object for use
 	 * when buying and selling item in main game environment.
