@@ -178,7 +178,7 @@ public class GameEnvironment {
 	 * @return
 	 */
 	public String getStats() {
-		String string = "Your current gold: " + slayer.getGold() + "\nThe current day: " + slayer.getDaysPassed() + "\nYour days left: " + (days - slayer.getDaysPassed());
+		String string = "Your current gold: " + slayer.getGold() + " \nThe current day: " + slayer.getDaysPassed() + " \nYour days left: " + (days - slayer.getDaysPassed());
 		return string;
 		
 	}
