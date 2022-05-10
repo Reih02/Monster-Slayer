@@ -90,7 +90,7 @@ public class StoreScreen {
 			}
 		});
 		monsterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
+		monsterList.setSelectedIndex(0);
 		monsterList.setBounds(50, 165, 486, 100);
 		storeScreenFrame.getContentPane().add(monsterList);
 		
