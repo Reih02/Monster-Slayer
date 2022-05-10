@@ -71,7 +71,7 @@ public class GameEnvironment {
 	 * @param startMonster
 	 * @param difficulty
 	 */
-	GameEnvironment(String playerName, int gameLength, String startMonster, boolean difficulty) {
+	public GameEnvironment(String playerName, int gameLength, String startMonster, boolean difficulty) {
 		
 		days = gameLength;
 		difficultySetting = difficulty;
