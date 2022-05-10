@@ -311,23 +311,21 @@ public class GameEnvironment {
 	 * @return
 	 */
 	public String buyPurchasable(int itemNum) {
-		if ((itemNum - 1) <= shop.getPurchasableList().size()) {
-			String itemBoughtName = shop.getPurchasableList().get(itemNum - 1).getName();
-			int price = shop.getPurchasableList().get(itemNum - 1).getBuyPrice();
-			if (price < slayer.getGold()) {
-				if (shop.getPurchasableList().get(itemNum - 1) instanceof Monster) {
-					slayer.addMonster((Monster) shop.buyPurchasable(itemNum - 1));
-				} else if (shop.getPurchasableList().get(itemNum - 1) instanceof Item) {
-					inventory.addItem((Item) shop.buyPurchasable(itemNum - 1));
+		
+		String itemBoughtName = shop.getPurchasableList().get(itemNum).getName();
+		int price = shop.getPurchasableList().get(itemNum).getBuyPrice();
+		if (price < slayer.getGold()) {
+			if (shop.getPurchasableList().get(itemNum) instanceof Monster) {
+					slayer.addMonster((Monster) shop.getPurchasableList().get(itemNum));
+			} else if (shop.getPurchasableList().get(itemNum) instanceof Item) {
+					inventory.addItem((Item) shop.getPurchasableList().get(itemNum));
 				}
 				slayer.decreaseGold(price);
 				return "" + itemBoughtName + " purchased!\nYour remaining gold: " + slayer.getGold();
 			} else {
 				return "Not enough gold!";
 			}
-		} else {
-			return "Item not found in shop";
-		}
+		
 	}
 	
 	/**
