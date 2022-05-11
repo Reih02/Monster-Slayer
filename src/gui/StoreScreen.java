@@ -42,7 +42,20 @@ public class StoreScreen {
 		gameDifficulty = difficulty;
 		initialize();
 	}
-
+	
+	public void closeWindow() 
+	{
+		storeScreenFrame.dispose();
+	}
+	
+	/**
+	 * A function that calls closeWindow to close the store screen. call this method if you want to close the screen.
+	 */
+	public void finishWindow() 
+	{
+		gameManager.closeStoreScreen(this);
+	}
+	
 	/**
 	 * Launch the application.
 	 */

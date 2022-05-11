@@ -31,8 +31,23 @@ public class SetupScreen {
 	private final ButtonGroup difficultyButtonGroup = new ButtonGroup();
 	private JTextField playerNameInput;
 	private final ButtonGroup startingMonsterButtonGroup = new ButtonGroup();
+	private GameEnvironment manager;
 
 
+	public SetupScreen(GameEnvironment incomingManager) {
+		manager = incomingManager;
+		initialize();
+		setupScreenFrame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		setupScreenFrame.dispose();
+	}
+	
+	public void shutdownWindow() {
+		manager.closeSetupScreen(this);
+	}
+	
 	/**
 	 * Launch the application.
 	 */

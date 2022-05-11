@@ -3,6 +3,11 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import gui.MainScreen;
+import gui.SetupScreen;
+import gui.StoreScreen;
+import gui.UseItemScreen;
+import gui.inventory;
 import items.*;
 import monsters.*;
 
@@ -138,6 +143,46 @@ public class GameEnvironment {
 			}
 		}
 		return true;
+	}
+	
+	public void launchMainScreen() {
+		new MainScreen(this);
+	}
+	
+	public void closeMainScreen(MainScreen mainScreen) {
+		mainScreen.closeWindow();
+	}
+	
+	public void launchSetupScreen() {
+		new SetupScreen(this);
+	}
+	
+	public void closeSetupScreen(SetupScreen setupScreen) {
+		setupScreen.closeWindow();
+	}
+	
+	public void launchStoreScreen() {
+		new StoreScreen(difficultySetting, this);
+	}
+	
+	public void closeStoreScreen(StoreScreen storeScreen) {
+		storeScreen.closeWindow();
+	}
+	
+	public void launchInventoryScreen() {
+		new inventory(this);
+	}
+	
+	public void closeInventoryScreen(inventory inventoryScreen) {
+		inventoryScreen.closeWindow();
+	}
+	
+	public void launchUseItemScreen() {
+		new UseItemScreen(this);
+	}
+	
+	public void closeUseItemScreen(UseItemScreen useItemScreen) {
+		useItemScreen.closeWindow();
 	}
 	
 	/**

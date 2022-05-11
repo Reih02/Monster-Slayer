@@ -1,15 +1,38 @@
 package gui;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 
+import main.GameEnvironment;
+
 public class MainScreen {
 
 	private JFrame frame;
 
+	/**
+	 * The manager of type GameEnvironment
+	 */
+	private GameEnvironment manager;
+	
+	public MainScreen(GameEnvironment incomingManager) {
+		manager = incomingManager;
+		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
+	public void shutdownWindow() {
+		manager.closeMainScreen(this);
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -43,13 +66,31 @@ public class MainScreen {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton storeBtn = new JButton("Store");
+		JButton storeBtn = new JButton("Visit Shop");
 		storeBtn.setBounds(10, 54, 104, 35);
 		frame.getContentPane().add(storeBtn);
+		storeBtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				shutdownWindow();
+				manager.launchStoreScreen();
+				
+			}
+			
+		});
 		
 		JButton inventoryBtn = new JButton("Inventory");
 		inventoryBtn.setBounds(10, 117, 104, 35);
 		frame.getContentPane().add(inventoryBtn);
+		inventoryBtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				shutdownWindow();
+				manager.launchInventoryScreen();
+				
+			}
+			
+		});
 		
 		JButton battleBtn = new JButton("Battle");
 		battleBtn.setBounds(10, 178, 104, 35);

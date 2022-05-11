@@ -6,13 +6,32 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.JTextArea;
+
+import main.GameEnvironment;
+
 import java.awt.Font;
 import javax.swing.JScrollPane;
 
 public class inventory {
 
 	private JFrame frmYourInventory;
+	
+	private GameEnvironment inventoryManager;
 
+	public inventory(GameEnvironment incomingManager) {
+		inventoryManager = incomingManager;
+		initialize();
+		frmYourInventory.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frmYourInventory.dispose();
+	}
+	
+	public void shutdownWindow() {
+		inventoryManager.closeInventoryScreen(this);
+	}
+	
 	/**
 	 * Launch the application.
 	 */

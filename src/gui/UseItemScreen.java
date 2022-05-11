@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+
+import main.GameEnvironment;
+
 import java.awt.Font;
 import javax.swing.JScrollPane;
 
@@ -11,6 +14,22 @@ public class UseItemScreen {
 
 	private JFrame frmSelectAMonster;
 
+	private GameEnvironment manager;
+	
+	public UseItemScreen(GameEnvironment incomingManager) {
+		manager = incomingManager;
+		initialize();
+		frmSelectAMonster.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frmSelectAMonster.dispose();
+	}
+	
+	public void shutdownWindow() {
+		manager.closeUseItemScreen(this);
+	}
+	
 	/**
 	 * Launch the application.
 	 */
