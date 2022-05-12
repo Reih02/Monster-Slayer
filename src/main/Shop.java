@@ -53,7 +53,7 @@ public class Shop {
 	 * @return an ArrayList that has randomly generated monsters.
 	 */
 	public ArrayList<Monster> getMonsterList(ArrayList<Monster> monsters){
-		monsterList = monsters;
+		ArrayList<Monster> monsterList = monsters;
 		return monsterList;
 		
 	}

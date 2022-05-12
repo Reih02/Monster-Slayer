@@ -7,7 +7,7 @@ import gui.MainScreen;
 import gui.SetupScreen;
 import gui.StoreScreen;
 import gui.UseItemScreen;
-import gui.inventory;
+import gui.InventoryScreen;
 import items.*;
 import monsters.*;
 
@@ -92,6 +92,12 @@ public class GameEnvironment {
 			slayer = new Slayer(playerName, 1, 150, 0); // Creates Slayer object on first day and with 150 gold (?) and with 0 points
 			inventory = new Inventory();
 			shop = new Shop(difficulty);
+			// TESTING
+			Apple apple = new Apple(difficulty);
+			Steak steak = new Steak(difficulty);
+			inventory.addItem(apple);
+			inventory.addItem(steak);
+			// TESTING
 			switch(startMonster) {
 				case "BloodMuncha":
 					startingMonster = new BloodMuncha(difficulty);
@@ -170,10 +176,10 @@ public class GameEnvironment {
 	}
 	
 	public void launchInventoryScreen() {
-		new inventory(this);
+		new InventoryScreen(this);
 	}
 	
-	public void closeInventoryScreen(inventory inventoryScreen) {
+	public void closeInventoryScreen(InventoryScreen inventoryScreen) {
 		inventoryScreen.closeWindow();
 	}
 	
@@ -261,6 +267,10 @@ public class GameEnvironment {
 			inventoryString += "-------------";
 		}
 		return inventoryString;
+	}
+	
+	public ArrayList<Item> guiGetInventory(){
+		return inventory.getInventoryList();
 	}
 	
 	/**
