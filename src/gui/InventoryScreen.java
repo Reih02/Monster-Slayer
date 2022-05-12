@@ -15,19 +15,22 @@ import main.Monster;
 import monsters.Garen;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.JLabel;
 
 public class InventoryScreen {
 
 	private JFrame frmYourInventory;
 	
 	private GameEnvironment inventoryManager;
-	private JTextField txtYourItems;
 
 	public InventoryScreen(GameEnvironment incomingManager) {
 		this.inventoryManager = incomingManager;
@@ -73,13 +76,17 @@ public class InventoryScreen {
 		JButton homeBtn = new JButton("Home");
 		homeBtn.setBounds(157, 11, 126, 35);
 		frmYourInventory.getContentPane().add(homeBtn);
+		homeBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				shutdownWindow();
+				inventoryManager.launchMainScreen();
+			}
+		});
 		
-		JButton useItemBtn = new JButton("Use Item");
-		useItemBtn.setBounds(132, 227, 89, 23);
-		frmYourInventory.getContentPane().add(useItemBtn);
+		
 		
 		JButton sellItemBtn = new JButton("Sell Item");
-		sellItemBtn.setBounds(267, 227, 89, 23);
+		sellItemBtn.setBounds(252, 227, 104, 23);
 		frmYourInventory.getContentPane().add(sellItemBtn);
 		
 		DefaultListModel<Item> listModel = new DefaultListModel<>();
@@ -89,18 +96,29 @@ public class InventoryScreen {
 			listModel.addElement(items.get(i));
 		}
 		
-		txtYourItems = new JTextField();
-		txtYourItems.setText("Your items:");
-		txtYourItems.setBounds(12, 120, 89, 19);
-		frmYourInventory.getContentPane().add(txtYourItems);
-		txtYourItems.setColumns(10);
-		
 		JPanel panel = new JPanel();
-		panel.setBounds(120, 46, 308, 169);
+		panel.setBounds(108, 46, 328, 169);
 		frmYourInventory.getContentPane().add(panel);
 		JList<Item> inventoryList = new JList<Item>(listModel);
+		inventoryList.setFont(new Font("Dialog", Font.PLAIN, 10));
 		panel.add(inventoryList);
 		inventoryList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		
+		JButton useItemBtn = new JButton("Use Item");
+		useItemBtn.setBounds(108, 227, 113, 23);
+		frmYourInventory.getContentPane().add(useItemBtn);
+		useItemBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Item selectedItem = inventoryList.getSelectedValue();
+				inventoryManager.setGuiItemIndex(items.indexOf(selectedItem));
+				shutdownWindow();
+				inventoryManager.launchUseItemScreen();
+			}
+		});
+		
+		JLabel lblNewLabel = new JLabel("Your items:");
+		lblNewLabel.setBounds(12, 46, 93, 29);
+		frmYourInventory.getContentPane().add(lblNewLabel);
 		
 	}
 }
