@@ -160,7 +160,8 @@ public class Monster implements Purchasable {
 	 * Method that returns a string format of a Monster.
 	 */
 	public String toString() {
-		return getName() + " costs " + getBuyPrice() + " gold, deals " + getDamage() + " damage, has " + getMaxHealth() + "health and heals " + getHealAmount() + " each day.";
+		// return getName() + " costs " + getBuyPrice() + " gold, deals " + getDamage() + " damage, has " + getMaxHealth() + "health and heals " + getHealAmount() + " each day.";
+		return "Name: " + getName() + ", Cost: " + getBuyPrice() + "G, DMG: " + getDamage() + ", HP: " + getCurrentHealth() + "/" + getMaxHealth() + ", Daily heal: " + getHealAmount();
 	}
 	
 }

@@ -18,6 +18,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JScrollPane;
 import javax.swing.JList;
@@ -54,7 +55,7 @@ public class InventoryScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameEnvironment gameEnvironment = new GameEnvironment("name", 5, "Garen", false);
+					GameEnvironment gameEnvironment = new GameEnvironment("name", 5, "BloodMuncha", false);
 					InventoryScreen window = new InventoryScreen(gameEnvironment);
 					window.frmYourInventory.setVisible(true);
 				} catch (Exception e) {
@@ -105,9 +106,9 @@ public class InventoryScreen {
 		frmYourInventory.getContentPane().add(sellItemBtn);
 		sellItemBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hi");
-				Item itemSold = inventoryList.getSelectedValue();
-				inventoryManager.sellItem(items.indexOf(itemSold));
+				Item selectedItem = inventoryList.getSelectedValue();
+				int selectedItemIndex = items.indexOf(selectedItem);
+				inventoryManager.sellItem(selectedItemIndex + 1);
 				shutdownWindow();
 				inventoryManager.launchInventoryScreen();
 			}
@@ -134,7 +135,7 @@ public class InventoryScreen {
 		lblYourCurrentGold.setBounds(12, 112, 93, 29);
 		frmYourInventory.getContentPane().add(lblYourCurrentGold);
 		
-		JLabel goldDisplay = new JLabel("" + inventoryManager.getSlayerGold());
+		JLabel goldDisplay = new JLabel("" + inventoryManager.getSlayerGold() + "G");
 		goldDisplay.setHorizontalAlignment(SwingConstants.CENTER);
 		goldDisplay.setBounds(12, 135, 93, 29);
 		frmYourInventory.getContentPane().add(goldDisplay);

@@ -80,6 +80,11 @@ public class GameEnvironment {
 	private int inventorySelectedItemIndex;
 	
 	/**
+	 * The index of the selected item to sell back to the shop in InventoryScreen
+	 */
+	private int inventorySelectedItemToSellIndex;
+	
+	/**
 	 * Sets up game by getting the user's chosen variables
 	 * @param playerName
 	 * @param gameLength
@@ -198,10 +203,20 @@ public class GameEnvironment {
 		useItemScreen.closeWindow();
 	}
 	
+	/**
+	 * Gets index of selected item in GUI inventory screen
+	 * for use in UseItemScreen
+	 * @return
+	 */
 	public int getGuiItemIndex() {
 		return inventorySelectedItemIndex;
 	}
 	
+	/**
+	 * Sets index of selected item in GUI inventory screen
+	 * for use in UseItemScreen
+	 * @param index
+	 */
 	public void setGuiItemIndex(int index) {
 		inventorySelectedItemIndex = index;
 	}
@@ -306,6 +321,7 @@ public class GameEnvironment {
 			return "Item not found";
 		} else {
 			Item selectedItem = inventory.getInventoryList().get(itemNum - 1);
+			System.out.println(selectedItem);
 			int itemValue = selectedItem.getSellPrice();
 			slayer.increaseGold(itemValue);
 			inventory.removeItem(selectedItem);

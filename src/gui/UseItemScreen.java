@@ -81,16 +81,15 @@ public class UseItemScreen {
 		
 		DefaultListModel<Monster> listModel = new DefaultListModel<>();
 		ArrayList<Monster> monsters = manager.getMonsters();
-		System.out.println(monsters.size());
 		for (int i = 0; i < monsters.size(); i++) {
 			listModel.addElement(monsters.get(i));
 		}
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(44, 45, 347, 171);
+		panel.setBounds(10, 45, 414, 171);
 		frmSelectAMonster.getContentPane().add(panel);
 		JList<Monster> monsterList = new JList<Monster>(listModel);
-		monsterList.setFont(new Font("Dialog", Font.PLAIN, 8));
+		monsterList.setFont(new Font("Dialog", Font.PLAIN, 11));
 		panel.add(monsterList);
 		
 		JButton useItemButton = new JButton("Use item on selected monster");
