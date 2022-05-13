@@ -75,6 +75,11 @@ public class GameEnvironment {
 	private ArrayList<Monster> monstersInShop;
 	
 	/**
+	 * The index of selected item in InventoryScreen
+	 */
+	private int inventorySelectedItemIndex;
+	
+	/**
 	 * Sets up game by getting the user's chosen variables
 	 * @param playerName
 	 * @param gameLength
@@ -95,8 +100,10 @@ public class GameEnvironment {
 			// TESTING
 			Apple apple = new Apple(difficulty);
 			Steak steak = new Steak(difficulty);
+			StrengthPotion strengthPot = new StrengthPotion(difficulty);
 			inventory.addItem(apple);
 			inventory.addItem(steak);
+			inventory.addItem(strengthPot);
 			// TESTING
 			switch(startMonster) {
 				case "BloodMuncha":
@@ -189,6 +196,14 @@ public class GameEnvironment {
 	
 	public void closeUseItemScreen(UseItemScreen useItemScreen) {
 		useItemScreen.closeWindow();
+	}
+	
+	public int getGuiItemIndex() {
+		return inventorySelectedItemIndex;
+	}
+	
+	public void setGuiItemIndex(int index) {
+		inventorySelectedItemIndex = index;
 	}
 	
 	/**
@@ -288,6 +303,10 @@ public class GameEnvironment {
 			inventory.removeItem(selectedItem);
 			return "Item sold!\nYour current gold: " + slayer.getGold();
 		}
+	}
+	
+	public ArrayList<Monster> getMonsters(){
+		return slayer.getCurrMonsters();
 	}
 	
 	/**
