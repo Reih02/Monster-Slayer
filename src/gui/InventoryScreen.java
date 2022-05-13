@@ -25,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class InventoryScreen {
 
@@ -83,15 +84,8 @@ public class InventoryScreen {
 			}
 		});
 		
-		
-		
-		JButton sellItemBtn = new JButton("Sell Item");
-		sellItemBtn.setBounds(252, 227, 104, 23);
-		frmYourInventory.getContentPane().add(sellItemBtn);
-		
 		DefaultListModel<Item> listModel = new DefaultListModel<>();
 		ArrayList<Item> items = inventoryManager.guiGetInventory();
-		System.out.println(items);
 		for (int i = 0; i < items.size(); i++) {
 			listModel.addElement(items.get(i));
 		}
@@ -103,6 +97,21 @@ public class InventoryScreen {
 		inventoryList.setFont(new Font("Dialog", Font.PLAIN, 10));
 		panel.add(inventoryList);
 		inventoryList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+		
+		
+		JButton sellItemBtn = new JButton("Sell Item");
+		sellItemBtn.setBounds(252, 227, 104, 23);
+		frmYourInventory.getContentPane().add(sellItemBtn);
+		sellItemBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("hi");
+				Item itemSold = inventoryList.getSelectedValue();
+				inventoryManager.sellItem(items.indexOf(itemSold));
+				shutdownWindow();
+				inventoryManager.launchInventoryScreen();
+			}
+		});
 		
 		JButton useItemBtn = new JButton("Use Item");
 		useItemBtn.setBounds(108, 227, 113, 23);
@@ -110,15 +119,25 @@ public class InventoryScreen {
 		useItemBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Item selectedItem = inventoryList.getSelectedValue();
-				inventoryManager.setGuiItemIndex(items.indexOf(selectedItem));
-				shutdownWindow();
+				inventoryManager.setGuiItemIndex(items.indexOf(selectedItem)); // marks the selected item by setting variable in GameEnvironment for use in UseItemScreen
+				shutdownWindow(); // go to UseItemScreen to select the monster to use item on
 				inventoryManager.launchUseItemScreen();
 			}
 		});
 		
 		JLabel lblNewLabel = new JLabel("Your items:");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(12, 46, 93, 29);
 		frmYourInventory.getContentPane().add(lblNewLabel);
+		
+		JLabel lblYourCurrentGold = new JLabel("Gold Balance:");
+		lblYourCurrentGold.setBounds(12, 112, 93, 29);
+		frmYourInventory.getContentPane().add(lblYourCurrentGold);
+		
+		JLabel goldDisplay = new JLabel("" + inventoryManager.getSlayerGold());
+		goldDisplay.setHorizontalAlignment(SwingConstants.CENTER);
+		goldDisplay.setBounds(12, 135, 93, 29);
+		frmYourInventory.getContentPane().add(goldDisplay);
 		
 	}
 }

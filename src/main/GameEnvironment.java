@@ -221,6 +221,14 @@ public class GameEnvironment {
 	}
 	
 	/**
+	 * Gets gold balance directly from slayer class
+	 * @return
+	 */
+	public int getSlayerGold() {
+		return slayer.getGold();
+	}
+	
+	/**
 	 * Method that checks if the game should finish depending on:
 	 * - if amount of days that have passed exceeds game length
 	 * - or if user has no monsters and not enough gold to buy any more monsters

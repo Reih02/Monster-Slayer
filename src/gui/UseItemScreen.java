@@ -99,7 +99,9 @@ public class UseItemScreen {
 		useItemButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Monster selectedMonster = monsterList.getSelectedValue();
-				manager.useItem(manager.getGuiItemIndex(), monsters.indexOf(selectedMonster));
+				manager.useItem(manager.getGuiItemIndex(), monsters.indexOf(selectedMonster)); // calls useItem with selected item from inventory and selected monster as index integers
+				shutdownWindow(); // goes back to inventory screen
+				manager.launchInventoryScreen();
 			}
 		});
 	}
