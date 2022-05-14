@@ -37,7 +37,7 @@ public class StoreScreen {
 	 * Create the application.
 	 */
 	public StoreScreen(boolean difficulty, GameEnvironment game) {
-		gameManager = game;
+		this.gameManager = game;
 		storeManager = new Shop(difficulty);
 		gameDifficulty = difficulty;
 		initialize();

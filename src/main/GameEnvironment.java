@@ -80,11 +80,6 @@ public class GameEnvironment {
 	private int inventorySelectedItemIndex;
 	
 	/**
-	 * The index of the selected item to sell back to the shop in InventoryScreen
-	 */
-	private int inventorySelectedItemToSellIndex;
-	
-	/**
 	 * Sets up game by getting the user's chosen variables
 	 * @param playerName
 	 * @param gameLength
@@ -241,6 +236,23 @@ public class GameEnvironment {
 	 */
 	public int getSlayerGold() {
 		return slayer.getGold();
+	}
+	
+	/**
+	 * Gets days passed directly from slayer class
+	 * @return
+	 */
+	public int getSlayerDay() {
+		return slayer.getDaysPassed();
+	}
+	
+	/**
+	 * Gets maximum days user selected to play for
+	 * For use in GUI
+	 * @return
+	 */
+	public int getMaxDays() {
+		return days;
 	}
 	
 	/**
@@ -475,6 +487,7 @@ public class GameEnvironment {
 			randomEnv.monsterArrives();
 			randomEnv.monsterLeaves();
 			randomEnv.monsterLevelUp();
+			System.out.println("Sleeping");
 			return "Sleeping... zz";
 		}
 	}

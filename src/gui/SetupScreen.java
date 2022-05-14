@@ -35,7 +35,7 @@ public class SetupScreen {
 
 
 	public SetupScreen(GameEnvironment incomingManager) {
-		manager = incomingManager;
+		this.manager = incomingManager;
 		initialize();
 		setupScreenFrame.setVisible(true);
 	}

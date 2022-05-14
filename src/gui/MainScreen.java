@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 
 import main.GameEnvironment;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class MainScreen {
 
@@ -20,7 +22,7 @@ public class MainScreen {
 	private GameEnvironment manager;
 	
 	public MainScreen(GameEnvironment incomingManager) {
-		manager = incomingManager;
+		this.manager = incomingManager;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -40,7 +42,8 @@ public class MainScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainScreen window = new MainScreen();
+					GameEnvironment gameEnvironment = new GameEnvironment("test", 5, "Garen", true);
+					MainScreen window = new MainScreen(gameEnvironment);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,7 +70,7 @@ public class MainScreen {
 		frame.getContentPane().setLayout(null);
 		
 		JButton storeBtn = new JButton("Visit Shop");
-		storeBtn.setBounds(10, 54, 104, 35);
+		storeBtn.setBounds(10, 123, 104, 35);
 		frame.getContentPane().add(storeBtn);
 		storeBtn.addActionListener(new ActionListener() {
 
@@ -80,7 +83,7 @@ public class MainScreen {
 		});
 		
 		JButton inventoryBtn = new JButton("Inventory");
-		inventoryBtn.setBounds(10, 117, 104, 35);
+		inventoryBtn.setBounds(10, 169, 104, 35);
 		frame.getContentPane().add(inventoryBtn);
 		inventoryBtn.addActionListener(new ActionListener() {
 
@@ -93,7 +96,7 @@ public class MainScreen {
 		});
 		
 		JButton battleBtn = new JButton("Battle");
-		battleBtn.setBounds(10, 178, 104, 35);
+		battleBtn.setBounds(10, 215, 104, 35);
 		frame.getContentPane().add(battleBtn);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -103,5 +106,21 @@ public class MainScreen {
 		JButton sleepBtn = new JButton("Sleep");
 		sleepBtn.setBounds(233, 215, 104, 35);
 		frame.getContentPane().add(sleepBtn);
+		
+		JLabel currDayLabel = new JLabel("Day " + manager.getSlayerDay() + "/" + manager.getMaxDays());
+		currDayLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		currDayLabel.setBounds(22, 25, 98, 48);
+		frame.getContentPane().add(currDayLabel);
+		sleepBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if ((manager.getSlayerDay() - manager.getMaxDays()) < 0) {
+					manager.sleep();
+					shutdownWindow();
+					manager.launchMainScreen();
+				} else {
+					// print finish game message to console
+				}
+			}
+		});
 	}
 }

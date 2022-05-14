@@ -29,7 +29,7 @@ public class UseItemScreen {
 	private GameEnvironment manager;
 	
 	public UseItemScreen(GameEnvironment incomingManager) {
-		manager = incomingManager;
+		this.manager = incomingManager;
 		initialize();
 		frmSelectAMonster.setVisible(true);
 	}
