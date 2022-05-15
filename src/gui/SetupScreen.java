@@ -198,8 +198,10 @@ public class SetupScreen {
 				else {
 					difficulty = false;					
 				}
-				new GameEnvironment(playerNameInput.getText(), numDaysSlider.getValue(), startingMonsterButtonGroup.getSelection().getActionCommand(), difficulty);
+				manager.setupGameEnvironment(playerNameInput.getText(), numDaysSlider.getValue(), startingMonsterButtonGroup.getSelection().getActionCommand(), difficulty);
+				// new GameEnvironment(playerNameInput.getText(), numDaysSlider.getValue(), startingMonsterButtonGroup.getSelection().getActionCommand(), difficulty);
 				setupScreenFrame.dispose();
+				manager.launchMainScreen();
 				
 			}
 		});

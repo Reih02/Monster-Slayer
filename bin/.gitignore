@@ -1,6 +1,4 @@
-/.project
-/gui/
-/items/
 /main/
-/monsters/
+/main_cli/
+/gui/
 /test/

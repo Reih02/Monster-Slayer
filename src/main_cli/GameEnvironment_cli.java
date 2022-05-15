@@ -1,22 +1,31 @@
-package main;
+package main_cli;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
+import gui.InventoryScreen;
 import gui.MainScreen;
 import gui.SetupScreen;
 import gui.StoreScreen;
 import gui.UseItemScreen;
-import gui.InventoryScreen;
-import items.*;
-import monsters.*;
+import items.Apple;
+import items.Steak;
+import items.StrengthPotion;
+import main.Battle;
+import main.GameEnvironment;
+import main.Inventory;
+import main.Item;
+import main.Monster;
+import main.RandomEnvironment;
+import main.Shop;
+import main.Slayer;
+import monsters.BloodMuncha;
+import monsters.Garen;
+import monsters.Katarina;
+import monsters.Malphite;
+import monsters.MasterYi;
+import monsters.Volibear;
 
-/**
- * GameEnvironment class that manages the game and calls methods to make the game work
- * @author Orion Lynch and Reilly Haskins
- *
- */
-public class GameEnvironment {
+public class GameEnvironment_cli {
 	
 	/**
 	 * Random Environment class initialised
@@ -74,10 +83,6 @@ public class GameEnvironment {
 	 */
 	private ArrayList<Monster> monstersInShop;
 	
-	/**
-	 * The index of selected item in InventoryScreen
-	 */
-	private int inventorySelectedItemIndex;
 	
 	/**
 	 * Sets up game by getting the user's chosen variables
@@ -86,7 +91,7 @@ public class GameEnvironment {
 	 * @param startMonster
 	 * @param difficulty
 	 */
-	public void setupGameEnvironment(String playerName, int gameLength, String startMonster, boolean difficulty) {
+	public GameEnvironment_cli(String playerName, int gameLength, String startMonster, boolean difficulty) {
 		
 		days = gameLength;
 		difficultySetting = difficulty;
@@ -140,6 +145,7 @@ public class GameEnvironment {
 		}
 		monstersInShop = shop.getMonsterList(randomEnv.monstersInShop());
 		randomEnv.generateBattles(days);
+		
 	}
 	
 	/**
@@ -155,64 +161,6 @@ public class GameEnvironment {
 			}
 		}
 		return true;
-	}
-	
-	public void launchMainScreen() {
-		new MainScreen(this);
-	}
-	
-	public void closeMainScreen(MainScreen mainScreen) {
-		mainScreen.closeWindow();
-	}
-	
-	public void launchSetupScreen() {
-		new SetupScreen(this);
-	}
-	
-	public void closeSetupScreen(SetupScreen setupScreen) {
-		setupScreen.closeWindow();
-	}
-	
-	public void launchStoreScreen() {
-		new StoreScreen(difficultySetting, this);
-	}
-	
-	public void closeStoreScreen(StoreScreen storeScreen) {
-		storeScreen.closeWindow();
-	}
-	
-	public void launchInventoryScreen() {
-		new InventoryScreen(this);
-	}
-	
-	public void closeInventoryScreen(InventoryScreen inventoryScreen) {
-		inventoryScreen.closeWindow();
-	}
-	
-	public void launchUseItemScreen() {
-		new UseItemScreen(this);
-	}
-	
-	public void closeUseItemScreen(UseItemScreen useItemScreen) {
-		useItemScreen.closeWindow();
-	}
-	
-	/**
-	 * Gets index of selected item in GUI inventory screen
-	 * for use in UseItemScreen
-	 * @return
-	 */
-	public int getGuiItemIndex() {
-		return inventorySelectedItemIndex;
-	}
-	
-	/**
-	 * Sets index of selected item in GUI inventory screen
-	 * for use in UseItemScreen
-	 * @param index
-	 */
-	public void setGuiItemIndex(int index) {
-		inventorySelectedItemIndex = index;
 	}
 	
 	/**
@@ -493,11 +441,7 @@ public class GameEnvironment {
 	
 	// Testing purposes
 	public static void main(String[] args) {
-		GameEnvironment game = new GameEnvironment();
-		game.launchSetupScreen();
-		
-		
-		/*
+		GameEnvironment_cli game = new GameEnvironment_cli("Steve", 5, "Garen", false);
 		
 		System.out.println(game.viewBattles());
 		System.out.println(game.chooseBattle(0));
@@ -506,10 +450,11 @@ public class GameEnvironment {
 		System.out.println(game.getTeamProperties());
 		System.out.println(game.getPlayerInventory());
 		System.out.println(game.getTeamProperties());
-		*/
 		
 	}
 	
 	
 	
+}
+
 }

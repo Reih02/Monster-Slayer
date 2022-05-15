@@ -42,8 +42,7 @@ public class MainScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameEnvironment gameEnvironment = new GameEnvironment("test", 5, "Garen", true);
-					MainScreen window = new MainScreen(gameEnvironment);
+					MainScreen window = new MainScreen();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

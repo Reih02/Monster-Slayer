@@ -55,14 +55,18 @@ public class InventoryScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameEnvironment gameEnvironment = new GameEnvironment("name", 5, "BloodMuncha", false);
-					InventoryScreen window = new InventoryScreen(gameEnvironment);
+					//GameEnvironment gameEnvironment = new GameEnvironment();
+					InventoryScreen window = new InventoryScreen();
 					window.frmYourInventory.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+	}
+	
+	public InventoryScreen() {
+		initialize();
 	}
 
 	/**
