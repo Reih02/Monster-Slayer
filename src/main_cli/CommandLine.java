@@ -1,14 +1,16 @@
-package main;
+package main_cli;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import main.GameEnvironment;
 
 public class CommandLine {
 
 	/**
 	 * Instance of GameEnvironment
 	 */
-	private GameEnvironment game;
+	private GameEnvironment_cli game;
 	
 	/**
 	 * The chosen difficulty
@@ -34,7 +36,7 @@ public class CommandLine {
 		} else if (difficultyChoice == 1) {
 			boolean difficulty = true;
 		}
-		game = new GameEnvironment(name, days, monsterChoice, difficulty);
+		game = new GameEnvironment_cli(name, days, monsterChoice, difficulty);
 		ArrayList<String> possibleActions = new ArrayList<String>();
 		possibleActions.add("Get current stats");
 		possibleActions.add("Get your team properties");
