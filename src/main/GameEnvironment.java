@@ -413,6 +413,20 @@ public class GameEnvironment {
 		return battles;
 	}
 	
+	public ArrayList<String> viewStringBattles(){
+		ArrayList<String> niceBattles = new ArrayList<String>();
+		for(int i = 0; i < battles.size(); i++) {
+			String addString = "";
+			for (int j = 0; j < battles.get(i).size(); j++) {
+				addString = addString + battles.get(i).get(j).getName() + ", ";
+				
+			}
+			niceBattles.add(addString);
+		}
+		
+		return niceBattles;
+	}
+	
 	/**
 	 * Method to construct a Battle object and run Battle.fight() on the 
 	 * user's selected battle
@@ -421,9 +435,8 @@ public class GameEnvironment {
 	 */
 	public String chooseBattle(int battleNum) {
 		ArrayList<Monster> enemyMonsters = new ArrayList<Monster>();
-		for (int i=0; i < battles.get(battleNum).size(); i++) {
-			enemyMonsters.add(battles.get(battleNum).get(i));
-		}
+		enemyMonsters = battles.get(battleNum);
+		
 		if (slayer.getCurrMonsters().size() <= 0) {
 			return "You don't have any monsters available!";
 		} else {
