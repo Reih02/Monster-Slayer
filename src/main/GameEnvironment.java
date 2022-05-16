@@ -8,6 +8,7 @@ import gui.SetupScreen;
 import gui.StoreScreen;
 import gui.UseItemScreen;
 import gui.ViewTeamScreen;
+import gui.BattleScreen;
 import gui.InventoryScreen;
 import items.*;
 import monsters.*;
@@ -206,6 +207,13 @@ public class GameEnvironment {
 		viewTeamScreen.closeWindow();
 	}
 	
+	public void launchBattleScreen() {
+		new BattleScreen(this);
+	}
+	
+	public void closeBattleScreen(BattleScreen battleScreen) {
+		battleScreen.closeWindow();
+	}
 	/**
 	 * Gets index of selected item in GUI inventory screen
 	 * for use in UseItemScreen
