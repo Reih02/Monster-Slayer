@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
 
@@ -98,6 +99,7 @@ public class UseItemScreen {
 		useItemButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Monster selectedMonster = monsterList.getSelectedValue();
+				JOptionPane.showMessageDialog(frmSelectAMonster, "Used " + manager.getInventoryRaw().get(manager.getGuiItemIndex()).getName() + " on " + selectedMonster.getName());
 				manager.useItem(manager.getGuiItemIndex(), monsters.indexOf(selectedMonster)); // calls useItem with selected item from inventory and selected monster as index integers
 				shutdownWindow(); // goes back to inventory screen
 				manager.launchInventoryScreen();

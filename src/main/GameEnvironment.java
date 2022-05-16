@@ -7,6 +7,7 @@ import gui.MainScreen;
 import gui.SetupScreen;
 import gui.StoreScreen;
 import gui.UseItemScreen;
+import gui.ViewTeamScreen;
 import gui.InventoryScreen;
 import items.*;
 import monsters.*;
@@ -197,6 +198,14 @@ public class GameEnvironment {
 		useItemScreen.closeWindow();
 	}
 	
+	public void launchViewTeamScreen() {
+		new ViewTeamScreen(this);
+	}
+	
+	public void closeViewTeamScreen(ViewTeamScreen viewTeamScreen) {
+		viewTeamScreen.closeWindow();
+	}
+	
 	/**
 	 * Gets index of selected item in GUI inventory screen
 	 * for use in UseItemScreen
@@ -316,6 +325,10 @@ public class GameEnvironment {
 			inventoryString += "-------------";
 		}
 		return inventoryString;
+	}
+	
+	public ArrayList<Item> getInventoryRaw(){
+		return inventory.getInventoryList();
 	}
 	
 	public ArrayList<Item> guiGetInventory(){
@@ -486,8 +499,7 @@ public class GameEnvironment {
 			randomEnv.monsterArrives();
 			randomEnv.monsterLeaves();
 			randomEnv.monsterLevelUp();
-			System.out.println("Sleeping");
-			return "Sleeping... zz";
+			return "Sleeping... zz\nWelcome to day " + (slayer.getDaysPassed()) + "/" + days;
 		}
 	}
 	
