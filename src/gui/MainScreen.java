@@ -115,6 +115,12 @@ public class MainScreen {
 		JButton battleBtn = new JButton("Battle");
 		battleBtn.setBounds(62, 185, 137, 48);
 		frame.getContentPane().add(battleBtn);
+		battleBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				shutdownWindow();
+				manager.launchBattleScreen();
+			}
+		});
 		
 		JButton sleepBtn = new JButton("Sleep");
 		sleepBtn.setBounds(203, 283, 137, 48);
