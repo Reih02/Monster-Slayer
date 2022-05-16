@@ -36,10 +36,13 @@ public class StoreScreen {
 	/**
 	 * Create the application.
 	 */
-	public StoreScreen(boolean difficulty, GameEnvironment game) {
+	public StoreScreen(GameEnvironment game) {
 		this.gameManager = game;
+		boolean difficulty = gameManager.getDifficulty();
 		storeManager = new Shop(difficulty);
+		
 		initialize();
+		storeScreenFrame.setVisible(true);
 	}
 	
 	public void closeWindow() 
@@ -78,6 +81,7 @@ public class StoreScreen {
 	 * Create the application.
 	 */
 	public StoreScreen() {
+		
 		initialize();
 	}
 
@@ -171,7 +175,7 @@ public class StoreScreen {
 		mainScreenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				storeScreenFrame.dispose();
-				//gameManager.launchMainScreen();
+				gameManager.launchMainScreen();
 			}
 		});
 		mainScreenButton.setFont(new Font("Tahoma", Font.BOLD, 13));
