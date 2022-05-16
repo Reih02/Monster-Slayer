@@ -76,7 +76,7 @@ public class InventoryScreen {
 	private void initialize() {
 		frmYourInventory = new JFrame();
 		frmYourInventory.setTitle("Your Inventory");
-		frmYourInventory.setBounds(100, 100, 450, 300);
+		frmYourInventory.setBounds(100, 100, 464, 390);
 		frmYourInventory.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmYourInventory.getContentPane().setLayout(null);
 		
@@ -97,7 +97,7 @@ public class InventoryScreen {
 		}
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(108, 46, 328, 169);
+		panel.setBounds(108, 46, 328, 264);
 		frmYourInventory.getContentPane().add(panel);
 		JList<Item> inventoryList = new JList<Item>(listModel);
 		inventoryList.setFont(new Font("Dialog", Font.PLAIN, 10));
@@ -107,7 +107,7 @@ public class InventoryScreen {
 		
 		
 		JButton sellItemBtn = new JButton("Sell Item");
-		sellItemBtn.setBounds(252, 227, 104, 23);
+		sellItemBtn.setBounds(263, 321, 104, 23);
 		frmYourInventory.getContentPane().add(sellItemBtn);
 		sellItemBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -125,7 +125,7 @@ public class InventoryScreen {
 		});
 		
 		JButton useItemBtn = new JButton("Use Item");
-		useItemBtn.setBounds(108, 227, 113, 23);
+		useItemBtn.setBounds(108, 321, 113, 23);
 		frmYourInventory.getContentPane().add(useItemBtn);
 		useItemBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -70,7 +70,7 @@ public class ViewTeamScreen {
 	private void initialize() {
 		frmTeam = new JFrame();
 		frmTeam.setTitle("Team");
-		frmTeam.setBounds(100, 100, 450, 300);
+		frmTeam.setBounds(100, 100, 450, 398);
 		frmTeam.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTeam.getContentPane().setLayout(null);
 		
@@ -83,7 +83,7 @@ public class ViewTeamScreen {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		panel.setBounds(20, 44, 396, 210);
+		panel.setBounds(20, 44, 396, 290);
 		frmTeam.getContentPane().add(panel);
 		
 		JScrollPane scrollPane = new JScrollPane();

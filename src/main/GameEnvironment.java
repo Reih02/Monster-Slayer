@@ -102,9 +102,9 @@ public class GameEnvironment {
 			Apple apple = new Apple(difficulty);
 			Steak steak = new Steak(difficulty);
 			StrengthPotion strengthPot = new StrengthPotion(difficulty);
-			inventory.addItem(apple);
-			inventory.addItem(steak);
-			inventory.addItem(strengthPot);
+			for (int i = 0; i < 15; i ++) {
+				inventory.addItem(apple);
+			}
 			// TESTING
 			switch(startMonster) {
 				case "BloodMuncha":
@@ -126,7 +126,9 @@ public class GameEnvironment {
 					startingMonster = new Volibear(difficulty);
 					break;
 			}
-			slayer.addMonster(startingMonster);
+			for (int i = 0; i < 15; i++) {
+				slayer.addMonster(startingMonster);
+			}
 			slayer.getCurrMonsters().get(0).setCurrentHealth(50);
 			randomEnv = new RandomEnvironment(slayer.getCurrMonsters(), difficulty);
 			changePurchasableMonsters();
@@ -444,9 +446,12 @@ public class GameEnvironment {
 		String itemBoughtName = shop.getPurchasableList().get(itemNum).getName();
 		int price = shop.getPurchasableList().get(itemNum).getBuyPrice();
 		if (price < slayer.getGold()) {
-			inventory.addItem((Item) shop.getPurchasableList().get(itemNum));
-				
-			slayer.decreaseGold(price);
+			if (inventory.getInventoryList().size() > 15) {
+				inventory.addItem((Item) shop.getPurchasableList().get(itemNum));
+				slayer.decreaseGold(price);
+			} else {
+				return "Sorry, you have alreadyexceeded the maximum item limit of 15";
+			}
 			return "" + itemBoughtName + " purchased!\nYour remaining gold: " + slayer.getGold();
 			} else {
 				return "Not enough gold!";
@@ -463,8 +468,12 @@ public class GameEnvironment {
 		String itemBoughtName = monstersInShop.get(itemNum).getName();
 		int price = monstersInShop.get(itemNum).getBuyPrice();
 		if(price < slayer.getGold()) {
-			slayer.addMonster((Monster) monstersInShop.get(itemNum));
-			slayer.decreaseGold(price);
+			if (slayer.getCurrMonsters().size() > 15) {
+				slayer.addMonster((Monster) monstersInShop.get(itemNum));
+				slayer.decreaseGold(price);
+			} else {
+				return "Sorry, you have already exceeded the maximum of 15 monsters";
+			}
 			return "" + itemBoughtName + " purchased!\nYour remaining gold: " + slayer.getGold();
 			
 		}
