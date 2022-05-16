@@ -77,7 +77,7 @@ public class UseItemScreen {
 		frmSelectAMonster.getContentPane().setLayout(null);
 		
 		JLabel lblSelectAMonster = new JLabel("Select a monster to use your selected item on:");
-		lblSelectAMonster.setBounds(44, 12, 347, 15);
+		lblSelectAMonster.setBounds(111, 19, 347, 15);
 		frmSelectAMonster.getContentPane().add(lblSelectAMonster);
 		
 		DefaultListModel<Monster> listModel = new DefaultListModel<>();
@@ -96,6 +96,17 @@ public class UseItemScreen {
 		JButton useItemButton = new JButton("Use item on selected monster");
 		useItemButton.setBounds(82, 228, 276, 25);
 		frmSelectAMonster.getContentPane().add(useItemButton);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.setBounds(10, 13, 77, 26);
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				shutdownWindow();
+				manager.launchInventoryScreen();
+			}
+		});
+		
+		frmSelectAMonster.getContentPane().add(btnBack);
 		useItemButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Monster selectedMonster = monsterList.getSelectedValue();

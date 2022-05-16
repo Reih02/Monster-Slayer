@@ -22,6 +22,7 @@ import java.util.List;
 
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
@@ -111,10 +112,15 @@ public class InventoryScreen {
 		sellItemBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Item selectedItem = inventoryList.getSelectedValue();
-				int selectedItemIndex = items.indexOf(selectedItem);
-				inventoryManager.sellItem(selectedItemIndex + 1);
-				shutdownWindow();
-				inventoryManager.launchInventoryScreen();
+				if (items.indexOf(selectedItem) < 0) {
+					JOptionPane.showMessageDialog(frmYourInventory, "Please select an item first!");
+				} else {
+					int selectedItemIndex = items.indexOf(selectedItem);
+					inventoryManager.sellItem(selectedItemIndex + 1);
+					JOptionPane.showMessageDialog(frmYourInventory, "Sold " + selectedItem.getName() + " for " + selectedItem.getSellPrice() + " gold!");
+					shutdownWindow();
+					inventoryManager.launchInventoryScreen();
+				}
 			}
 		});
 		
@@ -124,9 +130,13 @@ public class InventoryScreen {
 		useItemBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Item selectedItem = inventoryList.getSelectedValue();
-				inventoryManager.setGuiItemIndex(items.indexOf(selectedItem)); // marks the selected item by setting variable in GameEnvironment for use in UseItemScreen
-				shutdownWindow(); // go to UseItemScreen to select the monster to use item on
-				inventoryManager.launchUseItemScreen();
+				if (items.indexOf(selectedItem) < 0) {
+					JOptionPane.showMessageDialog(frmYourInventory, "Please select an item first!");
+				} else {
+					inventoryManager.setGuiItemIndex(items.indexOf(selectedItem)); // marks the selected item by setting variable in GameEnvironment for use in UseItemScreen
+					shutdownWindow(); // go to UseItemScreen to select the monster to use item on
+					inventoryManager.launchUseItemScreen();
+				}
 			}
 		});
 		

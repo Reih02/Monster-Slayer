@@ -10,6 +10,8 @@ import main.Monster;
 
 import javax.swing.JTextArea;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -17,6 +19,7 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JButton;
 
 public class ViewTeamScreen {
 
@@ -94,6 +97,16 @@ public class ViewTeamScreen {
 		
 		JList<Monster> monsterList = new JList<Monster>(listModel);
 		panel.add(monsterList);
+		
+		JButton homeBtn = new JButton("Home");
+		homeBtn.setBounds(20, 11, 106, 24);
+		frmTeam.getContentPane().add(homeBtn);
+		homeBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				shutdownWindow();
+				manager.launchMainScreen();
+			}
+		});
 		
 	}
 }
