@@ -102,9 +102,9 @@ public class GameEnvironment {
 			Apple apple = new Apple(difficulty);
 			Steak steak = new Steak(difficulty);
 			StrengthPotion strengthPot = new StrengthPotion(difficulty);
-			for (int i = 0; i < 15; i ++) {
-				inventory.addItem(apple);
-			}
+			inventory.addItem(apple);
+			inventory.addItem(steak);
+			inventory.addItem(strengthPot);
 			// TESTING
 			switch(startMonster) {
 				case "BloodMuncha":
@@ -126,9 +126,7 @@ public class GameEnvironment {
 					startingMonster = new Volibear(difficulty);
 					break;
 			}
-			for (int i = 0; i < 15; i++) {
-				slayer.addMonster(startingMonster);
-			}
+			slayer.addMonster(startingMonster);
 			slayer.getCurrMonsters().get(0).setCurrentHealth(50);
 			randomEnv = new RandomEnvironment(slayer.getCurrMonsters(), difficulty);
 			changePurchasableMonsters();
@@ -142,7 +140,7 @@ public class GameEnvironment {
 			}
 		}
 		monstersInShop = shop.getMonsterList(randomEnv.monstersInShop());
-		randomEnv.generateBattles(days);
+		battles = viewBattles();
 	}
 	
 	/**
@@ -177,7 +175,7 @@ public class GameEnvironment {
 	}
 	
 	public void launchStoreScreen() {
-		new StoreScreen(difficultySetting, this);
+		new StoreScreen(this);
 	}
 	
 	public void closeStoreScreen(StoreScreen storeScreen) {
@@ -224,6 +222,13 @@ public class GameEnvironment {
 	 */
 	public void setGuiItemIndex(int index) {
 		inventorySelectedItemIndex = index;
+	}
+	
+	/**
+	 * Getter that returns the game difficulty.
+	 */
+	public boolean getDifficulty() {
+		return difficultySetting;
 	}
 	
 	/**
@@ -382,19 +387,22 @@ public class GameEnvironment {
 		}
 	}
 	
-	public String viewBattles() {
+	/**
+	 * Method that calls the random battle generator and returns the list.
+	 * @return
+	 */
+	public ArrayList<ArrayList<Monster>> viewBattles() {
 		// Show gold and points gained for winning each battle (scale with difficulty)
 		battles = randomEnv.generateBattles(slayer.getDaysPassed());
-		String returnString = "-------------";
-		// Inefficient? Fixed amount of battles to loop through at least (3)
-		for (int i=0; i < battles.size(); i ++) {
-			returnString += String.format("\nBATTLE %o:\n", i+1) + "(Gold gained: " + goldGained + ")\n" + "(Points gained: " + pointsGained + ")\n";
-			for (int j=0; j < battles.get(i).size(); j++) {
-				returnString += String.format("%s", battles.get(i).get(j).getName()) + "\n";
-			}
-		}
-		returnString += "-------------";
-		return returnString;
+		return battles;
+	}
+	
+	/**
+	 * Method that returns the current possible battles.
+	 * @return ArrayList filled with ArrayList with Monsters inside each one.
+	 */
+	public ArrayList<ArrayList<Monster>> getBattles(){
+		return battles;
 	}
 	
 	/**
@@ -446,12 +454,9 @@ public class GameEnvironment {
 		String itemBoughtName = shop.getPurchasableList().get(itemNum).getName();
 		int price = shop.getPurchasableList().get(itemNum).getBuyPrice();
 		if (price < slayer.getGold()) {
-			if (inventory.getInventoryList().size() > 15) {
-				inventory.addItem((Item) shop.getPurchasableList().get(itemNum));
-				slayer.decreaseGold(price);
-			} else {
-				return "Sorry, you have alreadyexceeded the maximum item limit of 15";
-			}
+			inventory.addItem((Item) shop.getPurchasableList().get(itemNum));
+				
+			slayer.decreaseGold(price);
 			return "" + itemBoughtName + " purchased!\nYour remaining gold: " + slayer.getGold();
 			} else {
 				return "Not enough gold!";
@@ -468,12 +473,8 @@ public class GameEnvironment {
 		String itemBoughtName = monstersInShop.get(itemNum).getName();
 		int price = monstersInShop.get(itemNum).getBuyPrice();
 		if(price < slayer.getGold()) {
-			if (slayer.getCurrMonsters().size() > 15) {
-				slayer.addMonster((Monster) monstersInShop.get(itemNum));
-				slayer.decreaseGold(price);
-			} else {
-				return "Sorry, you have already exceeded the maximum of 15 monsters";
-			}
+			slayer.addMonster((Monster) monstersInShop.get(itemNum));
+			slayer.decreaseGold(price);
 			return "" + itemBoughtName + " purchased!\nYour remaining gold: " + slayer.getGold();
 			
 		}
@@ -504,7 +505,7 @@ public class GameEnvironment {
 				slayer.getCurrMonsters().get(i).setCurrentHealth(slayer.getCurrMonsters().get(i).getHealAmount()); // Heals monsters (Too complicated?)
 			}
 			monstersInShop = shop.getMonsterList(randomEnv.monstersInShop());
-			randomEnv.generateBattles(days);
+			battles = viewBattles();
 			randomEnv.monsterArrives();
 			randomEnv.monsterLeaves();
 			randomEnv.monsterLevelUp();
