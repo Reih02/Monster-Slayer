@@ -526,7 +526,7 @@ public class GameEnvironment {
 			return String.format("---GAME ENDED---\nName: %s\nDays lasted: %o/%o\nPoints earned: %o\nGold earned: %o", slayer.getName(), slayer.getDaysPassed(), days, slayer.getPoints(), slayer.getGoldTotal());
 		} else {
 			for (int i=0; i < slayer.getCurrMonsters().size(); i++) {
-				slayer.getCurrMonsters().get(i).setCurrentHealth(slayer.getCurrMonsters().get(i).getHealAmount()); // Heals monsters (Too complicated?)
+				slayer.getCurrMonsters().get(i).setCurrentHealth(slayer.getCurrMonsters().get(i).getCurrentHealth() + slayer.getCurrMonsters().get(i).getHealAmount()); 
 			}
 			monstersInShop = shop.getMonsterList(randomEnv.monstersInShop());
 			battles = viewBattles();
@@ -537,22 +537,16 @@ public class GameEnvironment {
 		}
 	}
 	
-	// Testing purposes
+	/**
+	 * Runs the main game.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
 		game.launchSetupScreen();
 		
 		
-		/*
 		
-		System.out.println(game.viewBattles());
-		System.out.println(game.chooseBattle(0));
-		System.out.println(game.visitShop());
-		System.out.println(game.getPlayerInventory());
-		System.out.println(game.getTeamProperties());
-		System.out.println(game.getPlayerInventory());
-		System.out.println(game.getTeamProperties());
-		*/
 		
 	}
 	
