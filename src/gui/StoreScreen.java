@@ -27,9 +27,9 @@ public class StoreScreen {
 
 	private JFrame storeScreenFrame;
 	
-	private Shop storeManager;
 	
-	private boolean gameDifficulty;
+	private Shop storeManager;
+		
 	
 	private GameEnvironment gameManager;
 	
@@ -39,7 +39,6 @@ public class StoreScreen {
 	public StoreScreen(boolean difficulty, GameEnvironment game) {
 		this.gameManager = game;
 		storeManager = new Shop(difficulty);
-		gameDifficulty = difficulty;
 		initialize();
 	}
 	
@@ -64,7 +63,7 @@ public class StoreScreen {
 			public void run() {
 				try {
 					// testing remember to delete parameters
-					StoreScreen window = new StoreScreen(false, new GameEnvironment("Steve", 5, "Garen", false));
+					StoreScreen window = new StoreScreen();
 					window.storeScreenFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
