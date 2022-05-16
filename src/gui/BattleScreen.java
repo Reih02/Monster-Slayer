@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import javax.swing.border.CompoundBorder;
 
+import main.Battle;
 import main.GameEnvironment;
 import main.Monster;
 
@@ -105,7 +106,7 @@ public class BattleScreen {
 		goBackButton.setBounds(10, 11, 185, 62);
 		BattleScreenFrame.getContentPane().add(goBackButton);
 		
-		JList potentialBattlesList = new JList();
+		JList<ArrayList<String>> potentialBattlesList = new JList<ArrayList<String>>();
 		potentialBattlesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		potentialBattlesList.setBorder(new CompoundBorder());
 		potentialBattlesList.setModel(new AbstractListModel() {
@@ -126,6 +127,7 @@ public class BattleScreen {
 			public void actionPerformed(ActionEvent e) {
 				String battleFeedback = gameManager.chooseBattle(potentialBattlesList.getSelectedIndex());
 				JOptionPane.showMessageDialog(BattleScreenFrame, battleFeedback);
+				gameManager.removeBattle(potentialBattlesList.getSelectedIndex());
 				potentialBattlesList.setModel(new AbstractListModel() {
 					ArrayList<String> values = gameManager.viewStringBattles();
 					public int getSize() {

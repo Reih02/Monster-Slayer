@@ -118,12 +118,12 @@ public class Monster implements Purchasable {
 	 * @return Null.
 	 */
 	public void setCurrentHealth(int newHealth) {
-		if (newHealth < 0) {
-			newHealth = 0;
-		} else if ((monsterCurrentHealth + newHealth) > monsterMaxHealth) {
+		monsterCurrentHealth = newHealth;
+		if (monsterCurrentHealth < 0) {
+			monsterCurrentHealth = 0;
+		}
+		if (monsterCurrentHealth > monsterMaxHealth) {
 			monsterCurrentHealth = monsterMaxHealth;
-		} else {
-			monsterCurrentHealth = newHealth;
 		}
 	}
 	
@@ -132,7 +132,7 @@ public class Monster implements Purchasable {
 	 * @return true if getCurrentHealth is 0 otherwise returns false.
 	 */
 	public boolean isFainted() {
-		if(getCurrentHealth() == 0) {
+		if(getCurrentHealth() <= 0) {
 			return true;
 		}
 		else {

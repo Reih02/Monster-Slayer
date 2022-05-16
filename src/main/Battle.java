@@ -40,28 +40,29 @@ public class Battle {
 		
 		while (alliedIndex < alliedMonsters.size() && enemyIndex < enemyMonsters.size()) {
 			
-			while(alliedMonsters.get(alliedIndex).isFainted() != true) {
-				alliedIndex ++;
-				
-				if(alliedIndex == alliedMonsters.size()) {
+			boolean alliedFainted = alliedMonsters.get(alliedIndex).isFainted();
+			boolean enemyFainted = enemyMonsters.get(enemyIndex).isFainted();
+			
+			if (alliedFainted == true) {
+				if (alliedIndex >= (alliedMonsters.size() - 1)) {
 					return false;
+				} else {
+					alliedIndex ++;
 				}
 			}
-			
-			while(enemyMonsters.get(enemyIndex).isFainted() != true) {
-				
-				enemyIndex ++;
-				
-				if(enemyIndex == enemyMonsters.size()) {
+			if (enemyFainted == true) {
+				if (enemyIndex >= (enemyMonsters.size() - 1)) {
 					return true;
-					
+				} else {
+					enemyIndex ++;
 				}
 			}
-			attack(alliedMonsters.get(alliedIndex), enemyMonsters.get(enemyIndex));
 			
-			attack(enemyMonsters.get(enemyIndex), alliedMonsters.get(alliedIndex));
+
+			alliedAttack(alliedIndex, enemyIndex);
+			enemyAttack(enemyIndex, alliedIndex);
 		
-		}
+		} 
 	return true;				
 	}
 	
@@ -70,8 +71,16 @@ public class Battle {
 	 * @param attacker A Monster that is attacking.
 	 * @param defender A Monster that is being attacked.
 	 */
-    public void attack(Monster attacker, Monster defender) {
-		defender.setCurrentHealth(defender.getCurrentHealth() - attacker.getDamage());
+    public void alliedAttack(int attacker, int defender) {
+    	Monster attackingMonster = alliedMonsters.get(attacker);
+    	Monster defendingMonster = enemyMonsters.get(defender);
+    	defendingMonster.setCurrentHealth(defendingMonster.getCurrentHealth() - attackingMonster.getDamage());;
 	}
+    
+    public void enemyAttack(int attacker, int defender) {
+    	Monster attackingMonster = enemyMonsters.get(attacker);
+    	Monster defendingMonster = alliedMonsters.get(defender);
+    	defendingMonster.setCurrentHealth(defendingMonster.getCurrentHealth() - attackingMonster.getDamage());
+    }
     
  }

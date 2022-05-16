@@ -442,13 +442,16 @@ public class GameEnvironment {
 		} else {
 			Battle battleSelected = new Battle(enemyMonsters, slayer.getCurrMonsters());
 			boolean battleOutcome = battleSelected.fight();
-			battles.remove(battleNum);
 			 if (battleOutcome == true) {
 				 return "You have won the battle! You earned " + goldGained + " gold and " + pointsGained + " points";
 			 } else {
 				 return "You lost the battle.. Better luck next time";
 			 }
 		}
+	}
+	
+	public void removeBattle(int index) {
+		battles.remove(index);
 	}
 	
 	// Add functionality for battling process
