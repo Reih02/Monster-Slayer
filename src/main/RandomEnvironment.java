@@ -148,6 +148,9 @@ public class RandomEnvironment {
 		 		
 		for(number = number + 3; number != 0; number --) {
 			int index = amount.nextInt(6);
+			while(shop.contains(potentialMonsters.get(index))) {
+				index = amount.nextInt(6);
+			}
 			shop.add(potentialMonsters.get(index));						
 		}
 		return shop;
