@@ -77,7 +77,7 @@ public class SetupScreen {
 	private void initialize() {
 		setupScreenFrame = new JFrame();
 		setupScreenFrame.setTitle("Monster Slayer - Setup Screen");
-		setupScreenFrame.setBounds(100, 100, 612, 454);
+		setupScreenFrame.setBounds(100, 100, 631, 490);
 		setupScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setupScreenFrame.getContentPane().setLayout(null);
 		
