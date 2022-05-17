@@ -534,9 +534,18 @@ public class GameEnvironment {
 			}
 			monstersInShop = shop.getMonsterList(randomEnv.monstersInShop());
 			battles = viewBattles();
-			randomEnv.monsterArrives();
-			randomEnv.monsterLeaves();
-			randomEnv.monsterLevelUp();
+			boolean check = randomEnv.monsterLevelUp();
+			if(check == true) {
+				return "Sleeping... zz\nWelcome to day " + (slayer.getDaysPassed()) + "/" + days + ". A random Monster has levelled up!";
+			}
+			check = randomEnv.monsterArrives();
+			if(check == true) {
+				return "Sleeping... zz\nWelcome to day " + (slayer.getDaysPassed()) + "/" + days + ". A random Monster has joined your party!";
+			}
+			check = randomEnv.monsterLeaves();
+			if(check == true) {
+				return "Sleeping... zz\nWelcome to day " + (slayer.getDaysPassed()) + "/" + days + ". One of your monsters has ran away!";
+			}
 			return "Sleeping... zz\nWelcome to day " + (slayer.getDaysPassed()) + "/" + days;
 		}
 	}
