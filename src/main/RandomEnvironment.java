@@ -49,10 +49,10 @@ public class RandomEnvironment {
 		int number = 1;
 		
 		if(difficulty) {
-			number = randomLevelUp.nextInt(4);
+			number = randomLevelUp.nextInt(5);
 		}
 		else {
-		    number = randomLevelUp.nextInt(2);
+		    number = randomLevelUp.nextInt(3);
 		}
 		if (number == 1) {
 			int size = currentMonsters.size();
@@ -75,10 +75,10 @@ public class RandomEnvironment {
 		Random randomLeave = new Random();
 		int number = 1;
 		if(difficulty) {
-			number = randomLeave.nextInt(7); 
+			number = randomLeave.nextInt(3); 
 		}
 		else {
-		    number = randomLeave.nextInt(11);
+		    number = randomLeave.nextInt(5);
 		}
 		if (number == 1) {
 			int size = currentMonsters.size();
