@@ -128,7 +128,7 @@ public class GameEnvironment {
 					break;
 			}
 			slayer.addMonster(startingMonster);
-			slayer.getCurrMonsters().get(0).setCurrentHealth(50);
+			
 			randomEnv = new RandomEnvironment(slayer.getCurrMonsters(), difficulty);
 			changePurchasableMonsters();
 			// Sets the gold and points gained from winning battles depending on difficulty
