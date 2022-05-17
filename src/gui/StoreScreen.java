@@ -114,7 +114,7 @@ public class StoreScreen {
 		});
 		monsterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		monsterList.setSelectedIndex(0);
-		monsterList.setBounds(50, 165, 486, 100);
+		monsterList.setBounds(154, 156, 461, 100);
 		storeScreenFrame.getContentPane().add(monsterList);
 		
 		JList itemList = new JList();
@@ -154,7 +154,7 @@ public class StoreScreen {
 		
 		JLabel monsterSaleLabel = new JLabel("MONSTERS FOR SALE");
 		monsterSaleLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		monsterSaleLabel.setBounds(178, 121, 382, 33);
+		monsterSaleLabel.setBounds(248, 121, 382, 33);
 		storeScreenFrame.getContentPane().add(monsterSaleLabel);
 		
 		JButton MonsterBuyButton = new JButton("BUY MONSTER");
@@ -166,7 +166,7 @@ public class StoreScreen {
 			}
 		});
 		MonsterBuyButton.setFont(new Font("Tahoma", Font.BOLD, 15));
-		MonsterBuyButton.setBounds(0, 55, 168, 68);
+		MonsterBuyButton.setBounds(0, 156, 149, 68);
 		storeScreenFrame.getContentPane().add(MonsterBuyButton);
 		
 		JButton mainScreenButton = new JButton("Home");
