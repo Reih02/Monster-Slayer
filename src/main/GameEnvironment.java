@@ -495,7 +495,7 @@ public class GameEnvironment {
 		
 		String itemBoughtName = shop.getPurchasableList().get(itemNum).getName();
 		int price = shop.getPurchasableList().get(itemNum).getBuyPrice();
-		if (price < slayer.getGold()) {
+		if (price <= slayer.getGold()) {
 			inventory.addItem((Item) shop.getPurchasableList().get(itemNum));
 				
 			slayer.decreaseGold(price);

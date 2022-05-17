@@ -54,7 +54,7 @@ public class Monster implements Purchasable {
 			monsterHealAmount = healAmount;
 		}		
 	    monsterName = name;	       
-	    monsterCurrentHealth = monsterMaxhealth;	   
+	    monsterCurrentHealth = monsterMaxHealth;	   
 	}
 	
 	/**
