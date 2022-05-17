@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 import main.GameEnvironment;
 import main.Monster;
@@ -91,9 +92,15 @@ public class StoreScreen {
 	private void initialize() {
 		storeScreenFrame = new JFrame();
 		storeScreenFrame.setTitle("Monster Slayer - Store");
-		storeScreenFrame.setBounds(100, 100, 562, 453);
+		storeScreenFrame.setBounds(100, 100, 631, 490);
 		storeScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		storeScreenFrame.getContentPane().setLayout(null);
+		
+		JLabel goldDisplayLabel = new JLabel("Starting Gold: ");
+		goldDisplayLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		goldDisplayLabel.setText(gameManager.getStats());
+		goldDisplayLabel.setBounds(171, 80, 434, 43);
+		storeScreenFrame.getContentPane().add(goldDisplayLabel);
 		
 		JList monsterList = new JList();
 		monsterList.setModel(new AbstractListModel() {
@@ -132,18 +139,13 @@ public class StoreScreen {
 		itemSaleLabel.setBounds(261, 241, 182, 68);
 		storeScreenFrame.getContentPane().add(itemSaleLabel);
 		
-		
-		
-		JLabel itemPurchaseStatus = new JLabel("Item being purchased...");
-		itemPurchaseStatus.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		itemPurchaseStatus.setBounds(0, 253, 342, 47);
-		storeScreenFrame.getContentPane().add(itemPurchaseStatus);
-		
 		JButton itemBuyButton = new JButton("BUY ITEM");
 		itemBuyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String purchaseMessage = gameManager.buyPurchasable(itemList.getSelectedIndex());
-				itemPurchaseStatus.setText(purchaseMessage);
+				JOptionPane.showMessageDialog(storeScreenFrame, purchaseMessage);
+				goldDisplayLabel.setText(gameManager.getStats());
+
 			}
 		});
 		itemBuyButton.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -155,38 +157,30 @@ public class StoreScreen {
 		monsterSaleLabel.setBounds(178, 121, 382, 33);
 		storeScreenFrame.getContentPane().add(monsterSaleLabel);
 		
-		JLabel monsterStatusLabel = new JLabel("Monster being purchased...");
-		monsterStatusLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		monsterStatusLabel.setBounds(19, 11, 342, 33);
-		storeScreenFrame.getContentPane().add(monsterStatusLabel);
-		
 		JButton MonsterBuyButton = new JButton("BUY MONSTER");
 		MonsterBuyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String purchaseMessage = gameManager.buyMonster(monsterList.getSelectedIndex());
-				monsterStatusLabel.setText(purchaseMessage);
+				JOptionPane.showMessageDialog(storeScreenFrame, purchaseMessage);
+				goldDisplayLabel.setText(gameManager.getStats());
 			}
 		});
 		MonsterBuyButton.setFont(new Font("Tahoma", Font.BOLD, 15));
 		MonsterBuyButton.setBounds(0, 55, 168, 68);
 		storeScreenFrame.getContentPane().add(MonsterBuyButton);
 		
-		JButton mainScreenButton = new JButton("Back To Main Screen");
+		JButton mainScreenButton = new JButton("Home");
 		mainScreenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				storeScreenFrame.dispose();
 				gameManager.launchMainScreen();
 			}
 		});
-		mainScreenButton.setFont(new Font("Tahoma", Font.BOLD, 13));
+		mainScreenButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		mainScreenButton.setBounds(341, 17, 195, 61);
 		storeScreenFrame.getContentPane().add(mainScreenButton);
 		
-		JLabel goldDisplayLabel = new JLabel("Starting Gold: ");
-		goldDisplayLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		goldDisplayLabel.setText(gameManager.getStats());
-		goldDisplayLabel.setBounds(171, 80, 365, 43);
-		storeScreenFrame.getContentPane().add(goldDisplayLabel);
+		
 		
 		
 		
