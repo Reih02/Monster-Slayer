@@ -95,7 +95,7 @@ public class BattleScreen {
 		
 		
 		
-		JButton goBackButton = new JButton("Return to Main Screen");
+		JButton goBackButton = new JButton("Home");
 		goBackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BattleScreenFrame.dispose();
