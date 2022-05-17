@@ -70,7 +70,7 @@ public class ViewTeamScreen {
 	private void initialize() {
 		frmTeam = new JFrame();
 		frmTeam.setTitle("Team");
-		frmTeam.setBounds(100, 100, 450, 398);
+		frmTeam.setBounds(100, 100, 631, 490);
 		frmTeam.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTeam.getContentPane().setLayout(null);
 		
@@ -78,12 +78,12 @@ public class ViewTeamScreen {
 		txtrYourTeam.setFont(new Font("Tahoma", Font.BOLD, 14));
 		txtrYourTeam.setEditable(false);
 		txtrYourTeam.setText("Your team:");
-		txtrYourTeam.setBounds(182, 11, 84, 22);
+		txtrYourTeam.setBounds(259, 11, 84, 22);
 		frmTeam.getContentPane().add(txtrYourTeam);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		panel.setBounds(20, 44, 396, 290);
+		panel.setBounds(112, 44, 434, 337);
 		frmTeam.getContentPane().add(panel);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -99,6 +99,7 @@ public class ViewTeamScreen {
 		panel.add(monsterList);
 		
 		JButton homeBtn = new JButton("Home");
+		homeBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		homeBtn.setBounds(20, 11, 106, 24);
 		frmTeam.getContentPane().add(homeBtn);
 		homeBtn.addActionListener(new ActionListener() {
