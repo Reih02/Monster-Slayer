@@ -78,7 +78,7 @@ public class RandomEnvironment {
 			number = randomLeave.nextInt(3); 
 		}
 		else {
-		    number = randomLeave.nextInt(5);
+		    number = randomLeave.nextInt(4);
 		}
 		if (number == 1) {
 			int size = currentMonsters.size();
@@ -111,7 +111,7 @@ public class RandomEnvironment {
 	    int number = 1;
 		int size = potentialMonsters.size();
 		if (difficulty) {
-		    number = randomArrives.nextInt(7);
+		    number = randomArrives.nextInt(6);
 		}
 		else {
 			number = randomArrives.nextInt(4);
