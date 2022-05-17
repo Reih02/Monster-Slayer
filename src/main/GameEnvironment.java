@@ -64,12 +64,12 @@ public class GameEnvironment {
 	/**
 	 * The amount of gold awarded for winning a battle
 	 */
-	private int goldGained;
+	private int baseGoldGained;
 	
 	/**
 	 * The amount of points gained for winning a battle
 	 */
-	private int pointsGained;
+	private int basePointsGained;
 	
 	/**
 	 * The monsters that are currently in the shop.
@@ -133,11 +133,11 @@ public class GameEnvironment {
 			changePurchasableMonsters();
 			// Sets the gold and points gained from winning battles depending on difficulty
 			if (difficultySetting == true) {
-				goldGained = 80;
-				pointsGained = 1000;
+				baseGoldGained = 80;
+				basePointsGained = 1000;
 			} else {
-				goldGained = 100;
-				pointsGained = 500;
+				baseGoldGained = 100;
+				basePointsGained = 500;
 			}
 		}
 		monstersInShop = shop.getMonsterList(randomEnv.monstersInShop());
@@ -443,6 +443,10 @@ public class GameEnvironment {
 			Battle battleSelected = new Battle(enemyMonsters, slayer.getCurrMonsters());
 			boolean battleOutcome = battleSelected.fight();
 			 if (battleOutcome == true) {
+				 int goldGained = baseGoldGained + (5 * enemyMonsters.size());
+				 int pointsGained = basePointsGained + (20 * enemyMonsters.size());
+				 slayer.increaseGold(goldGained);
+				 slayer.increasePoints(pointsGained);
 				 return "You have won the battle! You earned " + goldGained + " gold and " + pointsGained + " points";
 			 } else {
 				 return "You lost the battle.. Better luck next time";
