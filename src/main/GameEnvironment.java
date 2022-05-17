@@ -270,6 +270,14 @@ public class GameEnvironment {
 	}
 	
 	/**
+	 * Gets the current amount of points from slayer class
+	 * @return
+	 */
+	public int getSlayerScore() {
+		return slayer.getPoints();
+	}
+	
+	/**
 	 * Gets maximum days user selected to play for
 	 * For use in GUI
 	 * @return
