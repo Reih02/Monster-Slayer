@@ -163,6 +163,17 @@ public class StoreScreen {
 				String purchaseMessage = gameManager.buyMonster(monsterList.getSelectedIndex());
 				JOptionPane.showMessageDialog(storeScreenFrame, purchaseMessage);
 				goldDisplayLabel.setText(gameManager.getStats());
+				gameManager.getMonsterInShop().remove(monsterList.getSelectedIndex());
+				monsterList.setModel(new AbstractListModel() {
+					ArrayList<Monster> values = gameManager.getMonsterInShop();
+					public int getSize() {
+						return values.size();
+					}
+					public Object getElementAt(int index) {
+						return values.get(index);
+					}
+				});
+				
 			}
 		});
 		MonsterBuyButton.setFont(new Font("Tahoma", Font.BOLD, 15));
