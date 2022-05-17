@@ -133,7 +133,7 @@ public class MainScreen {
 		
 		JLabel currDayLabel = new JLabel("Day " + manager.getSlayerDay() + "/" + manager.getMaxDays());
 		currDayLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		currDayLabel.setBounds(125, 11, 126, 48);
+		currDayLabel.setBounds(81, 11, 126, 48);
 		frame.getContentPane().add(currDayLabel);
 		
 		JPanel panel = new JPanel();
@@ -158,13 +158,18 @@ public class MainScreen {
 		
 		JLabel lblGold = new JLabel("Gold: " + manager.getSlayerGold());
 		lblGold.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblGold.setBounds(382, 11, 126, 48);
+		lblGold.setBounds(425, 11, 126, 48);
 		frame.getContentPane().add(lblGold);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		panel_4.setBounds(190, 273, 226, 125);
 		frame.getContentPane().add(panel_4);
+		
+		JLabel scoreLabel = new JLabel("Score: " + manager.getSlayerScore());
+		scoreLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		scoreLabel.setBounds(231, 14, 173, 42);
+		frame.getContentPane().add(scoreLabel);
 		
 		
 		sleepBtn.addActionListener(new ActionListener() {
