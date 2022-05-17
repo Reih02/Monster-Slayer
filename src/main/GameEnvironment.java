@@ -455,7 +455,13 @@ public class GameEnvironment {
 				 int pointsGained = basePointsGained + (20 * enemyMonsters.size());
 				 slayer.increaseGold(goldGained);
 				 slayer.increasePoints(pointsGained);
-				 return "You have won the battle! You earned " + goldGained + " gold and " + pointsGained + " points";
+				 int casualities = 0;
+				 for(int i = 0; i < slayer.getCurrMonsters().size(); i++) {
+					 if(slayer.getCurrMonsters().get(i).isFainted()) {
+						 casualities ++;
+					 }
+				 }
+				 return "You have won the battle! You earned " + goldGained + " gold and " + pointsGained + " points. " + casualities + " Monster(s) fainted.";
 			 } else {
 				 return "You lost the battle.. Better luck next time";
 			 }
