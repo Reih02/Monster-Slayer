@@ -72,12 +72,13 @@ public class UseItemScreen {
 	private void initialize() {
 		frmSelectAMonster = new JFrame();
 		frmSelectAMonster.setTitle("Select a monster");
-		frmSelectAMonster.setBounds(100, 100, 450, 300);
+		frmSelectAMonster.setBounds(100, 100, 631, 490);
 		frmSelectAMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSelectAMonster.getContentPane().setLayout(null);
 		
 		JLabel lblSelectAMonster = new JLabel("Select a monster to use your selected item on:");
-		lblSelectAMonster.setBounds(111, 19, 347, 15);
+		lblSelectAMonster.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblSelectAMonster.setBounds(149, 19, 357, 33);
 		frmSelectAMonster.getContentPane().add(lblSelectAMonster);
 		
 		DefaultListModel<Monster> listModel = new DefaultListModel<>();
@@ -87,18 +88,20 @@ public class UseItemScreen {
 		}
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 45, 414, 171);
+		panel.setBounds(92, 108, 447, 208);
 		frmSelectAMonster.getContentPane().add(panel);
 		JList<Monster> monsterList = new JList<Monster>(listModel);
 		monsterList.setFont(new Font("Dialog", Font.PLAIN, 11));
 		panel.add(monsterList);
 		
 		JButton useItemButton = new JButton("Use item on selected monster");
-		useItemButton.setBounds(82, 228, 276, 25);
+		useItemButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		useItemButton.setBounds(170, 346, 288, 42);
 		frmSelectAMonster.getContentPane().add(useItemButton);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(10, 13, 77, 26);
+		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnBack.setBounds(10, 13, 102, 49);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				shutdownWindow();
