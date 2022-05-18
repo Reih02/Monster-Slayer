@@ -48,6 +48,7 @@ public class Slayer {
 		daysSpent = slayerDaysSpent;
 		goldBalance = gold;
 		pointsScored = points;
+		goldTotalGained += 150;
 	}
 	
 	/**

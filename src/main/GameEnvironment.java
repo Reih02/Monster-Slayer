@@ -99,14 +99,6 @@ public class GameEnvironment {
 			slayer = new Slayer(playerName, 1, 150, 0); // Creates Slayer object on first day and with 150 gold (?) and with 0 points
 			inventory = new Inventory();
 			shop = new Shop(difficulty);
-			// TESTING
-			Apple apple = new Apple(difficulty);
-			Steak steak = new Steak(difficulty);
-			StrengthPotion strengthPot = new StrengthPotion(difficulty);
-			inventory.addItem(apple);
-			inventory.addItem(steak);
-			inventory.addItem(strengthPot);
-			// TESTING
 			switch(startMonster) {
 				case "BloodMuncha":
 					startingMonster = new BloodMuncha(difficulty);
@@ -541,7 +533,7 @@ public class GameEnvironment {
 		changeDay();
 		boolean gameStatus = shouldGameFinish();
 		if (gameStatus == true) {
-			return String.format("---GAME ENDED---\nName: %s\nDays lasted: %o/%o\nPoints earned: %o\nGold earned: %o", slayer.getName(), slayer.getDaysPassed(), days, slayer.getPoints(), slayer.getGoldTotal());
+			return String.format("---GAME ENDED---\nName: %s\nDays lasted: %o/%o\nPoints earned: " + slayer.getPoints() + "\nGold earned: " + slayer.getGoldTotal(), slayer.getName(), (slayer.getDaysPassed() - 1), days);
 		} else {
 			for (int i=0; i < slayer.getCurrMonsters().size(); i++) {
 				slayer.getCurrMonsters().get(i).setCurrentHealth(slayer.getCurrMonsters().get(i).getCurrentHealth() + slayer.getCurrMonsters().get(i).getHealAmount()); 

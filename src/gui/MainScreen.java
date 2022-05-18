@@ -179,7 +179,8 @@ public class MainScreen {
 					shutdownWindow();
 					manager.launchMainScreen();
 				} else {
-					// print finish game message to console
+					JOptionPane.showMessageDialog(frame, manager.sleep());
+					shutdownWindow();
 				}
 			}
 		});
