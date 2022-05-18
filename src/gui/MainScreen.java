@@ -17,6 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class MainScreen {
 
@@ -75,8 +76,9 @@ public class MainScreen {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnViewTeam = new JButton("View Team");
+		btnViewTeam.setBackground(Color.CYAN);
 		btnViewTeam.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnViewTeam.setBounds(334, 185, 232, 48);
+		btnViewTeam.setBounds(334, 160, 217, 48);
 		frame.getContentPane().add(btnViewTeam);
 		btnViewTeam.addActionListener(new ActionListener() {
 			
@@ -88,6 +90,7 @@ public class MainScreen {
 		});
 		
 		JButton storeBtn = new JButton("Visit Shop");
+		storeBtn.setBackground(Color.CYAN);
 		storeBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		storeBtn.setBounds(62, 78, 201, 48);
 		frame.getContentPane().add(storeBtn);
@@ -102,6 +105,7 @@ public class MainScreen {
 		});
 		
 		JButton inventoryBtn = new JButton("View Inventory");
+		inventoryBtn.setBackground(Color.CYAN);
 		inventoryBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		inventoryBtn.setBounds(334, 78, 217, 48);
 		frame.getContentPane().add(inventoryBtn);
@@ -116,8 +120,9 @@ public class MainScreen {
 		});
 		
 		JButton battleBtn = new JButton("Battle");
+		battleBtn.setBackground(Color.CYAN);
 		battleBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		battleBtn.setBounds(62, 185, 201, 48);
+		battleBtn.setBounds(62, 160, 201, 48);
 		frame.getContentPane().add(battleBtn);
 		battleBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -127,8 +132,9 @@ public class MainScreen {
 		});
 		
 		JButton sleepBtn = new JButton("Sleep");
+		sleepBtn.setBackground(Color.GREEN);
 		sleepBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		sleepBtn.setBounds(203, 283, 201, 108);
+		sleepBtn.setBounds(201, 238, 201, 108);
 		frame.getContentPane().add(sleepBtn);
 		
 		JLabel currDayLabel = new JLabel("Day " + manager.getSlayerDay() + "/" + manager.getMaxDays());
@@ -138,7 +144,7 @@ public class MainScreen {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		panel.setBounds(43, 173, 241, 70);
+		panel.setBounds(43, 148, 241, 70);
 		frame.getContentPane().add(panel);
 		
 		JPanel panel_1 = new JPanel();
@@ -153,7 +159,7 @@ public class MainScreen {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		panel_3.setBounds(316, 173, 264, 70);
+		panel_3.setBounds(316, 148, 250, 70);
 		frame.getContentPane().add(panel_3);
 		
 		JLabel lblGold = new JLabel("Gold: " + manager.getSlayerGold());
@@ -163,13 +169,31 @@ public class MainScreen {
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		panel_4.setBounds(190, 273, 226, 125);
+		panel_4.setBounds(188, 231, 226, 125);
 		frame.getContentPane().add(panel_4);
 		
 		JLabel scoreLabel = new JLabel("Score: " + manager.getSlayerScore());
+		scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		scoreLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		scoreLabel.setBounds(231, 14, 173, 42);
+		scoreLabel.setBounds(217, 14, 173, 42);
 		frame.getContentPane().add(scoreLabel);
+		
+		JButton btnEndGame = new JButton("End Game");
+		btnEndGame.setBackground(Color.RED);
+		btnEndGame.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnEndGame.setBounds(201, 378, 201, 48);
+		frame.getContentPane().add(btnEndGame);
+		btnEndGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, manager.endGame());
+				shutdownWindow();
+			}
+		});
+		
+		JPanel panel_3_1 = new JPanel();
+		panel_3_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		panel_3_1.setBounds(188, 367, 226, 70);
+		frame.getContentPane().add(panel_3_1);
 		
 		
 		sleepBtn.addActionListener(new ActionListener() {

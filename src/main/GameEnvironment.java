@@ -533,7 +533,7 @@ public class GameEnvironment {
 		changeDay();
 		boolean gameStatus = shouldGameFinish();
 		if (gameStatus == true) {
-			return String.format("---GAME ENDED---\nName: %s\nDays lasted: %o/%o\nPoints earned: " + slayer.getPoints() + "\nGold earned: " + slayer.getGoldTotal(), slayer.getName(), (slayer.getDaysPassed() - 1), days);
+			return endGame();
 		} else {
 			for (int i=0; i < slayer.getCurrMonsters().size(); i++) {
 				slayer.getCurrMonsters().get(i).setCurrentHealth(slayer.getCurrMonsters().get(i).getCurrentHealth() + slayer.getCurrMonsters().get(i).getHealAmount()); 
@@ -554,6 +554,14 @@ public class GameEnvironment {
 			}
 			return "Sleeping... zz\nWelcome to day " + (slayer.getDaysPassed()) + "/" + days;
 		}
+	}
+	
+	/**
+	 * Method for GUI and sleep() to show a message when the game ends
+	 * @return A string for ending the game
+	 */
+	public String endGame() {
+		return String.format("---GAME ENDED---\nName: %s\nDays lasted: %o/%o\nPoints earned: " + slayer.getPoints() + "\nGold earned: " + slayer.getGoldTotal(), slayer.getName(), (slayer.getDaysPassed() - 1), days);
 	}
 	
 	/**
