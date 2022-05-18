@@ -92,45 +92,39 @@ public class GameEnvironment {
 		
 		days = gameLength;
 		difficultySetting = difficulty;
-		
-		if (playerName.length() < 3 || playerName.length() > 15 || !lettersOnly(playerName)) {
-			System.out.println("Please change your name so that it contains no spaces and is between 3 and 15 characters");
+		slayer = new Slayer(playerName, 1, 150, 0); // Creates Slayer object on first day and with 150 gold (?) and with 0 points
+		inventory = new Inventory();
+		shop = new Shop(difficulty);
+		switch(startMonster) {
+			case "BloodMuncha":
+				startingMonster = new BloodMuncha(difficulty);
+				break;
+			case "Garen":
+				startingMonster = new Garen(difficulty);
+				break;
+			case "Katarina":
+				startingMonster = new Katarina(difficulty);
+				break;
+			case "Malphite":
+				startingMonster = new Malphite(difficulty);
+				break;
+			case "MasterYi":
+				startingMonster = new MasterYi(difficulty);
+				break;
+			case "Volibear":
+				startingMonster = new Volibear(difficulty);
+				break;
+		}
+		slayer.addMonster(startingMonster);
+		randomEnv = new RandomEnvironment(slayer.getCurrMonsters(), difficulty);
+		changePurchasableMonsters();
+		// Sets the gold and points gained from winning battles depending on difficulty
+		if (difficultySetting == true) {
+			baseGoldGained = 80;
+			basePointsGained = 1000;
 		} else {
-			slayer = new Slayer(playerName, 1, 150, 0); // Creates Slayer object on first day and with 150 gold (?) and with 0 points
-			inventory = new Inventory();
-			shop = new Shop(difficulty);
-			switch(startMonster) {
-				case "BloodMuncha":
-					startingMonster = new BloodMuncha(difficulty);
-					break;
-				case "Garen":
-					startingMonster = new Garen(difficulty);
-					break;
-				case "Katarina":
-					startingMonster = new Katarina(difficulty);
-					break;
-				case "Malphite":
-					startingMonster = new Malphite(difficulty);
-					break;
-				case "MasterYi":
-					startingMonster = new MasterYi(difficulty);
-					break;
-				case "Volibear":
-					startingMonster = new Volibear(difficulty);
-					break;
-			}
-			slayer.addMonster(startingMonster);
-			
-			randomEnv = new RandomEnvironment(slayer.getCurrMonsters(), difficulty);
-			changePurchasableMonsters();
-			// Sets the gold and points gained from winning battles depending on difficulty
-			if (difficultySetting == true) {
-				baseGoldGained = 80;
-				basePointsGained = 1000;
-			} else {
-				baseGoldGained = 100;
-				basePointsGained = 500;
-			}
+			baseGoldGained = 100;
+			basePointsGained = 500;
 		}
 		monstersInShop = shop.getMonsterList(randomEnv.monstersInShop());
 		battles = viewBattles();

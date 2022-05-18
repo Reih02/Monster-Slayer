@@ -6,6 +6,8 @@ import main.GameEnvironment;
 import javax.swing.JFrame;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JSlider;
 import javax.swing.JSeparator;
@@ -197,16 +199,20 @@ public class SetupScreen {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				boolean difficulty;
-				if (difficultyButtonGroup.getSelection().getActionCommand() == "True") {
-					difficulty = true;
+				if (!manager.lettersOnly(playerNameLabel.getText()) || playerNameLabel.getText().length() < 3 || playerNameLabel.getText().length() > 15) {
+					JOptionPane.showMessageDialog(setupScreenFrame, "Please change your name so that it contains no spaces and is between 3 and 15 characters");
+				} else {
+					if (difficultyButtonGroup.getSelection().getActionCommand() == "True") {
+						difficulty = true;
+					}
+					else {
+						difficulty = false;					
+					}
+					manager.setupGameEnvironment(playerNameInput.getText(), numDaysSlider.getValue(), startingMonsterButtonGroup.getSelection().getActionCommand(), difficulty);
+					// new GameEnvironment(playerNameInput.getText(), numDaysSlider.getValue(), startingMonsterButtonGroup.getSelection().getActionCommand(), difficulty);
+					setupScreenFrame.dispose();
+					manager.launchMainScreen();
 				}
-				else {
-					difficulty = false;					
-				}
-				manager.setupGameEnvironment(playerNameInput.getText(), numDaysSlider.getValue(), startingMonsterButtonGroup.getSelection().getActionCommand(), difficulty);
-				// new GameEnvironment(playerNameInput.getText(), numDaysSlider.getValue(), startingMonsterButtonGroup.getSelection().getActionCommand(), difficulty);
-				setupScreenFrame.dispose();
-				manager.launchMainScreen();
 				
 			}
 		});
