@@ -18,6 +18,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import javax.swing.SwingConstants;
 
 /**
 * In this class the user selects options depending on their preferences and chooses their starting Monster and can start 
@@ -108,17 +109,21 @@ public class SetupScreen {
 		
 		JLabel numDaysLabel = new JLabel("Number of days");
 		numDaysLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		numDaysLabel.setBounds(401, 79, 170, 28);
+		numDaysLabel.setBounds(370, 78, 170, 28);
 		setupScreenFrame.getContentPane().add(numDaysLabel);
 		
 		JSlider numDaysSlider = new JSlider();
-		numDaysSlider.setPaintTicks(true);
-		numDaysSlider.setToolTipText("Select the number of days you want to play the game for (between 2 and 20).");
+		numDaysSlider.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		numDaysSlider.setMinorTickSpacing(1);
 		numDaysSlider.setSnapToTicks(true);
+		numDaysSlider.setPaintTicks(true);
+		numDaysSlider.setPaintLabels(true);
+		numDaysSlider.setMajorTickSpacing(1);
+		numDaysSlider.setToolTipText("Select the number of days you want to play the game for (between 2 and 20).");
 		numDaysSlider.setMaximum(20);
 		numDaysSlider.setValue(2);
 		numDaysSlider.setMinimum(2);
-		numDaysSlider.setBounds(365, 109, 200, 26);
+		numDaysSlider.setBounds(287, 109, 278, 41);
 		setupScreenFrame.getContentPane().add(numDaysSlider);
 		
 		playerNameInput = new JTextField();
@@ -211,5 +216,4 @@ public class SetupScreen {
 		btnNewButton.setBounds(23, 319, 179, 85);
 		setupScreenFrame.getContentPane().add(btnNewButton);
 	}
-	
 }
