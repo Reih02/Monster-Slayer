@@ -131,18 +131,32 @@ public class GameEnvironment {
 	}
 	
 	/**
-	 * Method that checks if name string has only alphanumeric letters in it
+	 * Method that checks if name string has only alphanumeric letters in it,
+	 * and if it is between 3 and 15 chars long
 	 * @param name
-	 * @return
+	 * @return true or false depending on outcome
 	 */
-	public boolean lettersOnly(String name) {
+	public boolean isNameValid(String name) {
+		int stringLength = 0;
 		for (int i=0; i < name.length(); i++) {
-			char letter = name.charAt(i);
-			if (!Character.isLetter(letter)) {
+			if (stringLength > 15) {
+				System.out.println(1);
 				return false;
+			} else {
+				stringLength ++;
+				char letter = name.charAt(i);
+				if (!Character.isLetter(letter)) {
+					System.out.println(2);
+					return false;
+				}
 			}
 		}
-		return true;
+		if (stringLength < 3) {
+			System.out.println(3);
+			return false;
+		} else {
+			return true;
+		}
 	}
 	
 	public void launchMainScreen() {

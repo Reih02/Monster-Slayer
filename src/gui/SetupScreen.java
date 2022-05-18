@@ -199,8 +199,9 @@ public class SetupScreen {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				boolean difficulty;
-				if (!manager.lettersOnly(playerNameLabel.getText()) || playerNameLabel.getText().length() < 3 || playerNameLabel.getText().length() > 15) {
-					JOptionPane.showMessageDialog(setupScreenFrame, "Please change your name so that it contains no spaces and is between 3 and 15 characters");
+				System.out.println(playerNameInput.getText());
+				if (!manager.isNameValid(playerNameInput.getText())){
+					JOptionPane.showMessageDialog(setupScreenFrame, "Please change your name so that it contains only alphanumeric characters (no spaces), and is between 3 and 15 characters");
 				} else {
 					if (difficultyButtonGroup.getSelection().getActionCommand() == "True") {
 						difficulty = true;
