@@ -140,19 +140,16 @@ public class GameEnvironment {
 		int stringLength = 0;
 		for (int i=0; i < name.length(); i++) {
 			if (stringLength > 15) {
-				System.out.println(1);
 				return false;
 			} else {
 				stringLength ++;
 				char letter = name.charAt(i);
 				if (!Character.isLetter(letter)) {
-					System.out.println(2);
 					return false;
 				}
 			}
 		}
 		if (stringLength < 3) {
-			System.out.println(3);
 			return false;
 		} else {
 			return true;
@@ -368,7 +365,6 @@ public class GameEnvironment {
 			return "Item not found";
 		} else {
 			Item selectedItem = inventory.getInventoryList().get(itemNum - 1);
-			System.out.println(selectedItem);
 			int itemValue = selectedItem.getSellPrice();
 			slayer.increaseGold(itemValue);
 			inventory.removeItem(selectedItem);

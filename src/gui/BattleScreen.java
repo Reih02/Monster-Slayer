@@ -23,6 +23,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.AbstractListModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class BattleScreen {
 
@@ -80,6 +83,7 @@ public class BattleScreen {
 	 */
 	private void initialize() {
 		BattleScreenFrame = new JFrame();
+		BattleScreenFrame.getContentPane().setBackground(SystemColor.inactiveCaption);
 		BattleScreenFrame.setTitle("Battle Screen");
 		BattleScreenFrame.setBounds(100, 100, 631, 490);
 		BattleScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,8 +93,8 @@ public class BattleScreen {
 		
 		JLabel battlesLabel = new JLabel("Potential battles");
 		battlesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		battlesLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		battlesLabel.setBounds(85, 67, 425, 38);
+		battlesLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		battlesLabel.setBounds(85, 76, 425, 38);
 		BattleScreenFrame.getContentPane().add(battlesLabel);
 		
 		
@@ -103,12 +107,12 @@ public class BattleScreen {
 			}
 		});
 		goBackButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		goBackButton.setBounds(10, 11, 185, 62);
+		goBackButton.setBounds(420, 11, 185, 62);
 		BattleScreenFrame.getContentPane().add(goBackButton);
 		
 		JList<ArrayList<String>> potentialBattlesList = new JList<ArrayList<String>>();
 		potentialBattlesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		potentialBattlesList.setBorder(new CompoundBorder());
+		potentialBattlesList.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		potentialBattlesList.setModel(new AbstractListModel() {
 			ArrayList<String> values = gameManager.viewStringBattles();
 			public int getSize() {
@@ -140,7 +144,7 @@ public class BattleScreen {
 			}
 		});
 		startBattleButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		startBattleButton.setBounds(130, 352, 308, 88);
+		startBattleButton.setBounds(148, 352, 308, 88);
 		BattleScreenFrame.getContentPane().add(startBattleButton);
 	}
 }

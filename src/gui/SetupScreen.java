@@ -21,6 +21,7 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import javax.swing.SwingConstants;
+import java.awt.SystemColor;
 
 /**
 * In this class the user selects options depending on their preferences and chooses their starting Monster and can start 
@@ -79,6 +80,7 @@ public class SetupScreen {
 	 */
 	private void initialize() {
 		setupScreenFrame = new JFrame();
+		setupScreenFrame.getContentPane().setBackground(SystemColor.inactiveCaption);
 		setupScreenFrame.setTitle("Monster Slayer - Setup Screen");
 		setupScreenFrame.setBounds(100, 100, 631, 490);
 		setupScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,35 +88,38 @@ public class SetupScreen {
 		
 		JLabel welcomeLabel = new JLabel("Welcome, Monster Slayer!");
 		welcomeLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-		welcomeLabel.setBounds(157, 11, 324, 56);
+		welcomeLabel.setBounds(174, 11, 324, 56);
 		setupScreenFrame.getContentPane().add(welcomeLabel);
 		
 		JLabel difficultyLabel = new JLabel("Select Your Difficulty");
 		difficultyLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		difficultyLabel.setBounds(101, 78, 125, 41);
+		difficultyLabel.setBounds(101, 73, 125, 41);
 		setupScreenFrame.getContentPane().add(difficultyLabel);
 		
 		JRadioButton easyDifficultyButton = new JRadioButton("Easy");
+		easyDifficultyButton.setBackground(SystemColor.inactiveCaption);
 		easyDifficultyButton.setActionCommand("False");
 		easyDifficultyButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		easyDifficultyButton.setSelected(true);
 		difficultyButtonGroup.add(easyDifficultyButton);
-		easyDifficultyButton.setBounds(89, 112, 64, 23);
+		easyDifficultyButton.setBounds(86, 112, 64, 23);
 		setupScreenFrame.getContentPane().add(easyDifficultyButton);
 		
 		JRadioButton hardDifficultyButton = new JRadioButton("Hard");
+		hardDifficultyButton.setBackground(SystemColor.inactiveCaption);
 		hardDifficultyButton.setActionCommand("True");
 		hardDifficultyButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		difficultyButtonGroup.add(hardDifficultyButton);
-		hardDifficultyButton.setBounds(185, 112, 56, 23);
+		hardDifficultyButton.setBounds(184, 112, 56, 23);
 		setupScreenFrame.getContentPane().add(hardDifficultyButton);
 		
 		JLabel numDaysLabel = new JLabel("Number of days");
 		numDaysLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		numDaysLabel.setBounds(370, 78, 170, 28);
+		numDaysLabel.setBounds(371, 78, 170, 28);
 		setupScreenFrame.getContentPane().add(numDaysLabel);
 		
 		JSlider numDaysSlider = new JSlider();
+		numDaysSlider.setBackground(SystemColor.inactiveCaption);
 		numDaysSlider.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		numDaysSlider.setMinorTickSpacing(1);
 		numDaysSlider.setSnapToTicks(true);
@@ -125,73 +130,79 @@ public class SetupScreen {
 		numDaysSlider.setMaximum(20);
 		numDaysSlider.setValue(2);
 		numDaysSlider.setMinimum(2);
-		numDaysSlider.setBounds(287, 109, 278, 41);
+		numDaysSlider.setBounds(287, 112, 278, 41);
 		setupScreenFrame.getContentPane().add(numDaysSlider);
 		
 		playerNameInput = new JTextField();
 		playerNameInput.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		playerNameInput.setText("UserID");
-		playerNameInput.setBounds(47, 230, 118, 41);
+		playerNameInput.setBounds(96, 252, 118, 41);
 		setupScreenFrame.getContentPane().add(playerNameInput);
 		playerNameInput.setColumns(10);
 		
 		JLabel playerNameLabel = new JLabel("Enter Player Name Here");
 		playerNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		playerNameLabel.setBounds(23, 192, 155, 36);
+		playerNameLabel.setBounds(75, 205, 155, 36);
 		setupScreenFrame.getContentPane().add(playerNameLabel);
 		
 		JLabel selectMonsterLabel = new JLabel("Select your starting monster");
 		selectMonsterLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		selectMonsterLabel.setBounds(319, 192, 179, 62);
+		selectMonsterLabel.setBounds(331, 192, 179, 62);
 		setupScreenFrame.getContentPane().add(selectMonsterLabel);
 		
 		JRadioButton garenStartingMonster = new JRadioButton("Garen");
+		garenStartingMonster.setBackground(SystemColor.inactiveCaption);
 		garenStartingMonster.setActionCommand("Garen");
 		garenStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		garenStartingMonster.setSelected(true);
 		startingMonsterButtonGroup.add(garenStartingMonster);
 		garenStartingMonster.setToolTipText("Garen starts out with 90 health, 25 damage and heals 15 health each day.");
-		garenStartingMonster.setBounds(287, 248, 109, 23);
+		garenStartingMonster.setBounds(309, 261, 109, 23);
 		setupScreenFrame.getContentPane().add(garenStartingMonster);
 		
 		JRadioButton bloodMunchaStartingMonster = new JRadioButton("BloodMuncha");
+		bloodMunchaStartingMonster.setBackground(SystemColor.inactiveCaption);
 		bloodMunchaStartingMonster.setActionCommand("BloodMuncha");
 		bloodMunchaStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		startingMonsterButtonGroup.add(bloodMunchaStartingMonster);
 		bloodMunchaStartingMonster.setToolTipText("BloodMuncha starts out with 50 health, 45 damage and heals 25 health each day.");
-		bloodMunchaStartingMonster.setBounds(287, 299, 109, 23);
+		bloodMunchaStartingMonster.setBounds(309, 314, 109, 23);
 		setupScreenFrame.getContentPane().add(bloodMunchaStartingMonster);
 		
 		JRadioButton katarinaStartingMonster = new JRadioButton("Katarina");
+		katarinaStartingMonster.setBackground(SystemColor.inactiveCaption);
 		katarinaStartingMonster.setActionCommand("Katarina");
 		katarinaStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		startingMonsterButtonGroup.add(katarinaStartingMonster);
 		katarinaStartingMonster.setToolTipText("Katarina starts out with 80 health, 30 damage and heals 15 health each day.");
-		katarinaStartingMonster.setBounds(287, 352, 109, 23);
+		katarinaStartingMonster.setBounds(309, 366, 109, 23);
 		setupScreenFrame.getContentPane().add(katarinaStartingMonster);
 		
 		JRadioButton malphiteStartingMonster = new JRadioButton("Malphite");
+		malphiteStartingMonster.setBackground(SystemColor.inactiveCaption);
 		malphiteStartingMonster.setActionCommand("Malphite");
 		malphiteStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		startingMonsterButtonGroup.add(malphiteStartingMonster);
 		malphiteStartingMonster.setToolTipText("Malphite starts out with 120 health, 15 damage and heals 25 health each day.");
-		malphiteStartingMonster.setBounds(457, 248, 109, 23);
+		malphiteStartingMonster.setBounds(456, 261, 109, 23);
 		setupScreenFrame.getContentPane().add(malphiteStartingMonster);
 		
 		JRadioButton masterYiStartingMonster = new JRadioButton("MasterYi");
+		masterYiStartingMonster.setBackground(SystemColor.inactiveCaption);
 		masterYiStartingMonster.setActionCommand("MasterYi");
 		masterYiStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		startingMonsterButtonGroup.add(masterYiStartingMonster);
 		masterYiStartingMonster.setToolTipText("MasterYi starts out with 100 health, 20 damage and heals 20 health each day.");
-		masterYiStartingMonster.setBounds(457, 300, 109, 23);
+		masterYiStartingMonster.setBounds(456, 314, 109, 23);
 		setupScreenFrame.getContentPane().add(masterYiStartingMonster);
 		
 		JRadioButton volibearStartingMonster = new JRadioButton("Volibear");
+		volibearStartingMonster.setBackground(SystemColor.inactiveCaption);
 		volibearStartingMonster.setActionCommand("Volibear");
 		volibearStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		startingMonsterButtonGroup.add(volibearStartingMonster);
 		volibearStartingMonster.setToolTipText("Volibear starts out with 150 health, 10 damage and heals 20 health each day.");
-		volibearStartingMonster.setBounds(457, 353, 109, 23);
+		volibearStartingMonster.setBounds(456, 366, 109, 23);
 		setupScreenFrame.getContentPane().add(volibearStartingMonster);
 		
 		JButton btnNewButton = new JButton("Start Game!");
@@ -220,7 +231,7 @@ public class SetupScreen {
 	
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton.setToolTipText("Press this button once you are ready to start playing Monster-Slayer!");
-		btnNewButton.setBounds(23, 319, 179, 85);
+		btnNewButton.setBounds(60, 314, 179, 85);
 		setupScreenFrame.getContentPane().add(btnNewButton);
 	}
 }

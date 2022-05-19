@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import java.awt.SystemColor;
 
 public class MainScreen {
 
@@ -70,13 +71,14 @@ public class MainScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(SystemColor.inactiveCaption);
 		frame.setTitle("Home");
 		frame.setBounds(100, 100, 631, 490);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnViewTeam = new JButton("View Team");
-		btnViewTeam.setBackground(Color.CYAN);
+		btnViewTeam.setBackground(SystemColor.activeCaption);
 		btnViewTeam.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnViewTeam.setBounds(334, 160, 217, 48);
 		frame.getContentPane().add(btnViewTeam);
@@ -90,7 +92,7 @@ public class MainScreen {
 		});
 		
 		JButton storeBtn = new JButton("Visit Shop");
-		storeBtn.setBackground(Color.CYAN);
+		storeBtn.setBackground(SystemColor.activeCaption);
 		storeBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		storeBtn.setBounds(62, 78, 201, 48);
 		frame.getContentPane().add(storeBtn);
@@ -105,7 +107,7 @@ public class MainScreen {
 		});
 		
 		JButton inventoryBtn = new JButton("View Inventory");
-		inventoryBtn.setBackground(Color.CYAN);
+		inventoryBtn.setBackground(SystemColor.activeCaption);
 		inventoryBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		inventoryBtn.setBounds(334, 78, 217, 48);
 		frame.getContentPane().add(inventoryBtn);
@@ -120,7 +122,7 @@ public class MainScreen {
 		});
 		
 		JButton battleBtn = new JButton("Battle");
-		battleBtn.setBackground(Color.CYAN);
+		battleBtn.setBackground(SystemColor.activeCaption);
 		battleBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		battleBtn.setBounds(62, 160, 201, 48);
 		frame.getContentPane().add(battleBtn);
@@ -132,7 +134,7 @@ public class MainScreen {
 		});
 		
 		JButton sleepBtn = new JButton("Sleep");
-		sleepBtn.setBackground(Color.GREEN);
+		sleepBtn.setBackground(new Color(0, 204, 102));
 		sleepBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		sleepBtn.setBounds(201, 238, 201, 108);
 		frame.getContentPane().add(sleepBtn);
@@ -179,7 +181,7 @@ public class MainScreen {
 		frame.getContentPane().add(scoreLabel);
 		
 		JButton btnEndGame = new JButton("End Game");
-		btnEndGame.setBackground(Color.RED);
+		btnEndGame.setBackground(new Color(255, 51, 51));
 		btnEndGame.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnEndGame.setBounds(201, 378, 201, 48);
 		frame.getContentPane().add(btnEndGame);

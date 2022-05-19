@@ -28,6 +28,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import java.awt.SystemColor;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class InventoryScreen {
 
@@ -75,13 +78,16 @@ public class InventoryScreen {
 	 */
 	private void initialize() {
 		frmYourInventory = new JFrame();
+		frmYourInventory.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 13));
+		frmYourInventory.getContentPane().setBackground(SystemColor.inactiveCaption);
 		frmYourInventory.setTitle("Your Inventory");
 		frmYourInventory.setBounds(100, 100, 631, 490);
 		frmYourInventory.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmYourInventory.getContentPane().setLayout(null);
 		
 		JButton homeBtn = new JButton("Home");
-		homeBtn.setBounds(242, 11, 140, 45);
+		homeBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		homeBtn.setBounds(493, 11, 116, 45);
 		frmYourInventory.getContentPane().add(homeBtn);
 		homeBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -97,10 +103,12 @@ public class InventoryScreen {
 		}
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel.setBackground(SystemColor.text);
 		panel.setBounds(143, 56, 328, 264);
 		frmYourInventory.getContentPane().add(panel);
 		JList<Item> inventoryList = new JList<Item>(listModel);
-		inventoryList.setFont(new Font("Dialog", Font.PLAIN, 10));
+		inventoryList.setFont(new Font("Dialog", Font.BOLD, 11));
 		panel.add(inventoryList);
 		inventoryList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
@@ -143,19 +151,20 @@ public class InventoryScreen {
 		});
 		
 		JLabel lblNewLabel = new JLabel("Your items:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(12, 46, 93, 29);
+		lblNewLabel.setBounds(259, 19, 116, 29);
 		frmYourInventory.getContentPane().add(lblNewLabel);
 		
 		JLabel lblYourCurrentGold = new JLabel("Gold Balance:");
-		lblYourCurrentGold.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblYourCurrentGold.setBounds(12, 112, 93, 29);
+		lblYourCurrentGold.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblYourCurrentGold.setBounds(10, 168, 123, 29);
 		frmYourInventory.getContentPane().add(lblYourCurrentGold);
 		
 		JLabel goldDisplay = new JLabel("" + inventoryManager.getSlayerGold() + "G");
-		goldDisplay.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		goldDisplay.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		goldDisplay.setHorizontalAlignment(SwingConstants.CENTER);
-		goldDisplay.setBounds(12, 135, 93, 29);
+		goldDisplay.setBounds(22, 191, 93, 29);
 		frmYourInventory.getContentPane().add(goldDisplay);
 		
 	}

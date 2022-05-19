@@ -20,6 +20,7 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
+import java.awt.SystemColor;
 
 public class ViewTeamScreen {
 
@@ -69,21 +70,24 @@ public class ViewTeamScreen {
 	 */
 	private void initialize() {
 		frmTeam = new JFrame();
+		frmTeam.getContentPane().setBackground(SystemColor.inactiveCaption);
 		frmTeam.setTitle("Team");
 		frmTeam.setBounds(100, 100, 631, 490);
 		frmTeam.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTeam.getContentPane().setLayout(null);
 		
 		JTextArea txtrYourTeam = new JTextArea();
+		txtrYourTeam.setBackground(SystemColor.inactiveCaption);
 		txtrYourTeam.setFont(new Font("Tahoma", Font.BOLD, 14));
 		txtrYourTeam.setEditable(false);
 		txtrYourTeam.setText("Your team:");
-		txtrYourTeam.setBounds(259, 11, 84, 22);
+		txtrYourTeam.setBounds(229, 32, 84, 22);
 		frmTeam.getContentPane().add(txtrYourTeam);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		panel.setBounds(112, 44, 434, 337);
+		panel.setBackground(SystemColor.text);
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel.setBounds(57, 58, 434, 337);
 		frmTeam.getContentPane().add(panel);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -100,7 +104,7 @@ public class ViewTeamScreen {
 		
 		JButton homeBtn = new JButton("Home");
 		homeBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		homeBtn.setBounds(20, 11, 106, 24);
+		homeBtn.setBounds(495, 4, 114, 50);
 		frmTeam.getContentPane().add(homeBtn);
 		homeBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

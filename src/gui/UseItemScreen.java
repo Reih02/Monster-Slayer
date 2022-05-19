@@ -22,6 +22,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
+import java.awt.SystemColor;
 
 public class UseItemScreen {
 
@@ -71,14 +72,15 @@ public class UseItemScreen {
 	 */
 	private void initialize() {
 		frmSelectAMonster = new JFrame();
+		frmSelectAMonster.getContentPane().setBackground(SystemColor.inactiveCaption);
 		frmSelectAMonster.setTitle("Select a monster");
 		frmSelectAMonster.setBounds(100, 100, 631, 490);
 		frmSelectAMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSelectAMonster.getContentPane().setLayout(null);
 		
 		JLabel lblSelectAMonster = new JLabel("Select a monster to use your selected item on:");
-		lblSelectAMonster.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblSelectAMonster.setBounds(149, 19, 357, 33);
+		lblSelectAMonster.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblSelectAMonster.setBounds(127, 71, 412, 33);
 		frmSelectAMonster.getContentPane().add(lblSelectAMonster);
 		
 		DefaultListModel<Monster> listModel = new DefaultListModel<>();
@@ -88,20 +90,21 @@ public class UseItemScreen {
 		}
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.text);
 		panel.setBounds(92, 108, 447, 208);
 		frmSelectAMonster.getContentPane().add(panel);
 		JList<Monster> monsterList = new JList<Monster>(listModel);
-		monsterList.setFont(new Font("Dialog", Font.PLAIN, 11));
+		monsterList.setFont(new Font("Dialog", Font.BOLD, 11));
 		panel.add(monsterList);
 		
 		JButton useItemButton = new JButton("Use item on selected monster");
 		useItemButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		useItemButton.setBounds(170, 346, 288, 42);
+		useItemButton.setBounds(182, 337, 278, 42);
 		frmSelectAMonster.getContentPane().add(useItemButton);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnBack.setBounds(10, 13, 102, 49);
+		btnBack.setBounds(507, 11, 102, 49);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				shutdownWindow();
