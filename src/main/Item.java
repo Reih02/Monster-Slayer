@@ -24,7 +24,7 @@ public class Item implements Purchasable {
 	public Item(int buyPrice, int sellValue, String name, int bonus, boolean difficulty) {
 		if(difficulty == true) {
 			purchasePrice = buyPrice + 5;
-			sellPrice = sellValue - 5;
+			sellPrice = (int) Math.round(sellValue * 0.5);
 		}
 		else {
 			purchasePrice = buyPrice;

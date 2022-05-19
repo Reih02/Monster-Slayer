@@ -467,12 +467,9 @@ public class GameEnvironment {
 	public void removeBattle(int index) {
 		battles.remove(index);
 	}
-	
-	// Add functionality for battling process
+
 	
 	public String visitShop() {
-		// Allow selling of monsters and items back to shop
-		// Allow purchase of monster only if user has less than 4 monsters already
 		String shopVisitString = "-------------\n";
 		shopVisitString += "Your current gold: " + slayer.getGold() + "\n";
 		for (int i=0; i < shop.getPurchasableList().size(); i++) {
