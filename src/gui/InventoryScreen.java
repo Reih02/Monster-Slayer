@@ -12,7 +12,7 @@ import javax.swing.ListSelectionModel;
 import main.GameEnvironment;
 import main.Item;
 import main.Monster;
-import monsters.Garen;
+import monsters.Jaren;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;

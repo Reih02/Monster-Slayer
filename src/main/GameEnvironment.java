@@ -96,23 +96,23 @@ public class GameEnvironment {
 		inventory = new Inventory();
 		shop = new Shop(difficulty);
 		switch(startMonster) {
-			case "BloodMuncha":
-				startingMonster = new BloodMuncha(difficulty);
+			case "BloodEater":
+				startingMonster = new BloodEater(difficulty);
 				break;
-			case "Garen":
-				startingMonster = new Garen(difficulty);
+			case "Jaren":
+				startingMonster = new Jaren(difficulty);
 				break;
-			case "Katarina":
-				startingMonster = new Katarina(difficulty);
+			case "Katarine":
+				startingMonster = new Katarine(difficulty);
 				break;
-			case "Malphite":
-				startingMonster = new Malphite(difficulty);
+			case "Maltite":
+				startingMonster = new Maltite(difficulty);
 				break;
-			case "MasterYi":
-				startingMonster = new MasterYi(difficulty);
+			case "ExpertYe":
+				startingMonster = new ExpertYe(difficulty);
 				break;
-			case "Volibear":
-				startingMonster = new Volibear(difficulty);
+			case "VolicityCub":
+				startingMonster = new VolicityCub(difficulty);
 				break;
 		}
 		slayer.addMonster(startingMonster);

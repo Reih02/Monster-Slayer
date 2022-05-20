@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import main.Battle;
 import main.Monster;
-import monsters.MasterYi;
+import monsters.ExpertYe;
 
 /**
  * Test for the Battle class
@@ -53,9 +53,9 @@ class BattleTest {
 	 */
 	@BeforeEach
 	public void testSetUp() {
-		masterYi1 = new MasterYi(false);
-		masterYi2 = new MasterYi(false);
-		masterYi3 = new MasterYi(false);
+		masterYi1 = new ExpertYe(false);
+		masterYi2 = new ExpertYe(false);
+		masterYi3 = new ExpertYe(false);
 		enemyMonsters.add(masterYi1);
 		alliedMonsters.add(masterYi2);		
 	}

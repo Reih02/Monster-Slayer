@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import main.GameEnvironment;
 import main.Monster;
-import monsters.Garen;
+import monsters.Jaren;
 
 class GameEnvironmentTest {
 
@@ -18,7 +18,7 @@ class GameEnvironmentTest {
 	
 	@Test
 	void gameSetupTest() {
-		Monster monsterThing = new Garen();
+		Monster monsterThing = new Jaren();
 		GameEnvironment game = new GameEnvironment();
 		assertEquals("Good name", game.gameSetup("Steve", 5, monsterThing, "Easy"));
 	}

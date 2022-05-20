@@ -18,12 +18,12 @@ import main.Monster;
 import main.RandomEnvironment;
 import main.Shop;
 import main.Slayer;
-import monsters.BloodMuncha;
-import monsters.Garen;
-import monsters.Katarina;
-import monsters.Malphite;
-import monsters.MasterYi;
-import monsters.Volibear;
+import monsters.BloodEater;
+import monsters.Jaren;
+import monsters.Katarine;
+import monsters.Maltite;
+import monsters.ExpertYe;
+import monsters.VolicityCub;
 
 public class GameEnvironment_cli {
 	
@@ -112,22 +112,22 @@ public class GameEnvironment_cli {
 			// TESTING
 			switch(startMonster) {
 				case "BloodMuncha":
-					startingMonster = new BloodMuncha(difficulty);
+					startingMonster = new BloodEater(difficulty);
 					break;
-				case "Garen":
-					startingMonster = new Garen(difficulty);
+				case "Jaren":
+					startingMonster = new Jaren(difficulty);
 					break;
-				case "Katarina":
-					startingMonster = new Katarina(difficulty);
+				case "Katarine":
+					startingMonster = new Katarine(difficulty);
 					break;
-				case "Malphite":
-					startingMonster = new Malphite(difficulty);
+				case "Maltite":
+					startingMonster = new Maltite(difficulty);
 					break;
-				case "MasterYi":
-					startingMonster = new MasterYi(difficulty);
+				case "ExpertYe":
+					startingMonster = new ExpertYe(difficulty);
 					break;
-				case "Volibear":
-					startingMonster = new Volibear(difficulty);
+				case "VolicityCub":
+					startingMonster = new VolicityCub(difficulty);
 					break;
 			}
 			slayer.addMonster(startingMonster);
@@ -441,7 +441,7 @@ public class GameEnvironment_cli {
 	
 	// Testing purposes
 	public static void main(String[] args) {
-		GameEnvironment_cli game = new GameEnvironment_cli("Steve", 5, "Garen", false);
+		GameEnvironment_cli game = new GameEnvironment_cli("Steve", 5, "Jaren", false);
 		
 		System.out.println(game.viewBattles());
 		System.out.println(game.chooseBattle(0));

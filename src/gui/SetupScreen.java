@@ -150,58 +150,58 @@ public class SetupScreen {
 		selectMonsterLabel.setBounds(331, 192, 179, 62);
 		setupScreenFrame.getContentPane().add(selectMonsterLabel);
 		
-		JRadioButton garenStartingMonster = new JRadioButton("Garen");
+		JRadioButton garenStartingMonster = new JRadioButton("Jaren");
 		garenStartingMonster.setBackground(SystemColor.inactiveCaption);
-		garenStartingMonster.setActionCommand("Garen");
+		garenStartingMonster.setActionCommand("Jaren");
 		garenStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		garenStartingMonster.setSelected(true);
 		startingMonsterButtonGroup.add(garenStartingMonster);
-		garenStartingMonster.setToolTipText("Garen starts out with 90 health, 25 damage and heals 15 health each day.");
+		garenStartingMonster.setToolTipText("Jaren starts out with 90 health, 25 damage and heals 15 health each day.");
 		garenStartingMonster.setBounds(309, 261, 109, 23);
 		setupScreenFrame.getContentPane().add(garenStartingMonster);
 		
-		JRadioButton bloodMunchaStartingMonster = new JRadioButton("BloodMuncha");
-		bloodMunchaStartingMonster.setBackground(SystemColor.inactiveCaption);
-		bloodMunchaStartingMonster.setActionCommand("BloodMuncha");
-		bloodMunchaStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		startingMonsterButtonGroup.add(bloodMunchaStartingMonster);
-		bloodMunchaStartingMonster.setToolTipText("BloodMuncha starts out with 50 health, 45 damage and heals 25 health each day.");
-		bloodMunchaStartingMonster.setBounds(309, 314, 109, 23);
-		setupScreenFrame.getContentPane().add(bloodMunchaStartingMonster);
+		JRadioButton bloodEaterStartingMonster = new JRadioButton("BloodEater");
+		bloodEaterStartingMonster.setBackground(SystemColor.inactiveCaption);
+		bloodEaterStartingMonster.setActionCommand("BloodEater");
+		bloodEaterStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		startingMonsterButtonGroup.add(bloodEaterStartingMonster);
+		bloodEaterStartingMonster.setToolTipText("BloodEater starts out with 50 health, 45 damage and heals 25 health each day.");
+		bloodEaterStartingMonster.setBounds(309, 314, 109, 23);
+		setupScreenFrame.getContentPane().add(bloodEaterStartingMonster);
 		
-		JRadioButton katarinaStartingMonster = new JRadioButton("Katarina");
+		JRadioButton katarinaStartingMonster = new JRadioButton("Katarine");
 		katarinaStartingMonster.setBackground(SystemColor.inactiveCaption);
-		katarinaStartingMonster.setActionCommand("Katarina");
+		katarinaStartingMonster.setActionCommand("Katarine");
 		katarinaStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		startingMonsterButtonGroup.add(katarinaStartingMonster);
-		katarinaStartingMonster.setToolTipText("Katarina starts out with 80 health, 30 damage and heals 15 health each day.");
+		katarinaStartingMonster.setToolTipText("Katarine starts out with 80 health, 30 damage and heals 15 health each day.");
 		katarinaStartingMonster.setBounds(309, 366, 109, 23);
 		setupScreenFrame.getContentPane().add(katarinaStartingMonster);
 		
-		JRadioButton malphiteStartingMonster = new JRadioButton("Malphite");
+		JRadioButton malphiteStartingMonster = new JRadioButton("Maltite");
 		malphiteStartingMonster.setBackground(SystemColor.inactiveCaption);
-		malphiteStartingMonster.setActionCommand("Malphite");
+		malphiteStartingMonster.setActionCommand("Maltite");
 		malphiteStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		startingMonsterButtonGroup.add(malphiteStartingMonster);
-		malphiteStartingMonster.setToolTipText("Malphite starts out with 120 health, 15 damage and heals 25 health each day.");
+		malphiteStartingMonster.setToolTipText("Maltite starts out with 120 health, 15 damage and heals 25 health each day.");
 		malphiteStartingMonster.setBounds(456, 261, 109, 23);
 		setupScreenFrame.getContentPane().add(malphiteStartingMonster);
 		
-		JRadioButton masterYiStartingMonster = new JRadioButton("MasterYi");
+		JRadioButton masterYiStartingMonster = new JRadioButton("ExpertYe");
 		masterYiStartingMonster.setBackground(SystemColor.inactiveCaption);
-		masterYiStartingMonster.setActionCommand("MasterYi");
+		masterYiStartingMonster.setActionCommand("ExpertYe");
 		masterYiStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		startingMonsterButtonGroup.add(masterYiStartingMonster);
-		masterYiStartingMonster.setToolTipText("MasterYi starts out with 100 health, 20 damage and heals 20 health each day.");
+		masterYiStartingMonster.setToolTipText("ExpertYe starts out with 100 health, 20 damage and heals 20 health each day.");
 		masterYiStartingMonster.setBounds(456, 314, 109, 23);
 		setupScreenFrame.getContentPane().add(masterYiStartingMonster);
 		
-		JRadioButton volibearStartingMonster = new JRadioButton("Volibear");
+		JRadioButton volibearStartingMonster = new JRadioButton("VolicityCub");
 		volibearStartingMonster.setBackground(SystemColor.inactiveCaption);
-		volibearStartingMonster.setActionCommand("Volibear");
+		volibearStartingMonster.setActionCommand("VolicityCub");
 		volibearStartingMonster.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		startingMonsterButtonGroup.add(volibearStartingMonster);
-		volibearStartingMonster.setToolTipText("Volibear starts out with 150 health, 10 damage and heals 20 health each day.");
+		volibearStartingMonster.setToolTipText("VolicityCub starts out with 150 health, 10 damage and heals 20 health each day.");
 		volibearStartingMonster.setBounds(456, 366, 109, 23);
 		setupScreenFrame.getContentPane().add(volibearStartingMonster);
 		
@@ -210,7 +210,6 @@ public class SetupScreen {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				boolean difficulty;
-				System.out.println(playerNameInput.getText());
 				if (!manager.isNameValid(playerNameInput.getText())){
 					JOptionPane.showMessageDialog(setupScreenFrame, "Please change your name so that it contains only alphanumeric characters (no spaces), and is between 3 and 15 characters");
 				} else {
@@ -221,7 +220,6 @@ public class SetupScreen {
 						difficulty = false;					
 					}
 					manager.setupGameEnvironment(playerNameInput.getText(), numDaysSlider.getValue(), startingMonsterButtonGroup.getSelection().getActionCommand(), difficulty);
-					// new GameEnvironment(playerNameInput.getText(), numDaysSlider.getValue(), startingMonsterButtonGroup.getSelection().getActionCommand(), difficulty);
 					setupScreenFrame.dispose();
 					manager.launchMainScreen();
 				}

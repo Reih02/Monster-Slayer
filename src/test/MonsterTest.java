@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import main.Monster;
-import monsters.MasterYi;
+import monsters.ExpertYe;
 
 /**
  * Test for the Monster class.
@@ -21,11 +21,11 @@ class MonsterTest {
 	private Monster testMonster;
 	
 	/**
-	 * Creates a MasterYi object for each test
+	 * Creates a ExpertYe object for each test
 	 */
 	@BeforeEach
 	public void testSetUp() {
-		testMonster = new MasterYi(false);
+		testMonster = new ExpertYe(false);
 	}
     
 	/**

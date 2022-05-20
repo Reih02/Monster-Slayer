@@ -25,7 +25,7 @@ public class CommandLine {
 		System.out.println("Please enter the number of in-game days that you would like to play for: ");
 		int days = daysInput.nextInt();
 		Scanner monsterInput = new Scanner(System.in);
-		System.out.println("Possible monsters: 'BloodMuncha', 'Garen', 'Katarina', 'Malphite', 'MasterYi', 'Volibear'");
+		System.out.println("Possible monsters: 'BloodMuncha', 'Jaren', 'Katarine', 'Maltite', 'ExpertYe', 'VolicityCub'");
 		System.out.println("Please enter the name of the monster you would like to start with: ");
 		String monsterChoice = monsterInput.nextLine();
 		Scanner difficultyInput = new Scanner(System.in);

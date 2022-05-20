@@ -3,12 +3,12 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
-import monsters.BloodMuncha;
-import monsters.Garen;
-import monsters.Katarina;
-import monsters.Malphite;
-import monsters.MasterYi;
-import monsters.Volibear;
+import monsters.BloodEater;
+import monsters.Jaren;
+import monsters.Katarine;
+import monsters.Maltite;
+import monsters.ExpertYe;
+import monsters.VolicityCub;
 
 
 /**
@@ -100,12 +100,12 @@ public class RandomEnvironment {
 	 */
 	public boolean monsterArrives() {
 		ArrayList<Monster> potentialMonsters = new ArrayList<Monster>();
-		potentialMonsters.add(new MasterYi(difficulty));
-		potentialMonsters.add(new Garen(difficulty));
-		potentialMonsters.add(new Katarina(difficulty));
-		potentialMonsters.add(new BloodMuncha(difficulty));
-		potentialMonsters.add(new Malphite(difficulty));
-		potentialMonsters.add(new Volibear(difficulty));
+		potentialMonsters.add(new ExpertYe(difficulty));
+		potentialMonsters.add(new Jaren(difficulty));
+		potentialMonsters.add(new Katarine(difficulty));
+		potentialMonsters.add(new BloodEater(difficulty));
+		potentialMonsters.add(new Maltite(difficulty));
+		potentialMonsters.add(new VolicityCub(difficulty));
 		
 		Random randomArrives = new Random();
 	    int number = 1;
@@ -136,12 +136,12 @@ public class RandomEnvironment {
 		
 		ArrayList<Monster> shop = new ArrayList<Monster>();
 		ArrayList<Monster> potentialMonsters = new ArrayList<Monster>();
-		potentialMonsters.add(new MasterYi(difficulty));
-		potentialMonsters.add(new Garen(difficulty));
-		potentialMonsters.add(new Katarina(difficulty));
-		potentialMonsters.add(new BloodMuncha(difficulty));
-		potentialMonsters.add(new Malphite(difficulty));
-		potentialMonsters.add(new Volibear(difficulty));
+		potentialMonsters.add(new ExpertYe(difficulty));
+		potentialMonsters.add(new Jaren(difficulty));
+		potentialMonsters.add(new Katarine(difficulty));
+		potentialMonsters.add(new BloodEater(difficulty));
+		potentialMonsters.add(new Maltite(difficulty));
+		potentialMonsters.add(new VolicityCub(difficulty));
 		
 		Random amount = new Random();
 		int number = amount.nextInt(3);
@@ -165,12 +165,12 @@ public class RandomEnvironment {
 		ArrayList<ArrayList<Monster>> battles = new ArrayList<ArrayList<Monster>>();
 		
 		ArrayList<Monster> potentialMonsters = new ArrayList<Monster>();
-		potentialMonsters.add(new MasterYi(difficulty));
-		potentialMonsters.add(new Garen(difficulty));
-		potentialMonsters.add(new Katarina(difficulty));
-		potentialMonsters.add(new BloodMuncha(difficulty));
-		potentialMonsters.add(new Malphite(difficulty));
-		potentialMonsters.add(new Volibear(difficulty));
+		potentialMonsters.add(new ExpertYe(difficulty));
+		potentialMonsters.add(new Jaren(difficulty));
+		potentialMonsters.add(new Katarine(difficulty));
+		potentialMonsters.add(new BloodEater(difficulty));
+		potentialMonsters.add(new Maltite(difficulty));
+		potentialMonsters.add(new VolicityCub(difficulty));
 		Random randomBattle = new Random();
 		int number = randomBattle.nextInt(3);
 		

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import main.Monster;
 import main.RandomEnvironment;
 
-import monsters.MasterYi;
+import monsters.ExpertYe;
 
 /**
  * Random Environment test that ensures the class is working as expected.
@@ -35,7 +35,7 @@ class RandomEnvironmentTest {
 	 */
 	@BeforeEach
 	public void setUpTests() {
-		MasterYi masterYi = new MasterYi(false);
+		ExpertYe masterYi = new ExpertYe(false);
 		testList = new ArrayList<Monster>();
 		testList.add(masterYi);
 		randomTest = new RandomEnvironment(testList,false);
