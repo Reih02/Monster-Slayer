@@ -15,16 +15,16 @@ import main.Item;
  * */
 class InventoryTest {
 
-	private Item testApple = new Apple();
-	private Item testHealthPotion = new HealthPotion();
+	private Item testApple = new Apple(false);
+	private Item testHealthPotion = new HealthPotion(false);
 	private Item testSteak;
 	private Item testStrengthPotion;
 	private Inventory testInventory;
 	
 	@BeforeEach
 	public void setUp() throws Exception {
-		testApple = new Apple();
-		testHealthPotion = new HealthPotion();
+		testApple = new Apple(false);
+		testHealthPotion = new HealthPotion(false);
 		testInventory = new Inventory();
 		testInventory.addItem(testApple);
 		testInventory.addItem(testHealthPotion);
@@ -33,8 +33,8 @@ class InventoryTest {
 	
 	@Test
 	void testAddItem() {
-		testSteak = new Steak();
-		testStrengthPotion = new StrengthPotion();
+		testSteak = new Steak(false);
+		testStrengthPotion = new StrengthPotion(false);
 		testInventory.addItem(testSteak);
 		testInventory.addItem(testStrengthPotion);
 		assertEquals(4, testInventory.getInventoryList().size());
@@ -47,7 +47,7 @@ class InventoryTest {
 		assertEquals(2, testInventory.getInventoryList().size());
 		testInventory.removeItem(testApple);
 		assertEquals(1, testInventory.getInventoryList().size());
-		testSteak = new Steak();
+		testSteak = new Steak(false);
 		testInventory.addItem(testSteak);
 		testInventory.addItem(testHealthPotion);
 		assertEquals(3, testInventory.getInventoryList().size());
