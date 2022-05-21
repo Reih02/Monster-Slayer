@@ -117,8 +117,6 @@ public class GameEnvironment {
 		}
 		slayer.addMonster(startingMonster);
 		randomEnv = new RandomEnvironment(slayer.getCurrMonsters(), difficulty);
-		changePurchasableMonsters();
-		// Sets the gold and points gained from winning battles depending on difficulty
 		if (difficultySetting == true) {
 			baseGoldGained = 80;
 			basePointsGained = 1000;
@@ -243,12 +241,6 @@ public class GameEnvironment {
 		slayer.increaseDays();
 	}
 	
-	public void changePurchasableMonsters() {
-		ArrayList<Monster> newMonsters = randomEnv.monstersInShop();
-		for (int i=0; i < newMonsters.size(); i++) {
-			shop.addPurchasable(newMonsters.get(i));
-		}
-	}
 	
 	/**
 	 * Gets gold balance directly from slayer class
