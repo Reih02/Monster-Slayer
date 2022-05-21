@@ -71,16 +71,6 @@ class BattleTest {
 		assertFalse(battle.fight());		
 	}
 	
-	/**
-	 * Tests the attack method in the Battle class and makes sure it works as expected.
-	 */
-	@Test
-	void attackTest() {
-		battle = new Battle(enemyMonsters, alliedMonsters);
-		battle.attack(masterYi1, masterYi2);
-		assertEquals(80, masterYi2.getCurrentHealth());
-		
-	}
 	
 	/**
 	 * Tests the fight method when the allied monsters are stronger than the enemy monsters
