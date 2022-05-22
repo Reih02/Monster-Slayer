@@ -271,7 +271,7 @@ public class GameEnvironment {
 	/**
 	 * Sets index of selected item in GUI inventory screen
 	 * for use in UseItemScreen
-	 * @param The slot of the users inventory that was chosen.
+	 * @param index The slot of the users inventory that was chosen.
 	 */
 	public void setGuiItemIndex(int index) {
 		inventorySelectedItemIndex = index;
