@@ -40,22 +40,42 @@ public class Item implements Purchasable {
 	/*
 	 * Getter methods
 	 * */
+	
+	/**
+	* The buy price of the item.
+	* @return The buy price.
+	**/
 	public int getBuyPrice() {
 		return purchasePrice;
 	}
-
+	
+        /**
+	 * gets the sell price of the item.
+	 * @return the sellPrice of the item.
+	 */
 	public int getSellPrice() {
 		return sellPrice;
 	}
 	
+	/**
+	 * gets the name of the item.
+	 * @return the name of the item.
+	 */
 	public String getName() {
 		return itemName;
 	}
 	
+	/**
+	 * gets the bonus value of the item.
+	 * @return the bonus value of the item.
+	 */
 	public int getBonusValue() {
 		return bonusValue;
 	}
-	
+	/**
+	 * A method which prints the item out in a nice manner.
+	 * @return a string representation of an Item object.
+	 */
 	public String toString() {
 		// return getName() + ", item costs " + getBuyPrice() + " gold, the item's bonus value is " + getBonusValue() + ".";
 		return "Name: '" + getName() + "', Cost: " + getBuyPrice() + "G, Value: " + getSellPrice() + "G, Bonus: " + getBonusValue();
