@@ -154,61 +154,111 @@ public class GameEnvironment {
 		}
 	}
 	
+	/**
+	 * Method that launches the mainScreen.
+	 */
 	public void launchMainScreen() {
 		new MainScreen(this);
 	}
 	
+	/**
+	 * Method that closes the mainScreen.
+	 * @param mainScreen the main screen.
+	 */
 	public void closeMainScreen(MainScreen mainScreen) {
 		mainScreen.closeWindow();
 	}
 	
+	/**
+	 * Method that launches the setupScreen.
+	 */
 	public void launchSetupScreen() {
 		new SetupScreen(this);
 	}
 	
+	/**
+	 * Method that closes the setupScreen.
+	 * @param setupScreen the setupScreen.
+	 */
 	public void closeSetupScreen(SetupScreen setupScreen) {
 		setupScreen.closeWindow();
 	}
 	
+	/**
+	 * Method that launches the storeScreen.
+	 */
 	public void launchStoreScreen() {
 		new StoreScreen(this);
 	}
 	
+	/**
+	 * Method that closes the storeScreen.
+	 * @param storeScreen The storeScreen.
+	 */
 	public void closeStoreScreen(StoreScreen storeScreen) {
 		storeScreen.closeWindow();
 	}
 	
+	/**
+	 * Method that launches the inventory screen.
+	 */
 	public void launchInventoryScreen() {
 		new InventoryScreen(this);
 	}
 	
+    /**
+     * Method that closes the inventoryScreen.
+     * @param inventoryScreen The inventoryScreen.
+     */
 	public void closeInventoryScreen(InventoryScreen inventoryScreen) {
 		inventoryScreen.closeWindow();
 	}
 	
+	/**
+	 * method that launches the useItemScreen.
+	 */
 	public void launchUseItemScreen() {
 		new UseItemScreen(this);
 	}
 	
+	/**
+	 * Method that closes the useItemScreen.
+	 * @param useItemScreen The useItemScreen.
+	 */
 	public void closeUseItemScreen(UseItemScreen useItemScreen) {
 		useItemScreen.closeWindow();
 	}
 	
+	/**
+	 * Method that launches the viewTeamScreen.
+	 */
 	public void launchViewTeamScreen() {
 		new ViewTeamScreen(this);
 	}
 	
+	/**
+	 * Method that closes the viewTeamScreen.
+	 * @param viewTeamScreen the viewTeamScreen.
+	 */
 	public void closeViewTeamScreen(ViewTeamScreen viewTeamScreen) {
 		viewTeamScreen.closeWindow();
 	}
 	
+	/**
+	 * Method that launches the battleScreen
+	 */
 	public void launchBattleScreen() {
 		new BattleScreen(this);
 	}
 	
+	/**
+	 * method that closes the battleScreen.
+	 * @param battleScreen the battleScreen.
+	 */
 	public void closeBattleScreen(BattleScreen battleScreen) {
 		battleScreen.closeWindow();
 	}
+	
 	/**
 	 * Gets index of selected item in GUI inventory screen
 	 * for use in UseItemScreen
@@ -348,10 +398,18 @@ public class GameEnvironment {
 		return inventoryString;
 	}
 	
+	/**
+	 * Method that returns the list of items in the inventory.
+	 * @return an ArrayList filled with items.
+	 */
 	public ArrayList<Item> getInventoryRaw(){
 		return inventory.getInventoryList();
 	}
 	
+	/**
+	 * A method that returns the inventory for the gui.
+	 * @return an ArrayList filled with items.
+	 */
 	public ArrayList<Item> guiGetInventory(){
 		return inventory.getInventoryList();
 	}
@@ -372,7 +430,10 @@ public class GameEnvironment {
 			return "Item sold!\nYour current gold: " + slayer.getGold();
 		}
 	}
-	
+	/**
+	 * Method that returns the current Monsters
+	 * @return An ArrayList filled with monsters.
+	 */
 	public ArrayList<Monster> getMonsters(){
 		return slayer.getCurrMonsters();
 	}
@@ -419,6 +480,10 @@ public class GameEnvironment {
 		return battles;
 	}
 	
+	/**
+	 * A method that prints the battles out in a nice manner.
+	 * @return Returns a list filled with Strings that are the names of Monsters.
+	 */
 	public ArrayList<String> viewStringBattles(){
 		ArrayList<String> niceBattles = new ArrayList<String>();
 		for(int i = 0; i < battles.size(); i++) {
@@ -466,6 +531,10 @@ public class GameEnvironment {
 		}
 	}
 	
+	/**
+	 * Method that removes a battle from the current battle list.
+	 * @param index the index of the battle getting removed.
+	 */
 	public void removeBattle(int index) {
 		battles.remove(index);
 	}
