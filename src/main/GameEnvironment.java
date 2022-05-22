@@ -83,10 +83,10 @@ public class GameEnvironment {
 	
 	/**
 	 * Sets up game by getting the user's chosen variables
-	 * @param playerName
-	 * @param gameLength
-	 * @param startMonster
-	 * @param difficulty
+	 * @param playerName The name of the player.
+	 * @param gameLength The amount of days the game will go on for.
+	 * @param startMonster The Monster that the player will start with.
+	 * @param difficulty The difficulty of the game.
 	 */
 	public void setupGameEnvironment(String playerName, int gameLength, String startMonster, boolean difficulty) {
 		
@@ -131,7 +131,7 @@ public class GameEnvironment {
 	/**
 	 * Method that checks if name string has only alphanumeric letters in it,
 	 * and if it is between 3 and 15 chars long
-	 * @param name
+	 * @param name The player's name.
 	 * @return true or false depending on outcome
 	 */
 	public boolean isNameValid(String name) {
@@ -212,7 +212,7 @@ public class GameEnvironment {
 	/**
 	 * Gets index of selected item in GUI inventory screen
 	 * for use in UseItemScreen
-	 * @return
+	 * @return The item in the inventory that was selected.
 	 */
 	public int getGuiItemIndex() {
 		return inventorySelectedItemIndex;
@@ -221,7 +221,7 @@ public class GameEnvironment {
 	/**
 	 * Sets index of selected item in GUI inventory screen
 	 * for use in UseItemScreen
-	 * @param index
+	 * @param The slot of the users inventory that was chosen.
 	 */
 	public void setGuiItemIndex(int index) {
 		inventorySelectedItemIndex = index;
@@ -229,6 +229,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Getter that returns the game difficulty.
+	 * @return The difficulty setting that was selected.
 	 */
 	public boolean getDifficulty() {
 		return difficultySetting;
@@ -244,7 +245,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets gold balance directly from slayer class
-	 * @return
+	 * @return the current amount of gold that the player has.
 	 */
 	public int getSlayerGold() {
 		return slayer.getGold();
@@ -260,7 +261,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets days passed directly from slayer class
-	 * @return
+	 * @return The current day that it is in the game.
 	 */
 	public int getSlayerDay() {
 		return slayer.getDaysPassed();
@@ -268,7 +269,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Gets the current amount of points from slayer class
-	 * @return
+	 * @return The current score the player has.
 	 */
 	public int getSlayerScore() {
 		return slayer.getPoints();
@@ -277,7 +278,7 @@ public class GameEnvironment {
 	/**
 	 * Gets maximum days user selected to play for
 	 * For use in GUI
-	 * @return
+	 * @return the amount of days the user selected to play for.
 	 */
 	public int getMaxDays() {
 		return days;
@@ -287,7 +288,7 @@ public class GameEnvironment {
 	 * Method that checks if the game should finish depending on:
 	 * - if amount of days that have passed exceeds game length
 	 * - or if user has no monsters and not enough gold to buy any more monsters
-	 * @return
+	 * @return true if the game should finish otherwise false.
 	 */
 	public boolean shouldGameFinish() {
 		if (slayer.getDaysPassed() > days){
@@ -304,7 +305,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Returns the stats of gold, days passed, and days left in game
-	 * @return
+	 * @return A string of the players stats.
 	 */
 	public String getStats() {
 		String string = "Your current gold: " + slayer.getGold() + " \nThe current day: " + slayer.getDaysPassed() + " \nYour days left: " + (days - slayer.getDaysPassed());
@@ -314,7 +315,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Returns a string containing properties of each current monster on the user's team
-	 * @return
+	 * @return A string of the players monsters stats.
 	 */
 	public String getTeamProperties() {
 		// name of each monster
@@ -333,7 +334,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Returns a string containing the name of all items in player's inventory, alongside with their bonus value
-	 * @return
+	 * @return A string containing the name of items in the inventory.
 	 */
 	public String getPlayerInventory() {
 		// TODO: Allow user to use item on a monster
@@ -357,8 +358,8 @@ public class GameEnvironment {
 	
 	/**
 	 * Method to sell an item from user's inventory
-	 * @param itemNum
-	 * @return
+	 * @param itemNum the index of the item that the player is selling.
+	 * @return a string saying if you sold the item or if it was not found.
 	 */
 	public String sellItem(int itemNum) {
 		if (itemNum < 1 || itemNum > inventory.getInventoryList().size()) {
@@ -378,8 +379,9 @@ public class GameEnvironment {
 	
 	/**
 	 * Uses item from inventory on monster in team
-	 * @param itemIndex
-	 * @param monsterIndex
+	 * @param itemIndex The index of the item that is being used.
+	 * @param monsterIndex The index of the monster that the item is being used on.
+	 * @return a string saying what was used and on who.
 	 */
 	public String useItem(int itemIndex, int monsterIndex) {
 		Item item = inventory.getInventoryList().get(itemIndex);
@@ -401,7 +403,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Method that calls the random battle generator and returns the list.
-	 * @return
+	 * @return an ArrayList filled with ArrayLists with monsters inside of them.
 	 */
 	public ArrayList<ArrayList<Monster>> viewBattles() {
 		// Show gold and points gained for winning each battle (scale with difficulty)
@@ -434,8 +436,8 @@ public class GameEnvironment {
 	/**
 	 * Method to construct a Battle object and run Battle.fight() on the 
 	 * user's selected battle
-	 * @param battleNum
-	 * @return
+	 * @param battleNum the index of the battle that was selected
+	 * @return A string which displays whether the user won the battle or lost it.
 	 */
 	public String chooseBattle(int battleNum) {
 		ArrayList<Monster> enemyMonsters = new ArrayList<Monster>();
@@ -472,8 +474,8 @@ public class GameEnvironment {
 	
 	/**
 	 * Method to buy a Purchasable object from the shop
-	 * @param itemNum
-	 * @return
+	 * @param itemNum the index of the item being purchased.
+	 * @return A string saying what you bought or saying you can't afford it.
 	 */
 	public String buyPurchasable(int itemNum) {
 		
@@ -519,7 +521,7 @@ public class GameEnvironment {
 	/**
 	 * Makes the game progress to the next day, healing monsters, changing monsters in shop, generating new battles,
 	 * and allowing monsters to arrive, leave, and level up depending on small odds.
-	 * @return
+	 * @return A string displaying what happened to the player.
 	 */
 	public String sleep() {
 		changeDay();
@@ -558,7 +560,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Runs the main game.
-	 * @param args
+	 * @param args I don't know.
 	 */
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
