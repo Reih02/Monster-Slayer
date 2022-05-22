@@ -251,6 +251,14 @@ public class GameEnvironment {
 	}
 	
 	/**
+	 * Method that returns the slayer class.
+	 * @return The slayer class.
+	 */
+	public Slayer getSlayer() {
+		return slayer;
+	}
+	
+	/**
 	 * Gets days passed directly from slayer class
 	 * @return
 	 */
@@ -461,15 +469,6 @@ public class GameEnvironment {
 	}
 
 	
-	public String visitShop() {
-		String shopVisitString = "-------------\n";
-		shopVisitString += "Your current gold: " + slayer.getGold() + "\n";
-		for (int i=0; i < shop.getPurchasableList().size(); i++) {
-			shopVisitString += "\nITEM " + (i + 1) + ": " + shop.getPurchasableList().get(i).getName() + "\nPRICE: " + shop.getPurchasableList().get(i).getBuyPrice() + "\n";
-		}
-		shopVisitString += "-------------";
-		return shopVisitString;
-	}
 	
 	/**
 	 * Method to buy a Purchasable object from the shop
